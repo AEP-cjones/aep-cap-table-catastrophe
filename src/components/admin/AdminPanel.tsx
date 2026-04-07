@@ -65,7 +65,9 @@ export default function AdminPanel() {
       setConfig(cfg)
       setConfigLoaded(true)
     })
-    return unsub
+    // Fallback: if Firebase hasn't responded in 8s (slow network), unblock login anyway
+    const timeout = setTimeout(() => setConfigLoaded(true), 8000)
+    return () => { unsub(); clearTimeout(timeout) }
   }, [])
 
   useEffect(() => {
