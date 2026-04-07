@@ -368,10 +368,29 @@ export default function PlayerScreen() {
         className="min-h-screen flex flex-col items-center justify-center p-6 gap-5"
         style={{ backgroundColor: '#0f1420' }}
       >
-        <div
-          className={`text-6xl font-black ${gotIt ? 'text-green-400' : 'text-red-500'}`}
-        >
-          {gotIt ? '✓ Correct!' : '✗ Wrong'}
+        <style>{`
+          @keyframes popIn {
+            0%   { transform: scale(0.5); opacity: 0; }
+            70%  { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .pop-in { animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+        `}</style>
+
+        {gotIt ? (
+          <svg className="pop-in" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="48" cy="48" r="48" fill="#16a34a"/>
+            <path d="M26 49L40 63L70 33" stroke="white" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        ) : (
+          <svg className="pop-in" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="48" cy="48" r="48" fill="#dc2626"/>
+            <path d="M32 32L64 64M64 32L32 64" stroke="white" strokeWidth="7" strokeLinecap="round"/>
+          </svg>
+        )}
+
+        <div className={`text-3xl font-black ${gotIt ? 'text-green-400' : 'text-red-400'}`}>
+          {gotIt ? 'Correct!' : 'Wrong'}
         </div>
 
         {currentQuestion && (
