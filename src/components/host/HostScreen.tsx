@@ -182,12 +182,12 @@ export default function HostScreen() {
 
           <div className="bg-white p-4 rounded-xl">
             <QRCodeSVG
-              value={`${playUrl}?room=${roomCode}`}
+              value={`${playUrl}/play?room=${roomCode}`}
               size={200}
             />
           </div>
           <div className="text-gray-400 text-lg">
-            Scan to join or go to <span className="text-white font-mono">{playUrl}</span>
+            Scan to join or go to <span className="text-white font-mono">{playUrl}/play?room={roomCode}</span>
           </div>
 
           <div className="text-white text-xl font-semibold">
