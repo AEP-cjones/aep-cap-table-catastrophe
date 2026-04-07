@@ -378,10 +378,7 @@ export default function PlayerScreen() {
         `}</style>
 
         {gotIt ? (
-          <svg className="pop-in" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="48" cy="48" r="48" fill="#16a34a"/>
-            <path d="M26 49L40 63L70 33" stroke="white" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <img src="/Right_Owl.png" alt="Correct!" className="pop-in" style={{ width: '128px', height: '128px', objectFit: 'contain' }} />
         ) : (
           <svg className="pop-in" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="48" cy="48" r="48" fill="#dc2626"/>
