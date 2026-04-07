@@ -34,9 +34,16 @@ export default function HostScreen() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
   const [scoresUpdated, setScoresUpdated] = useState(false)
 
+  // Safe defaults — Firebase strips null values and empty arrays on write,
+  // so every field from gameState/config must be treated as potentially undefined.
+  const status = gameState?.status ?? 'lobby'
+  const currentIndex = gameState?.currentQuestionIndex ?? 0
+  const questionStartTime = gameState?.questionStartTime ?? null
+  const timeLimit = config?.timeLimit ?? 20
+
   const timeRemaining = useTimer(
-    gameState?.status === 'question' ? (gameState.questionStartTime ?? null) : null,
-    config?.timeLimit ?? 20
+    status === 'question' ? questionStartTime : null,
+    timeLimit
   )
 
   // Init
@@ -65,31 +72,30 @@ export default function HostScreen() {
   }, [])
 
   useEffect(() => {
-    if (gameState?.status === 'question' || gameState?.status === 'answer_reveal') {
-      const unsub = subscribeToAnswers(gameState.currentQuestionIndex, setAnswers)
+    if (status === 'question' || status === 'answer_reveal') {
+      const unsub = subscribeToAnswers(currentIndex, setAnswers)
       return unsub
     }
     setAnswers({})
-  }, [gameState?.status, gameState?.currentQuestionIndex])
+  }, [status, currentIndex])
 
   // Current question
   useEffect(() => {
     if (!gameState || !questions) return
-    const ids = gameState.selectedQuestionIds
-    if (!ids || ids.length === 0) return
-    const qId = ids[gameState.currentQuestionIndex]
+    const ids: string[] = gameState.selectedQuestionIds ?? []
+    if (ids.length === 0) return
+    const qId = ids[currentIndex]
     if (qId && questions[qId]) {
       setCurrentQuestion(questions[qId])
       setScoresUpdated(false)
     }
-  }, [gameState?.currentQuestionIndex, gameState?.selectedQuestionIds, questions])
+  }, [currentIndex, gameState?.selectedQuestionIds, questions])
 
-  // Update scores when answer reveal
+  // Update scores on answer reveal
   const handleRevealAnswer = useCallback(async () => {
     if (!gameState || !currentQuestion || scoresUpdated) return
     setScoresUpdated(true)
     await revealAnswer()
-    // Update scores for all correct answerers
     for (const [playerId, answer] of Object.entries(answers)) {
       if (answer.isCorrect) {
         const current = players[playerId]?.score ?? 0
@@ -108,7 +114,7 @@ export default function HostScreen() {
       .map((q) => q.id)
     const perGame = config?.questionsPerGame ?? 10
     let selected: string[]
-    if (config?.randomizeOrder) {
+    if (config?.randomizeOrder !== false) {
       const shuffled = [...activeIds].sort(() => Math.random() - 0.5)
       selected = shuffled.slice(0, Math.min(perGame, shuffled.length))
     } else {
@@ -118,9 +124,8 @@ export default function HostScreen() {
   }
 
   const handleNextQuestion = async () => {
-    if (!gameState) return
-    const ids = gameState.selectedQuestionIds ?? []
-    const nextIndex = gameState.currentQuestionIndex + 1
+    const ids: string[] = gameState?.selectedQuestionIds ?? []
+    const nextIndex = currentIndex + 1
     if (nextIndex >= ids.length) {
       await endGame()
     } else {
@@ -134,21 +139,7 @@ export default function HostScreen() {
     }
   }
 
-  const sortedPlayers = Object.values(players).sort((a, b) => b.score - a.score)
-
-  const answerCounts = currentQuestion
-    ? currentQuestion.choices.map((_, idx) =>
-        Object.values(answers).filter((a) => a.answerIndex === idx).length
-      )
-    : []
-
-  const correctCount = currentQuestion
-    ? Object.values(answers).filter((a) => a.isCorrect).length
-    : 0
-
-  const isLastQuestion =
-    gameState ? gameState.currentQuestionIndex >= (gameState.selectedQuestionIds ?? []).length - 1 : false
-
+  // Loading state — wait for both Firebase subscriptions
   if (!config || !gameState) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0f1420' }}>
@@ -157,15 +148,27 @@ export default function HostScreen() {
     )
   }
 
-  // Firebase drops empty arrays — normalize to [] so .length is always safe
+  // All computed values go AFTER the null guard, using safe defaults
   const selectedIds: string[] = gameState.selectedQuestionIds ?? []
+  const safeChoices: string[] = currentQuestion?.choices ?? []
+  const playerList = Object.values(players)
+  const sortedPlayers = [...playerList].sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+  const answerList = Object.values(answers)
+  const answerCounts = safeChoices.map((_, idx) =>
+    answerList.filter((a) => a.answerIndex === idx).length
+  )
+  const correctCount = answerList.filter((a) => a.isCorrect).length
+  const isLastQuestion = currentIndex >= selectedIds.length - 1
+
+  const roomCode = config.roomCode ?? ''
+  const playUrl = config.playUrl ?? ''
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0f1420' }}>
       <Header />
 
       {/* LOBBY */}
-      {gameState.status === 'lobby' && (
+      {status === 'lobby' && (
         <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
           <div className="text-center">
             <div className="text-white text-2xl font-bold uppercase tracking-widest mb-2">Room Code</div>
@@ -173,27 +176,27 @@ export default function HostScreen() {
               className="font-black tracking-widest"
               style={{ fontSize: '10rem', lineHeight: 1, color: '#AC2228' }}
             >
-              {config.roomCode}
+              {roomCode}
             </div>
           </div>
 
           <div className="bg-white p-4 rounded-xl">
             <QRCodeSVG
-              value={`${config.playUrl}?room=${config.roomCode}`}
+              value={`${playUrl}?room=${roomCode}`}
               size={200}
             />
           </div>
           <div className="text-gray-400 text-lg">
-            Scan to join or go to <span className="text-white font-mono">{config.playUrl}</span>
+            Scan to join or go to <span className="text-white font-mono">{playUrl}</span>
           </div>
 
           <div className="text-white text-xl font-semibold">
-            {Object.keys(players).length} player{Object.keys(players).length !== 1 ? 's' : ''} joined
+            {playerList.length} player{playerList.length !== 1 ? 's' : ''} joined
           </div>
 
-          {Object.keys(players).length > 0 && (
+          {playerList.length > 0 && (
             <div className="flex flex-wrap gap-3 justify-center max-w-3xl">
-              {Object.values(players).map((p) => (
+              {playerList.map((p) => (
                 <span
                   key={p.id}
                   className="px-4 py-2 rounded-full text-white font-semibold text-lg"
@@ -213,7 +216,7 @@ export default function HostScreen() {
             >
               Start Game
             </button>
-            {Object.keys(players).length > 0 && (
+            {playerList.length > 0 && (
               <button
                 onClick={handleReset}
                 className="px-8 py-5 rounded-xl text-white text-xl font-bold uppercase tracking-wide bg-gray-700 hover:bg-gray-600 transition-all"
@@ -226,11 +229,11 @@ export default function HostScreen() {
       )}
 
       {/* QUESTION */}
-      {gameState.status === 'question' && currentQuestion && (
+      {status === 'question' && currentQuestion && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
           <div className="flex items-center justify-between w-full max-w-5xl">
             <div className="text-gray-400 text-2xl font-semibold uppercase tracking-wide">
-              Question {gameState.currentQuestionIndex + 1} of {selectedIds.length}
+              Question {currentIndex + 1} of {selectedIds.length}
             </div>
             <div
               className={`text-5xl font-black transition-colors ${timeRemaining <= 5 ? 'text-red-500 animate-pulse' : 'text-white'}`}
@@ -244,7 +247,7 @@ export default function HostScreen() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 w-full max-w-5xl mt-4">
-            {currentQuestion.choices.map((choice, idx) => (
+            {safeChoices.map((choice, idx) => (
               <div
                 key={idx}
                 className="flex items-center gap-4 p-6 rounded-xl text-white text-2xl font-semibold"
@@ -262,7 +265,7 @@ export default function HostScreen() {
           </div>
 
           <div className="text-gray-300 text-xl mt-2">
-            {Object.keys(answers).length} / {Object.keys(players).length} players have answered
+            {answerList.length} / {playerList.length} players have answered
           </div>
 
           <button
@@ -276,10 +279,10 @@ export default function HostScreen() {
       )}
 
       {/* ANSWER REVEAL */}
-      {gameState.status === 'answer_reveal' && currentQuestion && (
+      {status === 'answer_reveal' && currentQuestion && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
           <div className="text-white text-2xl font-semibold uppercase tracking-wide">
-            Question {gameState.currentQuestionIndex + 1} — Answer
+            Question {currentIndex + 1} — Answer
           </div>
 
           <div className="text-white text-3xl font-bold text-center max-w-4xl leading-tight">
@@ -287,8 +290,8 @@ export default function HostScreen() {
           </div>
 
           <div className="grid grid-cols-2 gap-4 w-full max-w-5xl">
-            {currentQuestion.choices.map((choice, idx) => {
-              const isCorrect = idx === currentQuestion.correctIndex
+            {safeChoices.map((choice, idx) => {
+              const isCorrect = idx === (currentQuestion.correctIndex ?? -1)
               return (
                 <div
                   key={idx}
@@ -297,9 +300,7 @@ export default function HostScreen() {
                   }`}
                   style={{ backgroundColor: isCorrect ? '#16a34a' : '#7f1d1d' }}
                 >
-                  <span
-                    className="text-2xl font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 bg-black bg-opacity-30"
-                  >
+                  <span className="text-2xl font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 bg-black bg-opacity-30">
                     {CHOICE_LABELS[idx]}
                   </span>
                   <span className="flex-1">{choice}</span>
@@ -313,11 +314,11 @@ export default function HostScreen() {
             className="w-full max-w-5xl p-5 rounded-xl text-gray-200 text-lg italic"
             style={{ backgroundColor: '#2d3748' }}
           >
-            {currentQuestion.explanation}
+            {currentQuestion.explanation ?? ''}
           </div>
 
           <div className="text-white text-xl font-semibold">
-            {correctCount} / {Object.keys(players).length} answered correctly
+            {correctCount} / {playerList.length} answered correctly
           </div>
 
           <button
@@ -331,7 +332,7 @@ export default function HostScreen() {
       )}
 
       {/* LEADERBOARD */}
-      {gameState.status === 'leaderboard' && (
+      {status === 'leaderboard' && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
           <div
             className="text-4xl font-black uppercase tracking-widest"
@@ -362,7 +363,7 @@ export default function HostScreen() {
                     {medal ?? `${idx + 1}.`}
                   </span>
                   <span className="flex-1">{player.nickname}</span>
-                  <span className="text-yellow-400 font-black">{player.score}</span>
+                  <span className="text-yellow-400 font-black">{player.score ?? 0}</span>
                 </div>
               )
             })}
@@ -379,7 +380,7 @@ export default function HostScreen() {
       )}
 
       {/* FINAL */}
-      {gameState.status === 'final' && (
+      {status === 'final' && (
         <div
           className="flex-1 flex flex-col items-center justify-center gap-6 p-8"
           style={{ background: 'linear-gradient(135deg, #1a1f2e 0%, #3d2e00 50%, #1a1f2e 100%)' }}
@@ -394,7 +395,7 @@ export default function HostScreen() {
                 {sortedPlayers[0].nickname}
               </div>
               <div className="text-yellow-300 text-4xl font-bold">
-                {sortedPlayers[0].score} points
+                {sortedPlayers[0].score ?? 0} points
               </div>
             </>
           )}
@@ -408,7 +409,7 @@ export default function HostScreen() {
               >
                 <span className="w-8 text-center">{idx + 1}.</span>
                 <span className="flex-1">{player.nickname}</span>
-                <span className="text-yellow-400">{player.score}</span>
+                <span className="text-yellow-400">{player.score ?? 0}</span>
               </div>
             ))}
           </div>
