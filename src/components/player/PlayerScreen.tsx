@@ -29,31 +29,16 @@ function MobileHeader() {
   return (
     <div
       style={{
-        height: '48px',
+        height: '44px',
         flexShrink: 0,
         display: 'flex',
         alignItems: 'center',
         padding: '0 16px',
-        gap: '12px',
         background: 'linear-gradient(180deg,#1C1E1F 0%,#0F1011 100%)',
         borderBottom: '1px solid rgba(255,255,255,0.14)',
       }}
     >
-      <img src="/aep-logo-white.svg" alt="AEP" style={{ height: '28px', width: 'auto', display: 'block' }} />
-      <div style={{ width: '1px', height: '24px', background: 'rgba(255,255,255,0.18)', flexShrink: 0 }} />
-      <span
-        style={{
-          color: 'rgba(255,255,255,0.88)',
-          fontFamily: "'Eurostile','Rajdhani','Roboto',sans-serif",
-          fontSize: '12px',
-          fontWeight: 700,
-          letterSpacing: '0.08em',
-          textTransform: 'uppercase',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        Accelerated Equity Plans
-      </span>
+      <img src="/aep-logo-white.svg" alt="Accelerated Equity Plans" style={{ height: '26px', width: 'auto', display: 'block' }} />
     </div>
   )
 }
