@@ -119,11 +119,12 @@ export default function HostScreen() {
 
   const handleNextQuestion = async () => {
     if (!gameState) return
+    const ids = gameState.selectedQuestionIds ?? []
     const nextIndex = gameState.currentQuestionIndex + 1
-    if (nextIndex >= gameState.selectedQuestionIds.length) {
+    if (nextIndex >= ids.length) {
       await endGame()
     } else {
-      await advanceToQuestion(nextIndex, gameState.selectedQuestionIds)
+      await advanceToQuestion(nextIndex, ids)
     }
   }
 
@@ -146,7 +147,7 @@ export default function HostScreen() {
     : 0
 
   const isLastQuestion =
-    gameState ? gameState.currentQuestionIndex >= gameState.selectedQuestionIds.length - 1 : false
+    gameState ? gameState.currentQuestionIndex >= (gameState.selectedQuestionIds ?? []).length - 1 : false
 
   if (!config || !gameState) {
     return (
@@ -155,6 +156,9 @@ export default function HostScreen() {
       </div>
     )
   }
+
+  // Firebase drops empty arrays — normalize to [] so .length is always safe
+  const selectedIds: string[] = gameState.selectedQuestionIds ?? []
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0f1420' }}>
@@ -226,7 +230,7 @@ export default function HostScreen() {
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
           <div className="flex items-center justify-between w-full max-w-5xl">
             <div className="text-gray-400 text-2xl font-semibold uppercase tracking-wide">
-              Question {gameState.currentQuestionIndex + 1} of {gameState.selectedQuestionIds.length}
+              Question {gameState.currentQuestionIndex + 1} of {selectedIds.length}
             </div>
             <div
               className={`text-5xl font-black transition-colors ${timeRemaining <= 5 ? 'text-red-500 animate-pulse' : 'text-white'}`}

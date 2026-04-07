@@ -297,7 +297,7 @@ export default function PlayerScreen() {
       >
         <div className="flex items-center justify-between text-gray-400 text-sm">
           <span>
-            Q{gameState.currentQuestionIndex + 1}/{gameState.selectedQuestionIds.length}
+            Q{gameState.currentQuestionIndex + 1}/{(gameState.selectedQuestionIds ?? []).length}
           </span>
           <span
             className={`text-2xl font-black transition-colors ${
