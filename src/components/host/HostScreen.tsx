@@ -24,6 +24,8 @@ import questionsData from '../../data/questions.json'
 import type { Question as QuestionType } from '../../types'
 
 const CHOICE_LABELS = ['A', 'B', 'C', 'D']
+const ANSWER_REVEAL_DURATION = 5   // seconds before auto-advancing to leaderboard
+const LEADERBOARD_DURATION = 10    // seconds before auto-advancing to next question
 
 export default function HostScreen() {
   const [gameState, setGameState] = useState<GameState | null>(null)
@@ -32,12 +34,15 @@ export default function HostScreen() {
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
   const [questions, setQuestions] = useState<Record<string, Question>>({})
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
+  const [phaseCountdown, setPhaseCountdown] = useState(0)
 
-  // Refs for always-current values used in async callbacks (avoids stale closures)
+  // Refs for always-current values in async callbacks (avoids stale closures)
   const answersRef = useRef<Record<string, Answer>>({})
   const playersRef = useRef<Record<string, Player>>({})
+  const gameStateRef = useRef<GameState | null>(null)
   useEffect(() => { answersRef.current = answers }, [answers])
   useEffect(() => { playersRef.current = players }, [players])
+  useEffect(() => { gameStateRef.current = gameState }, [gameState])
 
   // Prevent double-triggering reveal for the same question
   const revealTriggered = useRef(false)
@@ -53,7 +58,7 @@ export default function HostScreen() {
     timeLimit
   )
 
-  // Init
+  // ─── Init ───────────────────────────────────────────────────────────────────
   useEffect(() => {
     initializeGame().then(() => {
       initializeQuestionsFromJson(questionsData as QuestionType[]).then(() => {
@@ -62,39 +67,26 @@ export default function HostScreen() {
     })
   }, [])
 
-  // Subscriptions
-  useEffect(() => {
-    const unsub = subscribeToGameState(setGameState)
-    return unsub
-  }, [])
-
-  useEffect(() => {
-    const unsub = subscribeToConfig(setConfig)
-    return unsub
-  }, [])
-
-  useEffect(() => {
-    const unsub = subscribeToPlayers(setPlayers)
-    return unsub
-  }, [])
+  // ─── Subscriptions ──────────────────────────────────────────────────────────
+  useEffect(() => { const u = subscribeToGameState(setGameState); return u }, [])
+  useEffect(() => { const u = subscribeToConfig(setConfig); return u }, [])
+  useEffect(() => { const u = subscribeToPlayers(setPlayers); return u }, [])
 
   useEffect(() => {
     if (status === 'question' || status === 'answer_reveal') {
-      const unsub = subscribeToAnswers(currentIndex, setAnswers)
-      return unsub
+      const u = subscribeToAnswers(currentIndex, setAnswers)
+      return u
     }
     setAnswers({})
   }, [status, currentIndex])
 
-  // Current question
+  // ─── Current question ───────────────────────────────────────────────────────
   useEffect(() => {
     if (!gameState) return
     const ids: string[] = gameState.selectedQuestionIds ?? []
     if (ids.length === 0) return
     const qId = ids[currentIndex]
-    if (qId && questions[qId]) {
-      setCurrentQuestion(questions[qId])
-    }
+    if (qId && questions[qId]) setCurrentQuestion(questions[qId])
   }, [currentIndex, gameState?.selectedQuestionIds, questions])
 
   // Reset reveal guard when question changes
@@ -102,53 +94,77 @@ export default function HostScreen() {
     revealTriggered.current = false
   }, [currentIndex])
 
-  // ─── Core reveal function ────────────────────────────────────────────────────
-  // Uses refs so it's always current regardless of when it's called.
-  // Idempotent: revealTriggered ref prevents double-calls.
+  // ─── Reveal answer (idempotent via ref) ─────────────────────────────────────
   const handleRevealAnswer = useCallback(async () => {
     if (revealTriggered.current) return
     revealTriggered.current = true
-
     await revealAnswer()
-
-    // Update scores using the ref values (guaranteed current)
+    // Score updates use refs — always current, never stale
     const currentAnswers = answersRef.current
     const currentPlayers = playersRef.current
     for (const [pid, answer] of Object.entries(currentAnswers)) {
       if (answer.isCorrect) {
-        const currentScore = currentPlayers[pid]?.score ?? 0
-        await updatePlayerScore(pid, currentScore + answer.points)
+        const score = currentPlayers[pid]?.score ?? 0
+        await updatePlayerScore(pid, score + answer.points)
         await updatePlayerLastAnswer(pid, true, answer.points)
       } else {
         await updatePlayerLastAnswer(pid, false, 0)
       }
     }
-  }, []) // No deps — everything goes through refs
+  }, [])
 
-  // ─── Auto-advance: timer expired ─────────────────────────────────────────────
+  // ─── Next question / end game (uses ref for current gameState) ──────────────
+  const handleNextQuestion = useCallback(async () => {
+    const gs = gameStateRef.current
+    if (!gs) return
+    const ids: string[] = gs.selectedQuestionIds ?? []
+    const nextIndex = (gs.currentQuestionIndex ?? 0) + 1
+    if (nextIndex >= ids.length) {
+      await endGame()
+    } else {
+      await advanceToQuestion(nextIndex, ids)
+    }
+  }, [])
+
+  // ─── Auto-advance: question timer expires ───────────────────────────────────
   useEffect(() => {
     if (status !== 'question') return
     if (timeRemaining > 0) return
     handleRevealAnswer()
   }, [timeRemaining, status, handleRevealAnswer])
 
-  // ─── Auto-advance: all players answered ──────────────────────────────────────
+  // ─── Auto-advance: all players answered ─────────────────────────────────────
   useEffect(() => {
     if (status !== 'question') return
     const playerCount = Object.keys(players).length
     const answerCount = Object.keys(answers).length
     if (playerCount === 0 || answerCount < playerCount) return
-    // Small delay so the last answer fully registers in Firebase before reveal
     const t = setTimeout(handleRevealAnswer, 1500)
     return () => clearTimeout(t)
   }, [Object.keys(answers).length, Object.keys(players).length, status, handleRevealAnswer])
 
-  // ─── Game controls ────────────────────────────────────────────────────────────
+  // ─── Auto-advance: answer_reveal → leaderboard after 5s ────────────────────
+  useEffect(() => {
+    if (status !== 'answer_reveal') return
+    setPhaseCountdown(ANSWER_REVEAL_DURATION)
+    const countdown = setInterval(() => setPhaseCountdown((n) => Math.max(0, n - 1)), 1000)
+    const advance = setTimeout(showLeaderboard, ANSWER_REVEAL_DURATION * 1000)
+    return () => { clearInterval(countdown); clearTimeout(advance) }
+  }, [status])
+
+  // ─── Auto-advance: leaderboard → next question after 10s ───────────────────
+  useEffect(() => {
+    if (status !== 'leaderboard') return
+    setPhaseCountdown(LEADERBOARD_DURATION)
+    const countdown = setInterval(() => setPhaseCountdown((n) => Math.max(0, n - 1)), 1000)
+    const advance = setTimeout(handleNextQuestion, LEADERBOARD_DURATION * 1000)
+    return () => { clearInterval(countdown); clearTimeout(advance) }
+  }, [status, handleNextQuestion])
+
+  // ─── Start / reset ──────────────────────────────────────────────────────────
   const handleStartGame = async () => {
     const allQuestions = await getQuestions()
-    const activeIds = Object.values(allQuestions)
-      .filter((q) => q.active)
-      .map((q) => q.id)
+    const activeIds = Object.values(allQuestions).filter((q) => q.active).map((q) => q.id)
     const perGame = config?.questionsPerGame ?? 10
     let selected: string[]
     if (config?.randomizeOrder !== false) {
@@ -160,23 +176,11 @@ export default function HostScreen() {
     await startGame(selected)
   }
 
-  const handleNextQuestion = async () => {
-    const ids: string[] = gameState?.selectedQuestionIds ?? []
-    const nextIndex = currentIndex + 1
-    if (nextIndex >= ids.length) {
-      await endGame()
-    } else {
-      await advanceToQuestion(nextIndex, ids)
-    }
-  }
-
   const handleReset = async () => {
-    if (window.confirm('Reset the game and clear all players?')) {
-      await resetGame()
-    }
+    if (window.confirm('Reset the game and clear all players?')) await resetGame()
   }
 
-  // Loading state
+  // ─── Loading ────────────────────────────────────────────────────────────────
   if (!config || !gameState) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0f1420' }}>
@@ -196,9 +200,9 @@ export default function HostScreen() {
   )
   const correctCount = answerList.filter((a) => a.isCorrect).length
   const isLastQuestion = currentIndex >= selectedIds.length - 1
+  const allAnswered = playerList.length > 0 && answerList.length >= playerList.length
   const roomCode = config.roomCode ?? ''
   const playUrl = config.playUrl ?? ''
-  const allAnswered = playerList.length > 0 && answerList.length >= playerList.length
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0f1420' }}>
@@ -209,10 +213,7 @@ export default function HostScreen() {
         <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
           <div className="text-center">
             <div className="text-white text-2xl font-bold uppercase tracking-widest mb-2">Room Code</div>
-            <div
-              className="font-black tracking-widest"
-              style={{ fontSize: '10rem', lineHeight: 1, color: '#AC2228' }}
-            >
+            <div className="font-black tracking-widest" style={{ fontSize: '10rem', lineHeight: 1, color: '#AC2228' }}>
               {roomCode}
             </div>
           </div>
@@ -232,11 +233,7 @@ export default function HostScreen() {
           {playerList.length > 0 && (
             <div className="flex flex-wrap gap-3 justify-center max-w-3xl">
               {playerList.map((p) => (
-                <span
-                  key={p.id}
-                  className="px-4 py-2 rounded-full text-white font-semibold text-lg"
-                  style={{ backgroundColor: '#2d3748' }}
-                >
+                <span key={p.id} className="px-4 py-2 rounded-full text-white font-semibold text-lg" style={{ backgroundColor: '#2d3748' }}>
                   {p.nickname}
                 </span>
               ))}
@@ -252,10 +249,7 @@ export default function HostScreen() {
               Start Game
             </button>
             {playerList.length > 0 && (
-              <button
-                onClick={handleReset}
-                className="px-8 py-5 rounded-xl text-white text-xl font-bold uppercase tracking-wide bg-gray-700 hover:bg-gray-600 transition-all"
-              >
+              <button onClick={handleReset} className="px-8 py-5 rounded-xl text-white text-xl font-bold uppercase tracking-wide bg-gray-700 hover:bg-gray-600 transition-all">
                 Reset
               </button>
             )}
@@ -271,18 +265,10 @@ export default function HostScreen() {
               Question {currentIndex + 1} of {selectedIds.length}
             </div>
             <div className="flex items-center gap-6">
-              {/* Emergency reset — always visible so host can unstick a broken game */}
-              <button
-                onClick={handleReset}
-                className="text-gray-500 text-sm hover:text-gray-300 transition-colors"
-              >
-                Reset Game
+              <button onClick={handleReset} className="text-gray-600 text-sm hover:text-gray-400 transition-colors">
+                Reset
               </button>
-              <div
-                className={`text-5xl font-black transition-colors ${
-                  timeRemaining <= 5 ? 'text-red-500 animate-pulse' : 'text-white'
-                }`}
-              >
+              <div className={`text-5xl font-black transition-colors ${timeRemaining <= 5 ? 'text-red-500 animate-pulse' : 'text-white'}`}>
                 {timeRemaining}s
               </div>
             </div>
@@ -299,15 +285,8 @@ export default function HostScreen() {
           {safeChoices.length > 0 && (
             <div className="grid grid-cols-2 gap-4 w-full max-w-5xl mt-4">
               {safeChoices.map((choice, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-4 p-6 rounded-xl text-white text-2xl font-semibold"
-                  style={{ backgroundColor: '#2d3748' }}
-                >
-                  <span
-                    className="text-3xl font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: '#AC2228' }}
-                  >
+                <div key={idx} className="flex items-center gap-4 p-6 rounded-xl text-white text-2xl font-semibold" style={{ backgroundColor: '#2d3748' }}>
+                  <span className="text-3xl font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: '#AC2228' }}>
                     {CHOICE_LABELS[idx]}
                   </span>
                   <span>{choice}</span>
@@ -318,27 +297,21 @@ export default function HostScreen() {
 
           <div className="text-gray-300 text-xl mt-2">
             {answerList.length} / {playerList.length} players have answered
-            {allAnswered && (
-              <span className="text-green-400 ml-3 font-bold">— All answered!</span>
-            )}
+            {allAnswered && <span className="text-green-400 ml-3 font-bold">— All answered!</span>}
           </div>
-
-          {/* Manual reveal button — always shown, auto-advance is backup */}
-          <button
-            onClick={handleRevealAnswer}
-            className="mt-4 px-10 py-4 rounded-xl text-white text-xl font-bold uppercase tracking-wide transition-all hover:opacity-90"
-            style={{ backgroundColor: '#AC2228' }}
-          >
-            Reveal Answer
-          </button>
         </div>
       )}
 
       {/* ANSWER REVEAL */}
       {status === 'answer_reveal' && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
-          <div className="text-white text-2xl font-semibold uppercase tracking-wide">
-            Question {currentIndex + 1} — Answer
+          <div className="flex items-center justify-between w-full max-w-5xl">
+            <div className="text-white text-2xl font-semibold uppercase tracking-wide">
+              Question {currentIndex + 1} — Answer
+            </div>
+            <div className="text-gray-400 text-lg">
+              Leaderboard in <span className="text-white font-black text-2xl">{phaseCountdown}s</span>
+            </div>
           </div>
 
           {currentQuestion && (
@@ -353,9 +326,7 @@ export default function HostScreen() {
                   return (
                     <div
                       key={idx}
-                      className={`flex items-center gap-4 p-6 rounded-xl text-white text-xl font-semibold transition-all ${
-                        isCorrect ? 'ring-4 ring-green-400' : ''
-                      }`}
+                      className={`flex items-center gap-4 p-6 rounded-xl text-white text-xl font-semibold ${isCorrect ? 'ring-4 ring-green-400' : ''}`}
                       style={{ backgroundColor: isCorrect ? '#16a34a' : '#7f1d1d' }}
                     >
                       <span className="text-2xl font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 bg-black bg-opacity-30">
@@ -368,10 +339,7 @@ export default function HostScreen() {
                 })}
               </div>
 
-              <div
-                className="w-full max-w-5xl p-5 rounded-xl text-gray-200 text-lg italic"
-                style={{ backgroundColor: '#2d3748' }}
-              >
+              <div className="w-full max-w-5xl p-5 rounded-xl text-gray-200 text-lg italic" style={{ backgroundColor: '#2d3748' }}>
                 {currentQuestion.explanation ?? ''}
               </div>
             </>
@@ -380,22 +348,20 @@ export default function HostScreen() {
           <div className="text-white text-xl font-semibold">
             {correctCount} / {playerList.length} answered correctly
           </div>
-
-          <button
-            onClick={showLeaderboard}
-            className="px-10 py-4 rounded-xl text-white text-xl font-bold uppercase tracking-wide transition-all hover:opacity-90"
-            style={{ backgroundColor: '#AC2228' }}
-          >
-            Show Leaderboard
-          </button>
         </div>
       )}
 
       {/* LEADERBOARD */}
       {status === 'leaderboard' && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
-          <div className="text-4xl font-black uppercase tracking-widest" style={{ color: '#AC2228' }}>
-            Leaderboard
+          <div className="flex items-center justify-between w-full max-w-2xl">
+            <div className="text-4xl font-black uppercase tracking-widest" style={{ color: '#AC2228' }}>
+              Leaderboard
+            </div>
+            <div className="text-gray-400 text-lg">
+              {isLastQuestion ? 'Winner in' : 'Next question in'}{' '}
+              <span className="text-white font-black text-2xl">{phaseCountdown}s</span>
+            </div>
           </div>
 
           <div className="w-full max-w-2xl flex flex-col gap-3">
@@ -418,12 +384,12 @@ export default function HostScreen() {
             })}
           </div>
 
+          {/* Emergency manual advance — small, unobtrusive */}
           <button
-            onClick={handleNextQuestion}
-            className="mt-4 px-12 py-5 rounded-xl text-white text-2xl font-bold uppercase tracking-wide transition-all hover:opacity-90"
-            style={{ backgroundColor: '#AC2228' }}
+            onClick={isLastQuestion ? endGame : handleNextQuestion}
+            className="mt-2 text-gray-600 text-sm hover:text-gray-400 transition-colors"
           >
-            {isLastQuestion ? 'Finish Game' : 'Next Question'}
+            Skip → {isLastQuestion ? 'Show Winner' : 'Next Question'}
           </button>
         </div>
       )}
@@ -438,22 +404,14 @@ export default function HostScreen() {
           <div className="text-yellow-400 text-6xl font-black uppercase tracking-widest">Winner!</div>
           {sortedPlayers[0] && (
             <>
-              <div className="text-white text-8xl font-black text-center">
-                {sortedPlayers[0].nickname}
-              </div>
-              <div className="text-yellow-300 text-4xl font-bold">
-                {sortedPlayers[0].score ?? 0} points
-              </div>
+              <div className="text-white text-8xl font-black text-center">{sortedPlayers[0].nickname}</div>
+              <div className="text-yellow-300 text-4xl font-bold">{sortedPlayers[0].score ?? 0} points</div>
             </>
           )}
 
           <div className="w-full max-w-xl flex flex-col gap-2 mt-4">
             {sortedPlayers.slice(0, 5).map((player, idx) => (
-              <div
-                key={player.id}
-                className="flex items-center gap-4 px-5 py-3 rounded-xl text-white text-xl font-bold"
-                style={{ backgroundColor: 'rgba(45,55,72,0.8)' }}
-              >
+              <div key={player.id} className="flex items-center gap-4 px-5 py-3 rounded-xl text-white text-xl font-bold" style={{ backgroundColor: 'rgba(45,55,72,0.8)' }}>
                 <span className="w-8 text-center">{idx + 1}.</span>
                 <span className="flex-1">{player.nickname}</span>
                 <span className="text-yellow-400">{player.score ?? 0}</span>
