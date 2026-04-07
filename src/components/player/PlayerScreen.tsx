@@ -369,26 +369,27 @@ export default function PlayerScreen() {
         style={{ backgroundColor: '#0f1420' }}
       >
         <style>{`
-          @keyframes popIn {
-            0%   { transform: scale(0.5); opacity: 0; }
-            70%  { transform: scale(1.15); opacity: 1; }
+          @keyframes owlBounce {
+            0%   { transform: scale(0); opacity: 0; }
+            60%  { transform: scale(1.12); opacity: 1; }
+            78%  { transform: scale(0.95); }
+            90%  { transform: scale(1.06); }
             100% { transform: scale(1); opacity: 1; }
           }
-          .pop-in { animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+          @keyframes owlPop {
+            0%   { transform: scale(0); opacity: 0; }
+            70%  { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          .owl-bounce { animation: owlBounce 0.55s cubic-bezier(0.34,1.56,0.64,1) both; }
+          .owl-pop    { animation: owlPop 0.4s ease-out both; }
         `}</style>
 
         {gotIt ? (
-          <img src="/Right_Owl.png" alt="Correct!" className="pop-in" style={{ width: '128px', height: '128px', objectFit: 'contain' }} />
+          <img src="/Right_Owl.png" alt="Way To Go!" className="owl-bounce" style={{ width: '180px', height: '180px', objectFit: 'contain' }} />
         ) : (
-          <svg className="pop-in" width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="48" cy="48" r="48" fill="#dc2626"/>
-            <path d="M32 32L64 64M64 32L32 64" stroke="white" strokeWidth="7" strokeLinecap="round"/>
-          </svg>
+          <img src="/Wrong_Owl.png" alt="Better Luck Next Time!" className="owl-pop" style={{ width: '180px', height: '180px', objectFit: 'contain' }} />
         )}
-
-        <div className={`text-3xl font-black ${gotIt ? 'text-green-400' : 'text-red-400'}`}>
-          {gotIt ? 'Correct!' : 'Wrong'}
-        </div>
 
         {currentQuestion && (
           <div className="text-center">
