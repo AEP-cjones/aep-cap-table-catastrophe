@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { QRCodeSVG } from 'qrcode.react'
 import type { GameState, GameConfig, Player, Answer, Question } from '../../types'
 import {
@@ -32,10 +32,17 @@ export default function HostScreen() {
   const [answers, setAnswers] = useState<Record<string, Answer>>({})
   const [questions, setQuestions] = useState<Record<string, Question>>({})
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
-  const [scoresUpdated, setScoresUpdated] = useState(false)
 
-  // Safe defaults — Firebase strips null values and empty arrays on write,
-  // so every field from gameState/config must be treated as potentially undefined.
+  // Refs for always-current values used in async callbacks (avoids stale closures)
+  const answersRef = useRef<Record<string, Answer>>({})
+  const playersRef = useRef<Record<string, Player>>({})
+  useEffect(() => { answersRef.current = answers }, [answers])
+  useEffect(() => { playersRef.current = players }, [players])
+
+  // Prevent double-triggering reveal for the same question
+  const revealTriggered = useRef(false)
+
+  // Safe defaults — Firebase strips null values and empty arrays on write
   const status = gameState?.status ?? 'lobby'
   const currentIndex = gameState?.currentQuestionIndex ?? 0
   const questionStartTime = gameState?.questionStartTime ?? null
@@ -81,32 +88,62 @@ export default function HostScreen() {
 
   // Current question
   useEffect(() => {
-    if (!gameState || !questions) return
+    if (!gameState) return
     const ids: string[] = gameState.selectedQuestionIds ?? []
     if (ids.length === 0) return
     const qId = ids[currentIndex]
     if (qId && questions[qId]) {
       setCurrentQuestion(questions[qId])
-      setScoresUpdated(false)
     }
   }, [currentIndex, gameState?.selectedQuestionIds, questions])
 
-  // Update scores on answer reveal
+  // Reset reveal guard when question changes
+  useEffect(() => {
+    revealTriggered.current = false
+  }, [currentIndex])
+
+  // ─── Core reveal function ────────────────────────────────────────────────────
+  // Uses refs so it's always current regardless of when it's called.
+  // Idempotent: revealTriggered ref prevents double-calls.
   const handleRevealAnswer = useCallback(async () => {
-    if (!gameState || !currentQuestion || scoresUpdated) return
-    setScoresUpdated(true)
+    if (revealTriggered.current) return
+    revealTriggered.current = true
+
     await revealAnswer()
-    for (const [playerId, answer] of Object.entries(answers)) {
+
+    // Update scores using the ref values (guaranteed current)
+    const currentAnswers = answersRef.current
+    const currentPlayers = playersRef.current
+    for (const [pid, answer] of Object.entries(currentAnswers)) {
       if (answer.isCorrect) {
-        const current = players[playerId]?.score ?? 0
-        await updatePlayerScore(playerId, current + answer.points)
-        await updatePlayerLastAnswer(playerId, true, answer.points)
+        const currentScore = currentPlayers[pid]?.score ?? 0
+        await updatePlayerScore(pid, currentScore + answer.points)
+        await updatePlayerLastAnswer(pid, true, answer.points)
       } else {
-        await updatePlayerLastAnswer(playerId, false, 0)
+        await updatePlayerLastAnswer(pid, false, 0)
       }
     }
-  }, [gameState, currentQuestion, answers, players, scoresUpdated])
+  }, []) // No deps — everything goes through refs
 
+  // ─── Auto-advance: timer expired ─────────────────────────────────────────────
+  useEffect(() => {
+    if (status !== 'question') return
+    if (timeRemaining > 0) return
+    handleRevealAnswer()
+  }, [timeRemaining, status, handleRevealAnswer])
+
+  // ─── Auto-advance: all players answered ──────────────────────────────────────
+  useEffect(() => {
+    if (status !== 'question') return
+    const playerCount = Object.keys(players).length
+    const answerCount = Object.keys(answers).length
+    if (playerCount === 0 || answerCount < playerCount) return
+    // Small delay so the last answer fully registers in Firebase before reveal
+    const t = setTimeout(handleRevealAnswer, 1500)
+    return () => clearTimeout(t)
+  }, [Object.keys(answers).length, Object.keys(players).length, status, handleRevealAnswer])
+
+  // ─── Game controls ────────────────────────────────────────────────────────────
   const handleStartGame = async () => {
     const allQuestions = await getQuestions()
     const activeIds = Object.values(allQuestions)
@@ -139,7 +176,7 @@ export default function HostScreen() {
     }
   }
 
-  // Loading state — wait for both Firebase subscriptions
+  // Loading state
   if (!config || !gameState) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#0f1420' }}>
@@ -148,7 +185,7 @@ export default function HostScreen() {
     )
   }
 
-  // All computed values go AFTER the null guard, using safe defaults
+  // All computed values after null guard
   const selectedIds: string[] = gameState.selectedQuestionIds ?? []
   const safeChoices: string[] = currentQuestion?.choices ?? []
   const playerList = Object.values(players)
@@ -159,9 +196,9 @@ export default function HostScreen() {
   )
   const correctCount = answerList.filter((a) => a.isCorrect).length
   const isLastQuestion = currentIndex >= selectedIds.length - 1
-
   const roomCode = config.roomCode ?? ''
   const playUrl = config.playUrl ?? ''
+  const allAnswered = playerList.length > 0 && answerList.length >= playerList.length
 
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0f1420' }}>
@@ -181,13 +218,11 @@ export default function HostScreen() {
           </div>
 
           <div className="bg-white p-4 rounded-xl">
-            <QRCodeSVG
-              value={`${playUrl}/play?room=${roomCode}`}
-              size={200}
-            />
+            <QRCodeSVG value={`${playUrl}/play?room=${roomCode}`} size={200} />
           </div>
           <div className="text-gray-400 text-lg">
-            Scan to join or go to <span className="text-white font-mono">{playUrl}/play?room={roomCode}</span>
+            Scan to join or go to{' '}
+            <span className="text-white font-mono">{playUrl}/play?room={roomCode}</span>
           </div>
 
           <div className="text-white text-xl font-semibold">
@@ -229,45 +264,66 @@ export default function HostScreen() {
       )}
 
       {/* QUESTION */}
-      {status === 'question' && currentQuestion && (
+      {status === 'question' && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
           <div className="flex items-center justify-between w-full max-w-5xl">
             <div className="text-gray-400 text-2xl font-semibold uppercase tracking-wide">
               Question {currentIndex + 1} of {selectedIds.length}
             </div>
-            <div
-              className={`text-5xl font-black transition-colors ${timeRemaining <= 5 ? 'text-red-500 animate-pulse' : 'text-white'}`}
-            >
-              {timeRemaining}s
+            <div className="flex items-center gap-6">
+              {/* Emergency reset — always visible so host can unstick a broken game */}
+              <button
+                onClick={handleReset}
+                className="text-gray-500 text-sm hover:text-gray-300 transition-colors"
+              >
+                Reset Game
+              </button>
+              <div
+                className={`text-5xl font-black transition-colors ${
+                  timeRemaining <= 5 ? 'text-red-500 animate-pulse' : 'text-white'
+                }`}
+              >
+                {timeRemaining}s
+              </div>
             </div>
           </div>
 
-          <div className="text-white text-4xl font-bold text-center max-w-4xl leading-tight">
-            {currentQuestion.question}
-          </div>
+          {currentQuestion ? (
+            <div className="text-white text-4xl font-bold text-center max-w-4xl leading-tight">
+              {currentQuestion.question}
+            </div>
+          ) : (
+            <div className="text-gray-400 text-2xl animate-pulse">Loading question...</div>
+          )}
 
-          <div className="grid grid-cols-2 gap-4 w-full max-w-5xl mt-4">
-            {safeChoices.map((choice, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-4 p-6 rounded-xl text-white text-2xl font-semibold"
-                style={{ backgroundColor: '#2d3748' }}
-              >
-                <span
-                  className="text-3xl font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: '#AC2228' }}
+          {safeChoices.length > 0 && (
+            <div className="grid grid-cols-2 gap-4 w-full max-w-5xl mt-4">
+              {safeChoices.map((choice, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center gap-4 p-6 rounded-xl text-white text-2xl font-semibold"
+                  style={{ backgroundColor: '#2d3748' }}
                 >
-                  {CHOICE_LABELS[idx]}
-                </span>
-                <span>{choice}</span>
-              </div>
-            ))}
-          </div>
+                  <span
+                    className="text-3xl font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: '#AC2228' }}
+                  >
+                    {CHOICE_LABELS[idx]}
+                  </span>
+                  <span>{choice}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="text-gray-300 text-xl mt-2">
             {answerList.length} / {playerList.length} players have answered
+            {allAnswered && (
+              <span className="text-green-400 ml-3 font-bold">— All answered!</span>
+            )}
           </div>
 
+          {/* Manual reveal button — always shown, auto-advance is backup */}
           <button
             onClick={handleRevealAnswer}
             className="mt-4 px-10 py-4 rounded-xl text-white text-xl font-bold uppercase tracking-wide transition-all hover:opacity-90"
@@ -279,43 +335,47 @@ export default function HostScreen() {
       )}
 
       {/* ANSWER REVEAL */}
-      {status === 'answer_reveal' && currentQuestion && (
+      {status === 'answer_reveal' && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
           <div className="text-white text-2xl font-semibold uppercase tracking-wide">
             Question {currentIndex + 1} — Answer
           </div>
 
-          <div className="text-white text-3xl font-bold text-center max-w-4xl leading-tight">
-            {currentQuestion.question}
-          </div>
+          {currentQuestion && (
+            <>
+              <div className="text-white text-3xl font-bold text-center max-w-4xl leading-tight">
+                {currentQuestion.question}
+              </div>
 
-          <div className="grid grid-cols-2 gap-4 w-full max-w-5xl">
-            {safeChoices.map((choice, idx) => {
-              const isCorrect = idx === (currentQuestion.correctIndex ?? -1)
-              return (
-                <div
-                  key={idx}
-                  className={`flex items-center gap-4 p-6 rounded-xl text-white text-xl font-semibold transition-all ${
-                    isCorrect ? 'ring-4 ring-green-400' : ''
-                  }`}
-                  style={{ backgroundColor: isCorrect ? '#16a34a' : '#7f1d1d' }}
-                >
-                  <span className="text-2xl font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 bg-black bg-opacity-30">
-                    {CHOICE_LABELS[idx]}
-                  </span>
-                  <span className="flex-1">{choice}</span>
-                  <span className="text-lg font-bold opacity-80">{answerCounts[idx] ?? 0}</span>
-                </div>
-              )
-            })}
-          </div>
+              <div className="grid grid-cols-2 gap-4 w-full max-w-5xl">
+                {safeChoices.map((choice, idx) => {
+                  const isCorrect = idx === (currentQuestion.correctIndex ?? -1)
+                  return (
+                    <div
+                      key={idx}
+                      className={`flex items-center gap-4 p-6 rounded-xl text-white text-xl font-semibold transition-all ${
+                        isCorrect ? 'ring-4 ring-green-400' : ''
+                      }`}
+                      style={{ backgroundColor: isCorrect ? '#16a34a' : '#7f1d1d' }}
+                    >
+                      <span className="text-2xl font-black w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 bg-black bg-opacity-30">
+                        {CHOICE_LABELS[idx]}
+                      </span>
+                      <span className="flex-1">{choice}</span>
+                      <span className="text-lg font-bold opacity-80">{answerCounts[idx] ?? 0}</span>
+                    </div>
+                  )
+                })}
+              </div>
 
-          <div
-            className="w-full max-w-5xl p-5 rounded-xl text-gray-200 text-lg italic"
-            style={{ backgroundColor: '#2d3748' }}
-          >
-            {currentQuestion.explanation ?? ''}
-          </div>
+              <div
+                className="w-full max-w-5xl p-5 rounded-xl text-gray-200 text-lg italic"
+                style={{ backgroundColor: '#2d3748' }}
+              >
+                {currentQuestion.explanation ?? ''}
+              </div>
+            </>
+          )}
 
           <div className="text-white text-xl font-semibold">
             {correctCount} / {playerList.length} answered correctly
@@ -334,10 +394,7 @@ export default function HostScreen() {
       {/* LEADERBOARD */}
       {status === 'leaderboard' && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
-          <div
-            className="text-4xl font-black uppercase tracking-widest"
-            style={{ color: '#AC2228' }}
-          >
+          <div className="text-4xl font-black uppercase tracking-widest" style={{ color: '#AC2228' }}>
             Leaderboard
           </div>
 
@@ -349,19 +406,11 @@ export default function HostScreen() {
                 <div
                   key={player.id}
                   className={`flex items-center gap-4 px-6 py-4 rounded-xl text-white text-2xl font-bold ${
-                    idx === 0
-                      ? 'ring-2 ring-yellow-400'
-                      : idx === 1
-                      ? 'ring-2 ring-gray-400'
-                      : idx === 2
-                      ? 'ring-2 ring-amber-700'
-                      : ''
+                    idx === 0 ? 'ring-2 ring-yellow-400' : idx === 1 ? 'ring-2 ring-gray-400' : idx === 2 ? 'ring-2 ring-amber-700' : ''
                   }`}
                   style={{ backgroundColor: '#2d3748' }}
                 >
-                  <span className="w-10 text-center text-xl">
-                    {medal ?? `${idx + 1}.`}
-                  </span>
+                  <span className="w-10 text-center text-xl">{medal ?? `${idx + 1}.`}</span>
                   <span className="flex-1">{player.nickname}</span>
                   <span className="text-yellow-400 font-black">{player.score ?? 0}</span>
                 </div>
@@ -386,9 +435,7 @@ export default function HostScreen() {
           style={{ background: 'linear-gradient(135deg, #1a1f2e 0%, #3d2e00 50%, #1a1f2e 100%)' }}
         >
           <div className="text-8xl">&#127942;</div>
-          <div className="text-yellow-400 text-6xl font-black uppercase tracking-widest">
-            Winner!
-          </div>
+          <div className="text-yellow-400 text-6xl font-black uppercase tracking-widest">Winner!</div>
           {sortedPlayers[0] && (
             <>
               <div className="text-white text-8xl font-black text-center">
