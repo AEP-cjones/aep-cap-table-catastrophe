@@ -375,7 +375,7 @@ export default function HostScreen() {
           {/* Centered content — sits above the owl, shifted slightly right */}
           <div
             className="flex flex-col items-center justify-center gap-5"
-            style={{ position: 'relative', zIndex: 2, height: '100%', padding: '1rem 2rem', paddingLeft: '28%' }}
+            style={{ position: 'relative', zIndex: 2, height: '100%', padding: '1rem 2rem', paddingLeft: '32%', justifyContent: 'center' }}
           >
             {/* Title */}
             <div className="text-center title-float" style={{ lineHeight: 1 }}>
