@@ -305,12 +305,12 @@ export default function HostScreen() {
       {status === 'lobby' && (
         <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
           {/* Game title with Wise Owl */}
-          <div className="flex items-center justify-center gap-6">
+          <div className="flex items-center justify-center gap-10">
             <img
               src="/Wise_Owl.png"
               alt=""
               className="owl-float hidden lg:block"
-              style={{ width: '190px', height: '190px', objectFit: 'contain', flexShrink: 0 }}
+              style={{ width: '350px', height: '350px', objectFit: 'contain', flexShrink: 0, filter: 'drop-shadow(0 0 24px rgba(255,200,50,0.35)) drop-shadow(0 0 60px rgba(172,34,40,0.25))' }}
             />
             <div className="text-center title-float" style={{ lineHeight: 1 }}>
               <div
