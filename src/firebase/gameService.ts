@@ -81,9 +81,9 @@ export async function initializeGame(): Promise<void> {
 
 export async function startGame(questionIds: string[]): Promise<void> {
   const state: GameState = {
-    status: 'question',
+    status: 'question_intro',
     currentQuestionIndex: 0,
-    questionStartTime: Date.now(),
+    questionStartTime: null,
     selectedQuestionIds: questionIds,
   }
   await set(ref(db, '/gameState'), state)
@@ -94,10 +94,21 @@ export async function advanceToQuestion(
   questionIds: string[]
 ): Promise<void> {
   await update(ref(db, '/gameState'), {
-    status: 'question',
+    status: 'question_intro',
     currentQuestionIndex: index,
-    questionStartTime: Date.now(),
+    questionStartTime: null,
     selectedQuestionIds: questionIds,
+  })
+}
+
+export async function showQuestionIntro(): Promise<void> {
+  await update(ref(db, '/gameState'), { status: 'question_intro' })
+}
+
+export async function startQuestion(): Promise<void> {
+  await update(ref(db, '/gameState'), {
+    status: 'question',
+    questionStartTime: Date.now(),
   })
 }
 
@@ -210,4 +221,32 @@ export async function getLeads(): Promise<Record<string, Lead>> {
 
 export async function clearLeads(): Promise<void> {
   await remove(ref(db, '/leads'))
+}
+
+// ─── Reactions ───────────────────────────────────────────────────────────────
+
+export interface Reaction {
+  player: string
+  reaction: string
+  timestamp: number
+}
+
+export async function sendReaction(player: string, reaction: string): Promise<void> {
+  await push(ref(db, '/gameState/reactions'), {
+    player,
+    reaction,
+    timestamp: Date.now(),
+  })
+}
+
+export function subscribeToReactions(
+  cb: (reactions: Record<string, Reaction>) => void
+): () => void {
+  const r = ref(db, '/gameState/reactions')
+  onValue(r, (snap) => cb((snap.val() as Record<string, Reaction>) ?? {}))
+  return () => off(r)
+}
+
+export async function clearReactions(): Promise<void> {
+  await remove(ref(db, '/gameState/reactions'))
 }

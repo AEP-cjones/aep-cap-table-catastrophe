@@ -6,9 +6,11 @@ import {
   subscribeToPlayers,
   subscribeToConfig,
   subscribeToAnswers,
+  subscribeToReactions,
   initializeGame,
   startGame,
   advanceToQuestion,
+  showQuestionIntro,
   revealAnswer,
   showLeaderboard,
   endGame,
@@ -17,6 +19,8 @@ import {
   updatePlayerLastAnswer,
   getQuestions,
   initializeQuestionsFromJson,
+  startQuestion,
+  clearReactions,
 } from '../../firebase/gameService'
 import { useTimer } from '../../hooks/useTimer'
 import Header from '../shared/Header'
@@ -70,6 +74,10 @@ export default function HostScreen() {
   const [currentQuestion, setCurrentQuestion] = useState<Question | null>(null)
   const [phaseCountdown, setPhaseCountdown] = useState(0)
 
+  // Reaction bubbles
+  const [reactionBubbles, setReactionBubbles] = useState<Array<{ id: string; player: string; reaction: string }>>([])
+  const lastReactionCount = useRef(0)
+
   const answersRef = useRef<Record<string, Answer>>({})
   const playersRef = useRef<Record<string, Player>>({})
   const gameStateRef = useRef<GameState | null>(null)
@@ -108,6 +116,30 @@ export default function HostScreen() {
     }
     setAnswers({})
   }, [status, currentIndex])
+
+  // Subscribe to reactions — show bubbles on host screen
+  useEffect(() => {
+    const unsub = subscribeToReactions((reactions) => {
+      const entries = Object.values(reactions)
+      if (entries.length > lastReactionCount.current) {
+        const newReactions = entries.slice(lastReactionCount.current)
+        for (const r of newReactions) {
+          const id = `${r.timestamp}-${r.player}`
+          setReactionBubbles((prev) => [...prev, { id, player: r.player, reaction: r.reaction }])
+          setTimeout(() => {
+            setReactionBubbles((prev) => prev.filter((b) => b.id !== id))
+          }, 4000)
+        }
+      }
+      lastReactionCount.current = entries.length
+    })
+    return unsub
+  }, [])
+
+  // Reset reaction count when question changes
+  useEffect(() => {
+    lastReactionCount.current = 0
+  }, [currentIndex])
 
   useEffect(() => {
     if (!gameState) return
@@ -178,6 +210,17 @@ export default function HostScreen() {
     const advance = setTimeout(handleNextQuestion, LEADERBOARD_DURATION * 1000)
     return () => { clearInterval(countdown); clearTimeout(advance) }
   }, [status, handleNextQuestion])
+
+  // Question intro → auto-advance to question after 3 seconds
+  const QUESTION_INTRO_DURATION = 3
+  useEffect(() => {
+    if (status !== 'question_intro') return
+    const advance = setTimeout(async () => {
+      await clearReactions()
+      await startQuestion()
+    }, QUESTION_INTRO_DURATION * 1000)
+    return () => clearTimeout(advance)
+  }, [status, currentIndex])
 
   const handleStartGame = async () => {
     const allQuestions = await getQuestions()
@@ -297,6 +340,13 @@ export default function HostScreen() {
         .scan-pulse  { animation: scanPulse 1.8s ease-in-out infinite; }
         .chip-in     { animation: chipIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both; }
         .slide-in    { animation: slideInLeft 0.4s ease-out both; }
+        @keyframes reactionFloat {
+          0%   { transform: translateY(0) scale(0.8); opacity: 0; }
+          10%  { transform: translateY(-10px) scale(1); opacity: 1; }
+          80%  { opacity: 1; }
+          100% { transform: translateY(-120px) scale(0.9); opacity: 0; }
+        }
+        .reaction-float { animation: reactionFloat 4s ease-out forwards; }
       `}</style>
 
       <Header />
@@ -313,7 +363,7 @@ export default function HostScreen() {
               width={900}
               height={600}
               loading="eager"
-              style={{ width: '350px', height: 'auto', objectFit: 'contain', flexShrink: 0, filter: 'drop-shadow(0 0 24px rgba(255,200,50,0.35)) drop-shadow(0 0 60px rgba(172,34,40,0.25))' }}
+              style={{ width: '650px', height: 'auto', objectFit: 'contain', flexShrink: 0, filter: 'drop-shadow(0 0 40px rgba(255,200,50,0.45)) drop-shadow(0 0 80px rgba(172,34,40,0.35))' }}
             />
             <div className="text-center title-float" style={{ lineHeight: 1 }}>
               <div
@@ -453,6 +503,52 @@ export default function HostScreen() {
                 )}
               </div>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── QUESTION INTRO SPLASH ──────────────────────────────────────────── */}
+      {status === 'question_intro' && (
+        <div className="flex-1 flex flex-col items-center justify-center gap-4 p-8">
+          <style>{`
+            @keyframes splashScaleIn {
+              0%   { transform: scale(0.3); opacity: 0; }
+              60%  { transform: scale(1.08); opacity: 1; }
+              100% { transform: scale(1); opacity: 1; }
+            }
+            @keyframes splashSubSlide {
+              0%   { transform: translateY(20px); opacity: 0; }
+              100% { transform: translateY(0); opacity: 1; }
+            }
+            .splash-scale { animation: splashScaleIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both; }
+            .splash-sub   { animation: splashSubSlide 0.4s ease-out 0.3s both; }
+          `}</style>
+          <div
+            className="splash-scale"
+            style={{
+              fontFamily: "'Bungee', cursive",
+              fontSize: 'clamp(5rem, 12vw, 10rem)',
+              color: '#AC2228',
+              textShadow: '0 0 60px rgba(172,34,40,0.6), 0 6px 0 rgba(100,10,14,0.8)',
+              letterSpacing: '0.04em',
+              lineHeight: 1,
+              textAlign: 'center',
+            }}
+          >
+            QUESTION {currentIndex + 1}
+          </div>
+          <div
+            className="splash-sub"
+            style={{
+              fontFamily: "'Rajdhani','Roboto',sans-serif",
+              fontSize: '2rem',
+              fontWeight: 600,
+              color: 'rgba(255,255,255,0.5)',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+            }}
+          >
+            of {selectedIds.length}
           </div>
         </div>
       )}
@@ -628,61 +724,64 @@ export default function HostScreen() {
       {/* ── LEADERBOARD ───────────────────────────────────────────────────────── */}
       {status === 'leaderboard' && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
-          <div className="flex items-center justify-between w-full max-w-2xl">
+          <div className="flex flex-col items-center">
+            <div
+              style={{
+                fontFamily: "'Bungee', cursive",
+                fontSize: '2.5rem',
+                color: '#AC2228',
+                letterSpacing: '0.04em',
+                textShadow: '0 0 20px rgba(172,34,40,0.4)',
+              }}
+            >
+              Leaderboard
+            </div>
+            <div className="text-gray-400 text-lg">
+              {isLastQuestion ? 'Winner in' : 'Next question in'}{' '}
+              <span className="text-white font-black text-2xl">{phaseCountdown}s</span>
+            </div>
+          </div>
+
+          {/* Owls flanking the leaderboard */}
+          <div className="w-full max-w-4xl flex items-start justify-center gap-6">
             <img
               src="/Wise_Owl.webp"
               alt=""
-              className="owl-bob-sm hidden lg:block"
-              style={{ width: '100px', height: '100px', objectFit: 'contain' }}
+              className="owl-bob-sm hidden lg:block flex-shrink-0"
+              style={{ width: '230px', height: 'auto', objectFit: 'contain', marginTop: '20px', filter: 'drop-shadow(0 0 20px rgba(255,200,50,0.3))' }}
             />
-            <div className="flex flex-col items-center">
-              <div
-                style={{
-                  fontFamily: "'Bungee', cursive",
-                  fontSize: '2.5rem',
-                  color: '#AC2228',
-                  letterSpacing: '0.04em',
-                  textShadow: '0 0 20px rgba(172,34,40,0.4)',
-                }}
-              >
-                Leaderboard
-              </div>
-              <div className="text-gray-400 text-lg">
-                {isLastQuestion ? 'Winner in' : 'Next question in'}{' '}
-                <span className="text-white font-black text-2xl">{phaseCountdown}s</span>
-              </div>
+
+            <div className="flex-1 max-w-2xl flex flex-col gap-3">
+              {sortedPlayers.slice(0, 10).map((player, idx) => {
+                const medals = ['🥇', '🥈', '🥉']
+                const medal = medals[idx] ?? null
+                const ringColor = idx === 0 ? '#FFD700' : idx === 1 ? '#C0C0C0' : idx === 2 ? '#CD7F32' : 'transparent'
+                return (
+                  <div
+                    key={player.id}
+                    className="slide-in flex items-center gap-4 px-6 py-4 rounded-xl text-white text-2xl font-bold"
+                    style={{
+                      backgroundColor: idx === 0 ? '#2d2200' : '#2d3748',
+                      border: `2px solid ${ringColor}`,
+                      animationDelay: `${idx * 0.06}s`,
+                    }}
+                  >
+                    <span className="w-10 text-center text-xl">{medal ?? `${idx + 1}.`}</span>
+                    <span className="flex-1">{player.nickname}</span>
+                    <span style={{ color: '#FFD700', fontFamily: "'Bungee', cursive", fontSize: '1.5rem' }}>
+                      {player.score ?? 0}
+                    </span>
+                  </div>
+                )
+              })}
             </div>
+
             <img
               src="/Confused_Owl.webp"
               alt=""
-              className="owl-wobble-sm hidden lg:block"
-              style={{ width: '100px', height: '100px', objectFit: 'contain' }}
+              className="owl-wobble-sm hidden lg:block flex-shrink-0"
+              style={{ width: '230px', height: 'auto', objectFit: 'contain', marginTop: '20px', filter: 'drop-shadow(0 0 20px rgba(172,34,40,0.3))' }}
             />
-          </div>
-
-          <div className="w-full max-w-2xl flex flex-col gap-3">
-            {sortedPlayers.slice(0, 10).map((player, idx) => {
-              const medals = ['🥇', '🥈', '🥉']
-              const medal = medals[idx] ?? null
-              const ringColor = idx === 0 ? '#FFD700' : idx === 1 ? '#C0C0C0' : idx === 2 ? '#CD7F32' : 'transparent'
-              return (
-                <div
-                  key={player.id}
-                  className="slide-in flex items-center gap-4 px-6 py-4 rounded-xl text-white text-2xl font-bold"
-                  style={{
-                    backgroundColor: idx === 0 ? '#2d2200' : '#2d3748',
-                    border: `2px solid ${ringColor}`,
-                    animationDelay: `${idx * 0.06}s`,
-                  }}
-                >
-                  <span className="w-10 text-center text-xl">{medal ?? `${idx + 1}.`}</span>
-                  <span className="flex-1">{player.nickname}</span>
-                  <span style={{ color: '#FFD700', fontFamily: "'Bungee', cursive", fontSize: '1.5rem' }}>
-                    {player.score ?? 0}
-                  </span>
-                </div>
-              )
-            })}
           </div>
 
           <button
@@ -691,6 +790,30 @@ export default function HostScreen() {
           >
             Skip → {isLastQuestion ? 'Show Winner' : 'Next Question'}
           </button>
+        </div>
+      )}
+
+      {/* ── REACTION BUBBLES OVERLAY ─────────────────────────────────────────── */}
+      {reactionBubbles.length > 0 && (
+        <div style={{ position: 'fixed', bottom: '40px', right: '40px', zIndex: 50, pointerEvents: 'none', display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-end' }}>
+          {reactionBubbles.map((b, i) => (
+            <div
+              key={b.id}
+              className="reaction-float"
+              style={{
+                backgroundColor: 'rgba(172,34,40,0.92)',
+                color: '#fff',
+                padding: '10px 18px',
+                borderRadius: '16px',
+                fontSize: '1.2rem',
+                fontWeight: 700,
+                whiteSpace: 'nowrap',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+              }}
+            >
+              {b.player}: {b.reaction}
+            </div>
+          ))}
         </div>
       )}
 

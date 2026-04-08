@@ -6,11 +6,14 @@ import {
   subscribeToConfig,
   subscribeToPlayers,
   subscribeToAnswers,
+  subscribeToReactions,
   joinGame,
   submitAnswer,
   submitLead,
   getQuestions,
+  sendReaction,
 } from '../../firebase/gameService'
+import type { Reaction } from '../../firebase/gameService'
 import { useTimer } from '../../hooks/useTimer'
 import { shuffleChoices } from '../../utils/shuffle'
 
@@ -79,6 +82,11 @@ export default function PlayerScreen() {
   })
   const [leadSubmitting, setLeadSubmitting] = useState(false)
 
+  // Reactions
+  const [hasReacted, setHasReacted] = useState(false)
+  const [reactionNotification, setReactionNotification] = useState<{ player: string; reaction: string } | null>(null)
+  const lastSeenReactionCount = useRef(0)
+
   const prevQuestionIndex = useRef<number>(-1)
 
   const status = gameState?.status ?? 'lobby'
@@ -121,6 +129,22 @@ export default function PlayerScreen() {
 
   useEffect(() => { getQuestions().then(setQuestions) }, [])
 
+  // Subscribe to reactions for notifications from other players
+  useEffect(() => {
+    const unsub = subscribeToReactions((reactions) => {
+      const entries = Object.values(reactions)
+      if (entries.length > lastSeenReactionCount.current && lastSeenReactionCount.current > 0) {
+        const latest = entries[entries.length - 1]
+        if (latest && latest.player !== nickname) {
+          setReactionNotification({ player: latest.player, reaction: latest.reaction })
+          setTimeout(() => setReactionNotification(null), 3000)
+        }
+      }
+      lastSeenReactionCount.current = entries.length
+    })
+    return unsub
+  }, [nickname])
+
   // Current question
   useEffect(() => {
     if (!gameState || !questions) return
@@ -137,6 +161,8 @@ export default function PlayerScreen() {
       prevQuestionIndex.current = gameState.currentQuestionIndex
       setSelectedAnswer(null)
       setHasAnswered(false)
+      setHasReacted(false)
+      lastSeenReactionCount.current = 0
     }
   }, [gameState?.currentQuestionIndex])
 
@@ -208,6 +234,19 @@ export default function PlayerScreen() {
     setLeadSubmitted(true)
     setLeadSubmitting(false)
   }
+
+  const handleReaction = async (reaction: string) => {
+    if (hasReacted || !nickname) return
+    setHasReacted(true)
+    await sendReaction(nickname, reaction)
+  }
+
+  const REACTIONS = [
+    { emoji: '\uD83C\uDF89', label: 'Way to go!' },
+    { emoji: '\uD83D\uDCAA', label: "I'll get you next time!" },
+    { emoji: '\uD83C\uDF40', label: 'Lucky guess!' },
+    { emoji: '\uD83E\uDD2F', label: 'Mind = Blown' },
+  ]
 
   const myPlayer = players[playerId]
   const sortedPlayers = Object.values(players).sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
@@ -283,17 +322,84 @@ export default function PlayerScreen() {
     )
   }
 
+  // ─── QUESTION INTRO SPLASH ────────────────────────────────────────────────
+  if (status === 'question_intro') {
+    return (
+      <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0f1420' }}>
+        <MobileHeader />
+        <style>{`
+          @keyframes splashScaleIn {
+            0%   { transform: scale(0.3); opacity: 0; }
+            60%  { transform: scale(1.08); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+          @keyframes splashSubSlide {
+            0%   { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+          .splash-scale { animation: splashScaleIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both; }
+          .splash-sub   { animation: splashSubSlide 0.4s ease-out 0.3s both; }
+        `}</style>
+        <div className="flex-1 flex flex-col items-center justify-center gap-3 p-6">
+          <div
+            className="splash-scale"
+            style={{
+              fontFamily: "'Bungee', cursive",
+              fontSize: 'clamp(3rem, 14vw, 6rem)',
+              color: '#AC2228',
+              textShadow: '0 0 40px rgba(172,34,40,0.6), 0 4px 0 rgba(100,10,14,0.8)',
+              letterSpacing: '0.04em',
+              lineHeight: 1,
+              textAlign: 'center',
+            }}
+          >
+            QUESTION {(gameState.currentQuestionIndex ?? 0) + 1}
+          </div>
+          <div
+            className="splash-sub"
+            style={{
+              fontFamily: "'Rajdhani','Roboto',sans-serif",
+              fontSize: '1.4rem',
+              fontWeight: 600,
+              color: 'rgba(255,255,255,0.5)',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+            }}
+          >
+            of {(gameState.selectedQuestionIds ?? []).length}
+          </div>
+          <div className="text-gray-500 text-sm animate-pulse mt-4">Get ready...</div>
+        </div>
+      </div>
+    )
+  }
+
   // ─── QUESTION (not yet answered) ─────────────────────────────────────────────
   if (status === 'question' && currentQuestion && !hasAnswered) {
     return (
       <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0f1420' }}>
         <MobileHeader />
         <div className="flex-1 flex flex-col p-4 gap-4">
-          <div className="flex items-center justify-between text-gray-400 text-sm">
-            <span>Q{(gameState.currentQuestionIndex ?? 0) + 1}/{(gameState.selectedQuestionIds ?? []).length}</span>
-            <span className={`text-2xl font-black transition-colors ${timeRemaining <= 5 ? 'text-red-500 animate-pulse' : 'text-white'}`}>
+          <div className="flex items-center justify-between">
+            <span className="text-gray-400 text-sm">Q{(gameState.currentQuestionIndex ?? 0) + 1}/{(gameState.selectedQuestionIds ?? []).length}</span>
+            <div
+              className={`font-black transition-colors ${timeRemaining <= 5 ? 'animate-pulse' : ''}`}
+              style={{
+                fontFamily: "'Bungee', cursive",
+                fontSize: '56px',
+                lineHeight: 1,
+                color: timeRemaining <= 5 ? '#ef4444' : timeRemaining <= 10 ? '#f59e0b' : '#22c55e',
+                textShadow: timeRemaining <= 5
+                  ? '0 0 20px rgba(239,68,68,0.6)'
+                  : timeRemaining <= 10
+                  ? '0 0 15px rgba(245,158,11,0.4)'
+                  : '0 0 10px rgba(34,197,94,0.3)',
+                minWidth: '80px',
+                textAlign: 'right',
+              }}
+            >
               {timeRemaining}s
-            </span>
+            </div>
           </div>
           <div className="text-white text-xl font-bold leading-snug flex-shrink-0">
             {currentQuestion.question}
@@ -383,6 +489,37 @@ export default function PlayerScreen() {
             <span className="text-gray-300">Your score</span>
             <span className="text-white text-2xl font-black">{myPlayer?.score ?? 0}</span>
           </div>
+
+          {/* Reaction buttons */}
+          <div className="w-full max-w-sm flex flex-col gap-2 mt-2">
+            <div className="text-gray-400 text-xs text-center uppercase tracking-wider">React!</div>
+            <div className="grid grid-cols-2 gap-2">
+              {REACTIONS.map((r) => (
+                <button
+                  key={r.label}
+                  onClick={() => handleReaction(r.label)}
+                  disabled={hasReacted}
+                  className="py-3 px-3 rounded-xl text-white font-semibold text-sm transition-all active:scale-95 disabled:opacity-40"
+                  style={{ backgroundColor: hasReacted ? '#1a1f2e' : '#2d3748', border: '1px solid rgba(255,255,255,0.15)' }}
+                >
+                  {r.emoji} {r.label}
+                </button>
+              ))}
+            </div>
+            {hasReacted && <div className="text-green-400 text-xs text-center">Sent!</div>}
+          </div>
+
+          {/* Notification from other players */}
+          {reactionNotification && (
+            <div
+              className="fixed top-16 left-0 right-0 flex justify-center z-50"
+              style={{ animation: 'splashSubSlide 0.3s ease-out both' }}
+            >
+              <div className="px-4 py-2 rounded-xl text-white text-sm font-semibold" style={{ backgroundColor: 'rgba(172,34,40,0.9)' }}>
+                {reactionNotification.player}: {reactionNotification.reaction}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     )
@@ -404,29 +541,73 @@ export default function PlayerScreen() {
                 <div className="text-gray-300 text-xl text-center">{myPlayer?.score ?? 0} pts</div>
               </div>
               <div className="text-gray-400 text-sm animate-pulse text-center">Full leaderboard coming up...</div>
+
+              {/* Reaction buttons on leaderboard too */}
+              {!hasReacted && (
+                <div className="w-full max-w-sm flex flex-col gap-2 mt-2">
+                  <div className="text-gray-400 text-xs text-center uppercase tracking-wider">React!</div>
+                  <div className="grid grid-cols-2 gap-2">
+                    {REACTIONS.map((r) => (
+                      <button
+                        key={r.label}
+                        onClick={() => handleReaction(r.label)}
+                        disabled={hasReacted}
+                        className="py-3 px-3 rounded-xl text-white font-semibold text-sm transition-all active:scale-95 disabled:opacity-40"
+                        style={{ backgroundColor: '#2d3748', border: '1px solid rgba(255,255,255,0.15)' }}
+                      >
+                        {r.emoji} {r.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Notification from other players */}
+              {reactionNotification && (
+                <div
+                  className="fixed top-16 left-0 right-0 flex justify-center z-50"
+                  style={{ animation: 'splashSubSlide 0.3s ease-out both' }}
+                >
+                  <div className="px-4 py-2 rounded-xl text-white text-sm font-semibold" style={{ backgroundColor: 'rgba(172,34,40,0.9)' }}>
+                    {reactionNotification.player}: {reactionNotification.reaction}
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
-            // Last 5s — full leaderboard
+            // Last 5s — full leaderboard with flanking owls
             <>
               <div className="text-2xl font-black text-center" style={{ color: '#AC2228' }}>Leaderboard</div>
-              <div className="flex flex-col gap-2 overflow-y-auto">
-                {sortedPlayers.slice(0, 10).map((player, idx) => {
-                  const isMe = player.id === playerId
-                  const medal = MEDALS[idx] ?? null
-                  return (
-                    <div
-                      key={player.id}
-                      className={`flex items-center gap-3 px-4 py-3 rounded-xl text-white font-bold ${
-                        idx === 0 ? 'ring-2 ring-yellow-400' : idx === 1 ? 'ring-2 ring-gray-400' : idx === 2 ? 'ring-2 ring-amber-700' : ''
-                      } ${isMe ? 'ring-2 ring-white' : ''}`}
-                      style={{ backgroundColor: isMe ? '#2d3f5e' : '#2d3748', fontSize: '16px' }}
-                    >
-                      <span className="w-8 text-center text-base">{medal ?? `${idx + 1}.`}</span>
-                      <span className="flex-1 truncate">{player.nickname}{isMe ? ' (you)' : ''}</span>
-                      <span className="text-yellow-400 font-black">{player.score ?? 0}</span>
-                    </div>
-                  )
-                })}
+              <div className="flex items-start justify-center gap-3 w-full">
+                <img
+                  src="/Wise_Owl.webp"
+                  alt=""
+                  style={{ width: '130px', height: 'auto', objectFit: 'contain', marginTop: '8px', flexShrink: 0, filter: 'drop-shadow(0 0 12px rgba(255,200,50,0.3))' }}
+                />
+                <div className="flex-1 flex flex-col gap-2 overflow-y-auto min-w-0">
+                  {sortedPlayers.slice(0, 10).map((player, idx) => {
+                    const isMe = player.id === playerId
+                    const medal = MEDALS[idx] ?? null
+                    return (
+                      <div
+                        key={player.id}
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl text-white font-bold ${
+                          idx === 0 ? 'ring-2 ring-yellow-400' : idx === 1 ? 'ring-2 ring-gray-400' : idx === 2 ? 'ring-2 ring-amber-700' : ''
+                        } ${isMe ? 'ring-2 ring-white' : ''}`}
+                        style={{ backgroundColor: isMe ? '#2d3f5e' : '#2d3748', fontSize: '14px' }}
+                      >
+                        <span className="w-7 text-center text-sm">{medal ?? `${idx + 1}.`}</span>
+                        <span className="flex-1 truncate">{player.nickname}{isMe ? ' (you)' : ''}</span>
+                        <span className="text-yellow-400 font-black">{player.score ?? 0}</span>
+                      </div>
+                    )
+                  })}
+                </div>
+                <img
+                  src="/Confused_Owl.webp"
+                  alt=""
+                  style={{ width: '130px', height: 'auto', objectFit: 'contain', marginTop: '8px', flexShrink: 0, filter: 'drop-shadow(0 0 12px rgba(172,34,40,0.3))' }}
+                />
               </div>
               <div className="text-gray-400 text-sm animate-pulse text-center">Get ready for the next question!</div>
             </>

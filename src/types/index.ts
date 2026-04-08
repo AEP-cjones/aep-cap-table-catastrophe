@@ -1,4 +1,4 @@
-export type GameStatus = 'lobby' | 'question' | 'answer_reveal' | 'leaderboard' | 'final'
+export type GameStatus = 'lobby' | 'question_intro' | 'question' | 'answer_reveal' | 'leaderboard' | 'final'
 
 export interface Question {
   id: string
