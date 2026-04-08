@@ -10,7 +10,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "easy",
-    "explanation": "RSU stands for Restricted Stock Unit \u00e2\u20ac\u201d a grant of company stock that vests over time. Unlike options, RSUs have value as long as the stock has any value at all.",
+    "explanation": "RSU stands for Restricted Stock Unit â€” a grant of company stock that vests over time. Unlike options, RSUs have value as long as the stock has any value at all.",
     "id": "q001",
     "question": "What does RSU stand for in equity compensation?"
   },
@@ -190,7 +190,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "NSO (Non-Qualified Stock Option) holders recognize ordinary income at the time of exercise equal to the spread \u00e2\u20ac\u201d the difference between the exercise price paid and the fair market value of the stock on the exercise date.",
+    "explanation": "NSO (Non-Qualified Stock Option) holders recognize ordinary income at the time of exercise equal to the spread â€” the difference between the exercise price paid and the fair market value of the stock on the exercise date.",
     "id": "q013",
     "question": "When do NSO holders recognize ordinary income?"
   },
@@ -213,14 +213,14 @@
     "active": true,
     "category": "Tax & Compliance",
     "choices": [
-      "Yes \u00e2\u20ac\u201d RSU vest income is subject to both Social Security and Medicare taxes",
-      "No \u00e2\u20ac\u201d RSUs are capital assets exempt from FICA",
+      "Yes â€” RSU vest income is subject to both Social Security and Medicare taxes",
+      "No â€” RSUs are capital assets exempt from FICA",
       "Only Medicare taxes apply, not Social Security",
       "Only if the employee's income is below the FICA wage base"
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "RSU vest income is treated as supplemental wages and is subject to full FICA withholding \u00e2\u20ac\u201d both Social Security (up to the annual wage base) and Medicare (including the 0.9% Additional Medicare Tax where applicable).",
+    "explanation": "RSU vest income is treated as supplemental wages and is subject to full FICA withholding â€” both Social Security (up to the annual wage base) and Medicare (including the 0.9% Additional Medicare Tax where applicable).",
     "id": "q015",
     "question": "Are RSU vesting events subject to FICA (Social Security and Medicare) withholding?"
   },
@@ -340,7 +340,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "easy",
-    "explanation": "A capitalization table (cap table) is a spreadsheet or database that shows the equity ownership of a company \u00e2\u20ac\u201d including founders, investors, employees with options/RSUs, and other stakeholders \u00e2\u20ac\u201d along with fully diluted share counts.",
+    "explanation": "A capitalization table (cap table) is a spreadsheet or database that shows the equity ownership of a company â€” including founders, investors, employees with options/RSUs, and other stakeholders â€” along with fully diluted share counts.",
     "id": "q023",
     "question": "What is a cap table?"
   },
@@ -415,7 +415,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "easy",
-    "explanation": "The exercise date is when the option holder actually exercises the option \u00e2\u20ac\u201d pays the strike price and receives shares (or the net spread in a cashless exercise). This is a key date for both tax purposes and share issuance.",
+    "explanation": "The exercise date is when the option holder actually exercises the option â€” pays the strike price and receives shares (or the net spread in a cashless exercise). This is a key date for both tax purposes and share issuance.",
     "id": "q028",
     "question": "What is the significance of the exercise date for a stock option grant?"
   },
@@ -430,7 +430,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "easy",
-    "explanation": "A blackout period (also called a trading blackout or quiet period) is a time when employees \u00e2\u20ac\u201d especially insiders \u00e2\u20ac\u201d are prohibited from buying or selling company securities, typically around earnings announcements or material corporate events.",
+    "explanation": "A blackout period (also called a trading blackout or quiet period) is a time when employees â€” especially insiders â€” are prohibited from buying or selling company securities, typically around earnings announcements or material corporate events.",
     "id": "q029",
     "question": "In equity plan administration, what is a 'blackout period'?"
   },
@@ -475,7 +475,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "hard",
-    "explanation": "Shadow payroll is a host-country payroll run by a seconded employee's employer or agent to comply with that country's social security and payroll withholding obligations \u00e2\u20ac\u201d even though the employee is paid in their home country.",
+    "explanation": "Shadow payroll is a host-country payroll run by a seconded employee's employer or agent to comply with that country's social security and payroll withholding obligations â€” even though the employee is paid in their home country.",
     "id": "q032",
     "question": "What is a 'shadow payroll' in the context of global equity?"
   },
@@ -565,7 +565,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "hard",
-    "explanation": "ISO status is purely a US tax concept. When an employee moves to another country, that country does not recognize ISO treatment \u00e2\u20ac\u201d the options are treated as ordinary NSOs or local equivalent instruments, potentially triggering local taxation at exercise.",
+    "explanation": "ISO status is purely a US tax concept. When an employee moves to another country, that country does not recognize ISO treatment â€” the options are treated as ordinary NSOs or local equivalent instruments, potentially triggering local taxation at exercise.",
     "id": "q038",
     "question": "What happens to a mobile employee's ISO qualification if they leave the US?"
   },
@@ -580,7 +580,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "hard",
-    "explanation": "Totalization agreements are bilateral social security treaties between the US and other countries (e.g., UK, Germany, France) that prevent employees from paying social security taxes to both countries simultaneously \u00e2\u20ac\u201d relevant when equity vest income triggers social tax.",
+    "explanation": "Totalization agreements are bilateral social security treaties between the US and other countries (e.g., UK, Germany, France) that prevent employees from paying social security taxes to both countries simultaneously â€” relevant when equity vest income triggers social tax.",
     "id": "q039",
     "question": "What is a 'totalization agreement' relevant to global equity?"
   },
@@ -610,7 +610,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "easy",
-    "explanation": "Golden handcuffs are financial incentives \u00e2\u20ac\u201d typically unvested equity like RSUs or options \u00e2\u20ac\u201d that make it expensive for an employee to leave before their awards vest. The 'cuffs' create retention pressure by tying wealth to continued employment.",
+    "explanation": "Golden handcuffs are financial incentives â€” typically unvested equity like RSUs or options â€” that make it expensive for an employee to leave before their awards vest. The 'cuffs' create retention pressure by tying wealth to continued employment.",
     "id": "q041",
     "question": "The phrase 'golden handcuffs' refers to:"
   },
@@ -640,7 +640,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "easy",
-    "explanation": "In startup culture, the 1-year cliff is sometimes affectionately called the 'you survived' vest \u00e2\u20ac\u201d because it represents the point where both the employee and company have decided the relationship is working and the first chunk of equity vests.",
+    "explanation": "In startup culture, the 1-year cliff is sometimes affectionately called the 'you survived' vest â€” because it represents the point where both the employee and company have decided the relationship is working and the first chunk of equity vests.",
     "id": "q043",
     "question": "What is 'cliff vesting' humorously sometimes called in startup culture?"
   },
@@ -670,7 +670,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "easy",
-    "explanation": "Underwater options \u00e2\u20ac\u201d where the strike price exceeds the current stock price \u00e2\u20ac\u201d are colloquially called 'out of the money' or sometimes 'underwater.' Some practitioners informally call a batch of deeply underwater, near-expiring options a 'dead pool.'",
+    "explanation": "Underwater options â€” where the strike price exceeds the current stock price â€” are colloquially called 'out of the money' or sometimes 'underwater.' Some practitioners informally call a batch of deeply underwater, near-expiring options a 'dead pool.'",
     "id": "q045",
     "question": "What is the informal term for the situation where a company's stock drops so far below option strike prices that the options are essentially worthless?"
   },
@@ -685,7 +685,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "The stock option backdating scandal (circa 2005-2007) involved hundreds of companies \u00e2\u20ac\u201d including Apple, UnitedHealth Group, and Comverse Technology \u00e2\u20ac\u201d retroactively dating option grants to dates with lower stock prices, enriching recipients and misleading investors.",
+    "explanation": "The stock option backdating scandal (circa 2005-2007) involved hundreds of companies â€” including Apple, UnitedHealth Group, and Comverse Technology â€” retroactively dating option grants to dates with lower stock prices, enriching recipients and misleading investors.",
     "id": "q046",
     "question": "Which major scandal in the early 2000s involved companies secretly backdating employee stock option grants to capture lower exercise prices?"
   },
@@ -708,10 +708,10 @@
     "active": true,
     "category": "Fun / Industry Culture",
     "choices": [
-      "Fair Market Value \u00e2\u20ac\u201d the price used to set option exercise prices and determine income at vest or exercise",
-      "Final Market Value \u00e2\u20ac\u201d used to calculate option proceeds at expiration",
-      "Fixed Market Valuation \u00e2\u20ac\u201d used in 409A appraisals for private companies",
-      "Federal Market Value \u00e2\u20ac\u201d the IRS-approved price for all equity awards"
+      "Fair Market Value â€” the price used to set option exercise prices and determine income at vest or exercise",
+      "Final Market Value â€” used to calculate option proceeds at expiration",
+      "Fixed Market Valuation â€” used in 409A appraisals for private companies",
+      "Federal Market Value â€” the IRS-approved price for all equity awards"
     ],
     "correctIndex": 0,
     "difficulty": "easy",
@@ -730,7 +730,7 @@
     ],
     "correctIndex": 2,
     "difficulty": "medium",
-    "explanation": "Steve Jobs famously returned to Apple in 1997 and took a $1 annual salary. While he initially received a large option grant (later exchanged for restricted stock), his $1 salary became iconic \u00e2\u20ac\u201d though he ultimately accumulated wealth primarily through his Apple stock and Pixar proceeds.",
+    "explanation": "Steve Jobs famously returned to Apple in 1997 and took a $1 annual salary. While he initially received a large option grant (later exchanged for restricted stock), his $1 salary became iconic â€” though he ultimately accumulated wealth primarily through his Apple stock and Pixar proceeds.",
     "id": "q049",
     "question": "Which celebrity entrepreneur famously took a $1 annual salary while holding massive stock option and RSU packages?"
   },
@@ -738,7 +738,7 @@
     "active": true,
     "category": "Fun / Industry Culture",
     "choices": [
-      "The National Association of Stock Plan Professionals \u00e2\u20ac\u201d the leading industry group for equity compensation practitioners",
+      "The National Association of Stock Plan Professionals â€” the leading industry group for equity compensation practitioners",
       "The National Association of Securities and Payroll Practitioners",
       "The North American Stock Plan Partnership",
       "The National Accounting Standards for Plan Professionals"
@@ -760,7 +760,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "PSUs (Performance Stock Units) vest based on performance metrics such as revenue, EPS, or TSR. If targets are exceeded, employees may receive more than 100% of the target award; if missed, they may receive less \u00e2\u20ac\u201d or nothing.",
+    "explanation": "PSUs (Performance Stock Units) vest based on performance metrics such as revenue, EPS, or TSR. If targets are exceeded, employees may receive more than 100% of the target award; if missed, they may receive less â€” or nothing.",
     "id": "q051",
     "question": "What is a PSU (Performance Stock Unit)?"
   },
@@ -790,7 +790,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "A SAR grants the holder the right to receive the increase in stock price above a baseline grant price, settled in cash or shares. Unlike options, the holder pays nothing to exercise \u00e2\u20ac\u201d they simply receive the net appreciation.",
+    "explanation": "A SAR grants the holder the right to receive the increase in stock price above a baseline grant price, settled in cash or shares. Unlike options, the holder pays nothing to exercise â€” they simply receive the net appreciation.",
     "id": "q053",
     "question": "What is a Stock Appreciation Right (SAR)?"
   },
@@ -820,7 +820,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "An evergreen provision (automatic replenishment) adds shares to the plan reserve annually \u00e2\u20ac\u201d typically 1\u00e2\u20ac\u201c5% of total outstanding shares \u00e2\u20ac\u201d without requiring a separate shareholder vote each year. It's common in tech company equity plans but scrutinized by proxy advisory firms for potential dilution.",
+    "explanation": "An evergreen provision (automatic replenishment) adds shares to the plan reserve annually â€” typically 1â€“5% of total outstanding shares â€” without requiring a separate shareholder vote each year. It's common in tech company equity plans but scrutinized by proxy advisory firms for potential dilution.",
     "id": "q055",
     "question": "What is an 'evergreen provision' in an equity incentive plan?"
   },
@@ -835,7 +835,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "In a net exercise, no cash changes hands. The company delivers the net shares after withholding shares equivalent to the exercise price and required tax withholding \u00e2\u20ac\u201d all in one transaction, resulting in fewer shares delivered than the full grant amount.",
+    "explanation": "In a net exercise, no cash changes hands. The company delivers the net shares after withholding shares equivalent to the exercise price and required tax withholding â€” all in one transaction, resulting in fewer shares delivered than the full grant amount.",
     "id": "q056",
     "question": "What does 'net exercise' or 'net share settlement' mean for stock options?"
   },
@@ -880,7 +880,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "hard",
-    "explanation": "A tandem award combines two equity instruments \u00e2\u20ac\u201d most commonly an SAR alongside a stock option. Exercising the SAR cancels the option and vice versa, giving flexibility between cash settlement (SAR) or shares (option). Tandem awards are rarely used today due to ASC 718 accounting complexity.",
+    "explanation": "A tandem award combines two equity instruments â€” most commonly an SAR alongside a stock option. Exercising the SAR cancels the option and vice versa, giving flexibility between cash settlement (SAR) or shares (option). Tandem awards are rarely used today due to ASC 718 accounting complexity.",
     "id": "q059",
     "question": "What is a 'tandem award' in equity compensation?"
   },
@@ -933,14 +933,14 @@
     "active": true,
     "category": "Tax & Compliance",
     "choices": [
-      "Qualified Small Business Stock \u00e2\u20ac\u201d potentially excludes up to 100% of capital gains from federal income tax if held 5+ years in a qualifying C-corporation",
-      "Qualified Share Bonus Scheme \u00e2\u20ac\u201d a government-subsidized equity plan for startup employees",
-      "Qualified Stock Bonus Settlement \u00e2\u20ac\u201d an accounting method for equity award settlements",
-      "Quasi-Stock Benefit System \u00e2\u20ac\u201d an IRS-approved deferred compensation alternative"
+      "Qualified Small Business Stock â€” potentially excludes up to 100% of capital gains from federal income tax if held 5+ years in a qualifying C-corporation",
+      "Qualified Share Bonus Scheme â€” a government-subsidized equity plan for startup employees",
+      "Qualified Stock Bonus Settlement â€” an accounting method for equity award settlements",
+      "Quasi-Stock Benefit System â€” an IRS-approved deferred compensation alternative"
     ],
     "correctIndex": 0,
     "difficulty": "hard",
-    "explanation": "Under IRC Section 1202, QSBS issued by eligible C-corporations can be excluded from federal capital gains tax \u00e2\u20ac\u201d up to 100% for stock acquired after September 27, 2010 and held 5+ years. A per-issuer $10M (or 10x adjusted basis) limit applies. A massive benefit for startup founders and early employees.",
+    "explanation": "Under IRC Section 1202, QSBS issued by eligible C-corporations can be excluded from federal capital gains tax â€” up to 100% for stock acquired after September 27, 2010 and held 5+ years. A per-issuer $10M (or 10x adjusted basis) limit applies. A massive benefit for startup founders and early employees.",
     "id": "q063",
     "question": "What is QSBS (Section 1202 stock) and what is its primary tax benefit?"
   },
@@ -955,7 +955,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "The wash sale rule (IRC \u00c2\u00a71091) disallows a capital loss deduction when you sell a security at a loss and buy the same or substantially identical security within 30 days before or after the sale. Relevant for equity holders who sell underwater shares and want to maintain their position \u00e2\u20ac\u201d they must wait 31 days to preserve the loss.",
+    "explanation": "The wash sale rule (IRC Â§1091) disallows a capital loss deduction when you sell a security at a loss and buy the same or substantially identical security within 30 days before or after the sale. Relevant for equity holders who sell underwater shares and want to maintain their position â€” they must wait 31 days to preserve the loss.",
     "id": "q064",
     "question": "What does the 'wash sale rule' prohibit that's relevant to equity compensation?"
   },
@@ -970,7 +970,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "hard",
-    "explanation": "State apportionment allocates equity income to each state where the employee worked during the award's vesting period. A person who moved between states while vesting an award may owe income taxes to multiple states \u00e2\u20ac\u201d each taxing its proportionate share. This creates significant compliance complexity for mobile employees.",
+    "explanation": "State apportionment allocates equity income to each state where the employee worked during the award's vesting period. A person who moved between states while vesting an award may owe income taxes to multiple states â€” each taxing its proportionate share. This creates significant compliance complexity for mobile employees.",
     "id": "q065",
     "question": "What is state 'apportionment' or 'sourcing' in the context of multi-state equity taxation?"
   },
@@ -985,7 +985,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "hard",
-    "explanation": "SEC Rule 10D-1 (implementing Dodd-Frank Section 954) requires all listed companies to adopt, disclose, and enforce clawback policies that recover incentive-based compensation from current and former executive officers following an accounting restatement \u00e2\u20ac\u201d regardless of whether any misconduct occurred.",
+    "explanation": "SEC Rule 10D-1 (implementing Dodd-Frank Section 954) requires all listed companies to adopt, disclose, and enforce clawback policies that recover incentive-based compensation from current and former executive officers following an accounting restatement â€” regardless of whether any misconduct occurred.",
     "id": "q066",
     "question": "What is the Dodd-Frank mandatory clawback requirement for public companies?"
   },
@@ -993,14 +993,14 @@
     "active": true,
     "category": "Tax & Compliance",
     "choices": [
-      "The FMV of the shares on the vest date \u00e2\u20ac\u201d the same amount already reported as ordinary W-2 income",
+      "The FMV of the shares on the vest date â€” the same amount already reported as ordinary W-2 income",
       "Zero, since RSUs require no cash payment by the employee",
       "The grant-date fair market value of the award",
       "The average of the grant-date price and the vest-date price"
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "For RSUs, cost basis equals the FMV on the vest date \u00e2\u20ac\u201d already included in the employee's W-2 as ordinary income. Any appreciation (or decline) after the vest date is a capital gain (or loss). The holding period for short vs. long-term capital gains starts on the vest date.",
+    "explanation": "For RSUs, cost basis equals the FMV on the vest date â€” already included in the employee's W-2 as ordinary income. Any appreciation (or decline) after the vest date is a capital gain (or loss). The holding period for short vs. long-term capital gains starts on the vest date.",
     "id": "q067",
     "question": "When an employee sells RSU shares, what is their cost basis for calculating capital gain or loss?"
   },
@@ -1045,7 +1045,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "hard",
-    "explanation": "Section 16(b) requires Section 16 insiders (directors, officers, and 10%+ holders) to disgorge to the company any profits from 'short-swing' transactions \u00e2\u20ac\u201d any purchase and sale (or sale and purchase) matched within any 6-month period. Liability is strict, regardless of intent or MNPI.",
+    "explanation": "Section 16(b) requires Section 16 insiders (directors, officers, and 10%+ holders) to disgorge to the company any profits from 'short-swing' transactions â€” any purchase and sale (or sale and purchase) matched within any 6-month period. Liability is strict, regardless of intent or MNPI.",
     "id": "q070",
     "question": "What is 'short-swing profit' liability under Section 16(b) of the Exchange Act?"
   },
@@ -1060,7 +1060,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "Overhang = (shares subject to outstanding awards + shares available for future grants) \u00c3\u00b7 total diluted shares outstanding. ISS and Glass Lewis track overhang closely as a measure of potential dilution to shareholders. High overhang can trigger negative vote recommendations on equity plan proposals.",
+    "explanation": "Overhang = (shares subject to outstanding awards + shares available for future grants) Ã· total diluted shares outstanding. ISS and Glass Lewis track overhang closely as a measure of potential dilution to shareholders. High overhang can trigger negative vote recommendations on equity plan proposals.",
     "id": "q071",
     "question": "What is 'plan overhang' in equity compensation?"
   },
@@ -1098,14 +1098,14 @@
     "active": true,
     "category": "Administration & Operations",
     "choices": [
-      "Total Shareholder Return \u00e2\u20ac\u201d measuring stock price appreciation plus reinvested dividends, commonly used as a performance metric in PSU awards",
-      "Total Stock Reserve \u00e2\u20ac\u201d the remaining shares in the equity plan authorized but not yet granted",
-      "Tax-Sheltered Return \u00e2\u20ac\u201d a measure of after-tax equity compensation value for planning",
-      "Transfer and Settlement Report \u00e2\u20ac\u201d the operational document accompanying equity award deliveries"
+      "Total Shareholder Return â€” measuring stock price appreciation plus reinvested dividends, commonly used as a performance metric in PSU awards",
+      "Total Stock Reserve â€” the remaining shares in the equity plan authorized but not yet granted",
+      "Tax-Sheltered Return â€” a measure of after-tax equity compensation value for planning",
+      "Transfer and Settlement Report â€” the operational document accompanying equity award deliveries"
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "TSR (Total Shareholder Return) measures return to shareholders: stock price change + dividends reinvested. Relative TSR (rTSR) \u00e2\u20ac\u201d comparing a company's TSR to a peer group or index \u00e2\u20ac\u201d is one of the most common performance metrics in executive PSU programs, aligning pay with competitive shareholder value creation.",
+    "explanation": "TSR (Total Shareholder Return) measures return to shareholders: stock price change + dividends reinvested. Relative TSR (rTSR) â€” comparing a company's TSR to a peer group or index â€” is one of the most common performance metrics in executive PSU programs, aligning pay with competitive shareholder value creation.",
     "id": "q074",
     "question": "What does 'TSR' stand for and how is it used in executive equity programs?"
   },
@@ -1120,7 +1120,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "A UWC allows a company's board (or compensation committee) to approve equity grants without convening a formal meeting \u00e2\u20ac\u201d as long as all directors sign. This is standard practice for routine grant approvals between board meetings and is legally equivalent to a formal board resolution.",
+    "explanation": "A UWC allows a company's board (or compensation committee) to approve equity grants without convening a formal meeting â€” as long as all directors sign. This is standard practice for routine grant approvals between board meetings and is legally equivalent to a formal board resolution.",
     "id": "q075",
     "question": "What is a 'unanimous written consent' (UWC) used for in equity administration?"
   },
@@ -1143,7 +1143,7 @@
     "active": true,
     "category": "Administration & Operations",
     "choices": [
-      "An equity award made outside the shareholder-approved plan as an inducement to a new hire \u00e2\u20ac\u201d permitted under NYSE/Nasdaq rules without a shareholder vote if approved by the compensation committee",
+      "An equity award made outside the shareholder-approved plan as an inducement to a new hire â€” permitted under NYSE/Nasdaq rules without a shareholder vote if approved by the compensation committee",
       "A grant made to induce an existing employee to reach a difficult performance milestone",
       "A discounted equity grant made to investment banks as an inducement to complete a financing",
       "An above-market grant made to prevent a key executive from accepting a competing offer"
@@ -1161,7 +1161,7 @@
       "Share counts double and exercise/purchase prices are halved, preserving the economic value of all outstanding awards",
       "All unvested awards are cancelled and reissued at the post-split price",
       "Only vested awards are adjusted; unvested awards remain at original pre-split terms",
-      "Stock splits do not affect equity awards \u00e2\u20ac\u201d only outstanding common shares are adjusted"
+      "Stock splits do not affect equity awards â€” only outstanding common shares are adjusted"
     ],
     "correctIndex": 0,
     "difficulty": "easy",
@@ -1180,7 +1180,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "Dividend equivalent rights (DERs) allow RSU holders to receive the economic benefit of dividends declared on underlying shares during the vesting period \u00e2\u20ac\u201d typically accrued and paid in cash (or as additional RSUs) when the underlying award vests, aligning RSU holders with shareholder dividend economics.",
+    "explanation": "Dividend equivalent rights (DERs) allow RSU holders to receive the economic benefit of dividends declared on underlying shares during the vesting period â€” typically accrued and paid in cash (or as additional RSUs) when the underlying award vests, aligning RSU holders with shareholder dividend economics.",
     "id": "q079",
     "question": "What is a 'dividend equivalent right' (DER) on an RSU award?"
   },
@@ -1188,14 +1188,14 @@
     "active": true,
     "category": "Administration & Operations",
     "choices": [
-      "ISS (Institutional Shareholder Services) and Glass Lewis \u00e2\u20ac\u201d both publish annual policies evaluating equity plans on dilution, plan cost, and governance features",
+      "ISS (Institutional Shareholder Services) and Glass Lewis â€” both publish annual policies evaluating equity plans on dilution, plan cost, and governance features",
       "The SEC Office of Investor Advocacy publishes binding guidelines all institutions must follow",
       "FASB issues annual equity plan governance guidance that proxy advisors adopt verbatim",
       "The NASPP publishes a proxy voting handbook that serves as the industry standard"
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "ISS and Glass Lewis are the dominant proxy advisory firms. Their annual equity plan guidelines \u00e2\u20ac\u201d covering dilution rates, Shareholder Value Transfer (SVT), burn rate, and plan features \u00e2\u20ac\u201d heavily influence how institutional investors vote on equity plan and say-on-pay proposals at public company annual meetings.",
+    "explanation": "ISS and Glass Lewis are the dominant proxy advisory firms. Their annual equity plan guidelines â€” covering dilution rates, Shareholder Value Transfer (SVT), burn rate, and plan features â€” heavily influence how institutional investors vote on equity plan and say-on-pay proposals at public company annual meetings.",
     "id": "q080",
     "question": "Which proxy advisory firms do institutional investors most commonly rely on when voting on equity plan proposals?"
   },
@@ -1225,7 +1225,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "hard",
-    "explanation": "Israel's Section 102 Capital Gains Track taxes all equity gain at the 25% capital gains rate \u00e2\u20ac\u201d rather than ordinary income rates up to 50% \u00e2\u20ac\u201d if shares are deposited with an approved trustee for at least 24 months. This is why Israeli tech companies are especially eager to use Section 102 for employee equity plans.",
+    "explanation": "Israel's Section 102 Capital Gains Track taxes all equity gain at the 25% capital gains rate â€” rather than ordinary income rates up to 50% â€” if shares are deposited with an approved trustee for at least 24 months. This is why Israeli tech companies are especially eager to use Section 102 for employee equity plans.",
     "id": "q082",
     "question": "What is Israel's Section 102 Capital Gains Track for equity compensation?"
   },
@@ -1293,7 +1293,7 @@
     "active": true,
     "category": "Global Equity",
     "choices": [
-      "Offers of shares above certain thresholds may require a prospectus, though employee share scheme exemptions typically apply \u00e2\u20ac\u201d often requiring a simplified national exemption document",
+      "Offers of shares above certain thresholds may require a prospectus, though employee share scheme exemptions typically apply â€” often requiring a simplified national exemption document",
       "All equity grants to EU employees require full ESMA registration and approval",
       "The EU prohibits share delivery to employees in EU countries unless the company is listed on a European exchange",
       "GDPR makes it illegal to process equity compensation data across EU member state borders"
@@ -1375,7 +1375,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "easy",
-    "explanation": "The term 'unicorn' was coined by venture capitalist Aileen Lee in 2013 to describe private startups valued at $1 billion or more \u00e2\u20ac\u201d once considered as rare as a mythical creature. As of 2024, there are 1,000+ unicorns globally. 'Decacorns' are valued at $10B+ and 'hectocorns' at $100B+.",
+    "explanation": "The term 'unicorn' was coined by venture capitalist Aileen Lee in 2013 to describe private startups valued at $1 billion or more â€” once considered as rare as a mythical creature. As of 2024, there are 1,000+ unicorns globally. 'Decacorns' are valued at $10B+ and 'hectocorns' at $100B+.",
     "id": "q092",
     "question": "What is a 'unicorn' in startup and venture capital terminology?"
   },
@@ -1383,14 +1383,14 @@
     "active": true,
     "category": "Fun / Industry Culture",
     "choices": [
-      "WhatsApp's ~55 employees collectively received approximately $3 billion \u00e2\u20ac\u201d an average of over $50 million per person",
+      "WhatsApp's ~55 employees collectively received approximately $3 billion â€” an average of over $50 million per person",
       "WhatsApp had no equity plan; all 55 employees received only post-acquisition Facebook stock grants",
       "WhatsApp's founder Jan Koum received all the equity and employees received cash bonuses",
       "WhatsApp employees received 4-year vesting packages in Facebook stock with no immediate liquidity"
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "Facebook's ~$19 billion acquisition of WhatsApp in 2014 made its approximately 55 employees collectively wealthy to the tune of roughly $3 billion \u00e2\u20ac\u201d an average exceeding $50 million each. It stands as one of the most dramatic illustrations of broad-based startup equity value creation in history.",
+    "explanation": "Facebook's ~$19 billion acquisition of WhatsApp in 2014 made its approximately 55 employees collectively wealthy to the tune of roughly $3 billion â€” an average exceeding $50 million each. It stands as one of the most dramatic illustrations of broad-based startup equity value creation in history.",
     "id": "q093",
     "question": "What was remarkable about WhatsApp employees' equity when Facebook acquired the company for ~$19 billion in 2014?"
   },
@@ -1405,7 +1405,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "The 'PayPal Mafia' \u00e2\u20ac\u201d including Elon Musk, Peter Thiel, Reid Hoffman, Chad Hurley, and others \u00e2\u20ac\u201d used equity proceeds from PayPal's 2002 acquisition by eBay for $1.5 billion to fund a wave of new companies: Tesla, SpaceX, LinkedIn, YouTube, Palantir, Yelp, and more.",
+    "explanation": "The 'PayPal Mafia' â€” including Elon Musk, Peter Thiel, Reid Hoffman, Chad Hurley, and others â€” used equity proceeds from PayPal's 2002 acquisition by eBay for $1.5 billion to fund a wave of new companies: Tesla, SpaceX, LinkedIn, YouTube, Palantir, Yelp, and more.",
     "id": "q094",
     "question": "What is the 'PayPal Mafia' famous for in startup and equity culture?"
   },
@@ -1413,14 +1413,14 @@
     "active": true,
     "category": "Fun / Industry Culture",
     "choices": [
-      "Special Purpose Acquisition Company \u00e2\u20ac\u201d a blank-check shell that raises public funds to acquire a private company; employees' private equity converts to public shares, typically with a lockup period",
-      "Stock Purchase Acquisition Contract \u00e2\u20ac\u201d a legal structure replacing RSU programs in M&A transactions",
-      "Share Price Adjustment Committee \u00e2\u20ac\u201d a body that reprices equity awards following an acquisition",
-      "Securities and Private Assets Commission \u00e2\u20ac\u201d the regulatory body overseeing pre-IPO equity activity"
+      "Special Purpose Acquisition Company â€” a blank-check shell that raises public funds to acquire a private company; employees' private equity converts to public shares, typically with a lockup period",
+      "Stock Purchase Acquisition Contract â€” a legal structure replacing RSU programs in M&A transactions",
+      "Share Price Adjustment Committee â€” a body that reprices equity awards following an acquisition",
+      "Securities and Private Assets Commission â€” the regulatory body overseeing pre-IPO equity activity"
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "A SPAC (Special Purpose Acquisition Company) is a blank-check shell company that IPOs solely to acquire a private company. For employees, a de-SPAC merger converts private equity to publicly tradeable shares \u00e2\u20ac\u201d similar to a traditional IPO \u00e2\u20ac\u201d though lockups, earnout provisions, and dilution structures can differ significantly.",
+    "explanation": "A SPAC (Special Purpose Acquisition Company) is a blank-check shell company that IPOs solely to acquire a private company. For employees, a de-SPAC merger converts private equity to publicly tradeable shares â€” similar to a traditional IPO â€” though lockups, earnout provisions, and dilution structures can differ significantly.",
     "id": "q095",
     "question": "What is a 'SPAC' and how does it create a liquidity event for employees of a private company?"
   },
@@ -1428,10 +1428,10 @@
     "active": true,
     "category": "Fun / Industry Culture",
     "choices": [
-      "Certified Equity Professional \u00e2\u20ac\u201d awarded by the CEP Institute at Santa Clara University to equity compensation practitioners who pass three levels of exams",
-      "Certified Executive Payroll \u00e2\u20ac\u201d a credential for HR executives managing executive total compensation",
-      "Corporate Equity Planner \u00e2\u20ac\u201d a financial planning credential for advisors focused on equity compensation",
-      "Compliance and Equity Professional \u00e2\u20ac\u201d an SEC-recognized certification for equity compliance officers"
+      "Certified Equity Professional â€” awarded by the CEP Institute at Santa Clara University to equity compensation practitioners who pass three levels of exams",
+      "Certified Executive Payroll â€” a credential for HR executives managing executive total compensation",
+      "Corporate Equity Planner â€” a financial planning credential for advisors focused on equity compensation",
+      "Compliance and Equity Professional â€” an SEC-recognized certification for equity compliance officers"
     ],
     "correctIndex": 0,
     "difficulty": "easy",
@@ -1450,7 +1450,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "medium",
-    "explanation": "Starbucks launched Bean Stock in 1991 \u00e2\u20ac\u201d one of the earliest examples of broad-based equity for ALL employees, including part-time hourly workers (called 'partners'). CEO Howard Schultz believed all employees should share in the company's success. As Starbucks grew dramatically in the 1990s, many long-tenured hourly workers built meaningful wealth through Bean Stock.",
+    "explanation": "Starbucks launched Bean Stock in 1991 â€” one of the earliest examples of broad-based equity for ALL employees, including part-time hourly workers (called 'partners'). CEO Howard Schultz believed all employees should share in the company's success. As Starbucks grew dramatically in the 1990s, many long-tenured hourly workers built meaningful wealth through Bean Stock.",
     "id": "q097",
     "question": "What made Starbucks' 'Bean Stock' program historically significant for equity compensation?"
   },
@@ -1465,7 +1465,7 @@
     ],
     "correctIndex": 0,
     "difficulty": "easy",
-    "explanation": "A 'paper millionaire' has significant wealth on paper \u00e2\u20ac\u201d from unvested equity, unexercised options, or shares locked up at a private company \u00e2\u20ac\u201d but cannot access the cash. The gap between paper wealth and real liquidity is a defining tension in startup equity culture, especially for employees awaiting an IPO that may never come.",
+    "explanation": "A 'paper millionaire' has significant wealth on paper â€” from unvested equity, unexercised options, or shares locked up at a private company â€” but cannot access the cash. The gap between paper wealth and real liquidity is a defining tension in startup equity culture, especially for employees awaiting an IPO that may never come.",
     "id": "q098",
     "question": "What is a 'paper millionaire' in the equity compensation world?"
   },
@@ -1476,7 +1476,7 @@
       "Google used a Dutch auction process intended to democratize share access for ordinary investors, rather than traditional investment bank book-building",
       "Google prohibited all employees from selling shares for 5 years post-IPO as a retention mechanism",
       "Google granted every employee exactly 10,000 shares at the IPO price regardless of level or tenure",
-      "Google's IPO was structured as a direct listing \u00e2\u20ac\u201d no new shares were sold to the public"
+      "Google's IPO was structured as a direct listing â€” no new shares were sold to the public"
     ],
     "correctIndex": 0,
     "difficulty": "medium",
@@ -1501,752 +1501,752 @@
   },
   {
     "active": true,
-    "category": "Cap Table Management",
+    "category": "Equity Compensation Basics",
+    "id": "q101",
+    "difficulty": "medium",
+    "question": "What is the key structural difference between an RSA (Restricted Stock Award) and an RSU?",
     "choices": [
-      "A spreadsheet tracking all share ownership, options, warrants, and convertible instruments",
-      "A government-filed tax form for equity grants",
-      "A table showing employee vesting schedules only",
-      "A board resolution approving new share issuances"
+      "RSAs transfer actual shares to the employee immediately, subject to forfeiture restrictions until vested; RSUs are a contractual promise to deliver shares only upon meeting vesting conditions",
+      "RSAs are only available to executives; RSUs can be granted to any level of employee",
+      "RSAs require the employee to pay an exercise price at grant; RSUs are always granted at no cost",
+      "RSAs always vest over 4 years; RSUs always vest immediately at grant"
     ],
     "correctIndex": 0,
-    "difficulty": "easy",
-    "explanation": "A capitalization (cap) table is a comprehensive record of all equity ownership in a company, including common shares, preferred shares, options, warrants, and convertible instruments. It shows who owns what percentage of the company.",
-    "id": "q101",
-    "question": "What is a capitalization table (cap table)?"
+    "explanation": "An RSA issues actual shares on the grant date subject to forfeiture — often paired with an 83(b) election to start the capital gains clock early. An RSU is a promise to deliver shares (or cash) once vesting is satisfied; no shares exist until settlement."
   },
   {
     "active": true,
-    "category": "Cap Table Management",
+    "category": "Equity Compensation Basics",
+    "id": "q102",
+    "difficulty": "medium",
+    "question": "What does the Black-Scholes model calculate for equity compensation purposes?",
     "choices": [
-      "A round of financing where the company sells preferred stock",
-      "Dilution of existing shareholders",
-      "A secondary sale between existing shareholders",
-      "An increase in the authorized share pool"
+      "It values options by comparing them to similar listed options on a public exchange",
+      "It calculates option fair value using stock price, exercise price, expected volatility, option term, risk-free rate, and dividend yield — the standard ASC 718 input model",
+      "It calculates option value based solely on intrinsic value plus a fixed time-value premium",
+      "It uses historical employee exercise behavior to estimate expected option payoff"
     ],
     "correctIndex": 1,
-    "difficulty": "medium",
-    "explanation": "Dilution occurs when new shares are issued, reducing existing shareholders' percentage ownership. This commonly happens during funding rounds, option pool increases, or warrant exercises.",
-    "id": "q102",
-    "question": "What happens to existing shareholders' ownership percentage when a company issues new shares?"
+    "explanation": "The Black-Scholes-Merton model is the most widely used option pricing formula. Under ASC 718, companies use Black-Scholes or a lattice (binomial) model to estimate grant-date fair value. The six inputs are: stock price, exercise price, expected volatility, expected term, risk-free rate, and dividend yield."
   },
   {
     "active": true,
-    "category": "Cap Table Management",
+    "category": "Equity Compensation Basics",
+    "id": "q103",
+    "difficulty": "medium",
+    "question": "What is 'grant date fair value' and how is it used under ASC 718?",
     "choices": [
-      "Shares reserved exclusively for the CEO",
-      "Treasury shares held by the transfer agent",
-      "Shares set aside for future employee equity grants",
-      "Shares donated to charity for tax purposes"
+      "The FMV of shares delivered to the employee on the vest date — the same amount reported as W-2 income",
+      "The exercise price multiplied by the total number of options in the grant",
+      "The option pricing model value (e.g., Black-Scholes) on the grant date, used as the basis for ASC 718 compensation expense recognized over the service period",
+      "The market value of shares on the exercise date minus the exercise price paid"
     ],
     "correctIndex": 2,
-    "difficulty": "easy",
-    "explanation": "The equity incentive pool (or option pool) is a block of shares reserved for future grants to employees, advisors, and consultants. Its size is typically negotiated during fundraising rounds.",
-    "id": "q103",
-    "question": "What is an equity incentive pool?"
+    "explanation": "Grant-date fair value is the ASC 718-determined value of an award on the day it is granted. For options it is calculated with Black-Scholes; for RSUs it equals the FMV of underlying shares on the grant date. It is recognized as stock-based compensation expense over the requisite service period."
   },
   {
     "active": true,
-    "category": "Cap Table Management",
+    "category": "Equity Compensation Basics",
+    "id": "q104",
+    "difficulty": "hard",
+    "question": "What is a 'reload' feature in a stock option plan?",
     "choices": [
-      "Shares that can never be sold",
-      "The total number of shares legally authorized in the charter",
-      "The number of shares currently held by investors",
-      "Shares that have been authorized and are held by shareholders or reserved for issuance"
+      "A mechanism allowing the equity plan share reserve to replenish automatically each year without a shareholder vote",
+      "An option that resets its exercise price annually to the current market price",
+      "A provision granting additional shares when performance targets are exceeded",
+      "A plan feature that automatically grants new options equal to the shares used to pay the exercise price, allowing repeated exercise-and-reload cycles"
     ],
     "correctIndex": 3,
-    "difficulty": "medium",
-    "explanation": "Outstanding shares are those that have been issued and are currently held by all shareholders (including restricted shares). This differs from authorized shares (the maximum allowed by the charter) and treasury shares (repurchased by the company).",
-    "id": "q104",
-    "question": "What does 'shares outstanding' mean on a cap table?"
+    "explanation": "A reload (or 'restoration option') feature issues new options equal to the shares tendered to pay the exercise price of the original grant, enabling repeated exercise-and-reload cycles. Rarely used today due to ASC 718 accounting complexity and strong shareholder opposition."
   },
   {
     "active": true,
-    "category": "Cap Table Management",
-    "choices": [
-      "Fully diluted shares include all potential shares from options, warrants, and convertibles",
-      "Fully diluted shares only count shares that have already been issued",
-      "Fully diluted shares exclude the option pool",
-      "Fully diluted shares only matter for preferred stockholders"
-    ],
-    "correctIndex": 0,
-    "difficulty": "medium",
-    "explanation": "A fully diluted share count includes all issued shares plus all shares that could be issued from outstanding options, warrants, convertible notes, and other instruments. This gives the most conservative view of ownership percentages.",
+    "category": "Equity Compensation Basics",
     "id": "q105",
-    "question": "What is a 'fully diluted' share count?"
+    "difficulty": "medium",
+    "question": "What is 'phantom stock' in equity compensation?",
+    "choices": [
+      "Unvested equity awards that appear on the cap table but have not yet been legally issued to employees",
+      "Notional units that mirror company stock value and pay out the equivalent cash upon vesting — without delivering actual shares",
+      "Options granted to contractors who are not legal employees of the granting company",
+      "Performance awards automatically forfeited if the stock price drops below a specified threshold"
+    ],
+    "correctIndex": 1,
+    "explanation": "Phantom stock (phantom shares) are notional equity units tracking actual company stock value. Upon vesting, the holder receives equivalent cash — not actual shares. This avoids share issuance and securities registration while still delivering equity-like economic value. Common in private companies and international markets where share delivery is impractical."
   },
   {
     "active": true,
-    "category": "Valuation & Pricing",
-    "choices": [
-      "It determines the tax withholding rate",
-      "It establishes the fair market value of common stock for option pricing and tax compliance",
-      "It calculates the company's revenue multiple",
-      "It sets the conversion price for preferred stock"
-    ],
-    "correctIndex": 1,
-    "difficulty": "medium",
-    "explanation": "A 409A valuation is an independent appraisal of a private company's common stock fair market value (FMV). It's required under IRC Section 409A to set exercise prices for stock options and avoid adverse tax consequences from underpricing.",
+    "category": "Equity Compensation Basics",
     "id": "q106",
-    "question": "What is the primary purpose of a 409A valuation?"
+    "difficulty": "medium",
+    "question": "What does a 'lookback provision' in an ESPP do for employees?",
+    "choices": [
+      "Allows employees to carry forward unused ESPP purchase limits to the next offering period",
+      "A rule requiring ESPP shares to be held for 12 months before they can be sold",
+      "Sets the ESPP purchase price at 85% of the lower of the stock price at the start or end of the offering period — providing downside protection",
+      "An IRS provision allowing employees to retroactively adjust prior-year ESPP contribution rates"
+    ],
+    "correctIndex": 2,
+    "explanation": "The lookback provision provides downside protection. If the stock rose, employees buy at 85% of the lower beginning-of-period price; if it fell, they buy at 85% of the lower end-of-period price. Employees capture much of the upside while limiting downside — making the ESPP one of the most valuable benefits a company can offer."
   },
   {
     "active": true,
-    "category": "Valuation & Pricing",
-    "choices": [
-      "Every month",
-      "Every quarter",
-      "At least every 12 months, or after a material event",
-      "Only at IPO"
-    ],
-    "correctIndex": 2,
-    "difficulty": "medium",
-    "explanation": "IRC Section 409A requires companies to obtain a new valuation at least every 12 months. A new valuation is also needed after material events such as a new funding round, a significant change in financial performance, or a pending acquisition.",
+    "category": "Equity Compensation Basics",
     "id": "q107",
-    "question": "How often must a private company update its 409A valuation?"
+    "difficulty": "easy",
+    "question": "What is the difference between time-based and performance-based vesting conditions?",
+    "choices": [
+      "Time-based vesting requires only continued service; performance-based vesting requires achieving specific measurable goals such as EPS, revenue, or TSR targets",
+      "Time-based awards use calendar years; performance-based awards always use fiscal years for measurement periods",
+      "Time-based awards are only issued as RSUs; performance-based awards are only issued as options",
+      "Performance-based awards always pay out at exactly 100% of target; time-based awards vest proportionally to days worked"
+    ],
+    "correctIndex": 0,
+    "explanation": "Time-based vesting requires only continued employment over a defined period. Performance-based vesting requires meeting specific, predetermined goals. Many PSU programs combine both: time must pass AND performance must be achieved before shares vest."
   },
   {
     "active": true,
-    "category": "Valuation & Pricing",
-    "choices": [
-      "The enterprise value divided by revenue",
-      "The stock price at IPO",
-      "The total equity value divided by fully diluted shares outstanding",
-      "The price per share of the last preferred round divided by the option pool size"
-    ],
-    "correctIndex": 2,
-    "difficulty": "hard",
-    "explanation": "The price per share on a cap table typically equals the total equity value (or the round valuation) divided by the fully diluted shares outstanding. For preferred rounds, the PPS reflects the valuation investors negotiated.",
+    "category": "Equity Compensation Basics",
     "id": "q108",
-    "question": "How is price per share typically calculated on a cap table?"
+    "difficulty": "easy",
+    "question": "What does a '10-year option term' mean for a stock option grant?",
+    "choices": [
+      "The standard maximum contractual life of a stock option from grant date — after which it expires worthless if not exercised",
+      "The period after an IPO during which employees cannot exercise their vested options",
+      "The mandatory waiting period between grant date and the first vesting date",
+      "The required holding period before an option qualifies as an ISO under the IRC"
+    ],
+    "correctIndex": 0,
+    "explanation": "Stock options typically have a 10-year contractual term; after which they expire worthless if not exercised. ISOs are capped at 10 years by statute. Most employees must also exercise within a shorter post-termination window or the options lapse."
   },
   {
     "active": true,
-    "category": "Valuation & Pricing",
-    "choices": [
-      "The company's valuation before the new investment money is added",
-      "The company's valuation after the new investment is added",
-      "The total of all prior funding rounds",
-      "The valuation used for tax purposes only"
-    ],
-    "correctIndex": 0,
-    "difficulty": "easy",
-    "explanation": "Pre-money valuation is what the company is worth before new investment capital is added. Post-money valuation equals pre-money plus the new investment amount. These figures directly determine ownership percentages after a round.",
+    "category": "Equity Compensation Basics",
     "id": "q109",
-    "question": "What is a pre-money valuation?"
+    "difficulty": "hard",
+    "question": "What is an option repricing or 'underwater option exchange'?",
+    "choices": [
+      "A program that cancels existing underwater options and replaces them with new options at a lower exercise price, or with fewer RSUs of equivalent value",
+      "An automatic exercise price reset triggered whenever the stock falls more than 20% from the original grant price",
+      "An exchange where employees surrender underwater options for cash equal to the intrinsic value",
+      "A Board action retroactively changing grant dates to dates with lower stock prices"
+    ],
+    "correctIndex": 0,
+    "explanation": "An option repricing cancels existing underwater options and reissues them at a lower price or exchanges them for RSUs of equivalent value. ISS and Glass Lewis generally oppose repricings without shareholder approval, viewing them as undermining the pay-for-performance link."
   },
   {
     "active": true,
-    "category": "Valuation & Pricing",
-    "choices": [
-      "DLOM stands for Discount for Lack of Marketability",
-      "DLOM stands for Deferred Liability on Maturity",
-      "DLOM stands for Direct Listing Option Method",
-      "DLOM stands for Diluted Liability Offset Measure"
-    ],
-    "correctIndex": 0,
-    "difficulty": "hard",
-    "explanation": "DLOM (Discount for Lack of Marketability) is applied in 409A valuations to account for the fact that private company shares cannot be easily sold on an open market, making them less valuable than publicly traded shares.",
+    "category": "Equity Compensation Basics",
     "id": "q110",
-    "question": "In a 409A valuation, what does DLOM stand for?"
+    "difficulty": "medium",
+    "question": "What is an 'annual refresh grant' strategy in equity compensation?",
+    "choices": [
+      "Granting new options or RSUs whenever existing awards are fully vested to maintain total compensation value for top performers",
+      "A shareholder-approved mechanism allowing the Board to grant equity without committee approval for routine annual awards",
+      "Delivering equity in regular annual installments — each tranche with its own vesting schedule — creating a continuous 'rolling' vest rather than one large upfront grant",
+      "A performance program that adjusts RSU target amounts each year based on prior-year compensation survey benchmarking"
+    ],
+    "correctIndex": 2,
+    "explanation": "Annual refresh grants deliver equity in periodic installments rather than one large upfront grant, so employees always have meaningful unvested equity. Each tranche has its own vesting schedule, creating overlapping vests. Large tech companies like Apple and Alphabet have shifted to this model, granting annual RSUs that vest quarterly."
   },
   {
     "active": true,
-    "category": "Corporate Governance",
-    "choices": [
-      "Any employee can authorize new share issuances",
-      "The transfer agent decides unilaterally",
-      "The board of directors must authorize new issuances, often requiring shareholder approval to increase authorized shares",
-      "The CEO signs off without board involvement"
-    ],
-    "correctIndex": 2,
-    "difficulty": "medium",
-    "explanation": "New share issuances must be authorized by the board. If the number of authorized shares in the certificate of incorporation is insufficient, shareholder approval is needed to amend the charter before new shares can be issued.",
+    "category": "Tax & Compliance",
     "id": "q111",
-    "question": "Who must authorize the issuance of new shares in a corporation?"
+    "difficulty": "hard",
+    "question": "What is the Section 280G 'golden parachute' excise tax?",
+    "choices": [
+      "A 20% excise tax on the recipient (and denial of corporate deduction) when change-of-control payments exceed 3x the executive's average five-year compensation base amount",
+      "A 15% excise tax on all executive compensation above $1 million per year at public companies",
+      "A penalty tax equal to 20% of the option spread on ISOs exercised in the same year as a change of control",
+      "A 3.8% surtax on investment income received by executives during the year of a corporate acquisition"
+    ],
+    "correctIndex": 0,
+    "explanation": "Section 280G imposes a 20% excise tax on excess parachute payments — CIC-triggered pay exceeding 3x the executive's five-year average compensation — and disallows the corporate deduction. Equity acceleration in a change of control is included in the calculation, making 280G analysis critical in M&A transactions."
   },
   {
     "active": true,
-    "category": "Corporate Governance",
-    "choices": [
-      "Anti-dilution protection allows investors to maintain their ownership percentage when shares are issued at a lower price",
-      "Anti-dilution protection guarantees dividends",
-      "Anti-dilution protection prevents any new shares from ever being issued",
-      "Anti-dilution protection only applies to common stockholders"
-    ],
-    "correctIndex": 0,
-    "difficulty": "hard",
-    "explanation": "Anti-dilution provisions protect preferred shareholders from value loss in a down round by adjusting their conversion ratio. The two main types are full ratchet (converts at the lower price) and weighted average (adjusts proportionally).",
+    "category": "Tax & Compliance",
     "id": "q112",
-    "question": "What is anti-dilution protection in venture financing?"
+    "difficulty": "medium",
+    "question": "What is IRS Form 3922 used for in equity compensation?",
+    "choices": [
+      "The IRS form companies must provide to employees and file with the IRS reporting each Section 423 ESPP share transfer during the year",
+      "The IRS form used to report a Non-Qualified Stock Option exercise to both the IRS and the employee",
+      "The SEC form required when an ESPP is registered under the Rule 701 compensatory plan exemption",
+      "The form employees use to report ESPP gains on their personal tax return"
+    ],
+    "correctIndex": 0,
+    "explanation": "Form 3922 is issued by the company to employees and filed with the IRS for each Section 423 ESPP share transfer. It reports the offering date, purchase date, FMV at each date, actual purchase price, and shares purchased — information employees need to correctly characterize qualifying or disqualifying dispositions on their tax returns."
   },
   {
     "active": true,
-    "category": "Corporate Governance",
-    "choices": [
-      "A right that forces minority shareholders to sell in an acquisition",
-      "A right that lets employees sell shares before vesting",
-      "A right that blocks any M&A transaction",
-      "A right reserved for the company's legal counsel"
-    ],
-    "correctIndex": 0,
-    "difficulty": "hard",
-    "explanation": "Drag-along rights allow majority shareholders (typically lead investors) to force minority shareholders to participate in a sale of the company on the same terms, preventing holdouts from blocking a deal.",
+    "category": "Tax & Compliance",
     "id": "q113",
-    "question": "What is a drag-along right?"
+    "difficulty": "hard",
+    "question": "What happens if a deferred compensation arrangement fails to comply with Section 409A?",
+    "choices": [
+      "The IRS automatically converts the non-compliant deferred amounts into RSUs at the current fair market value",
+      "The employer loses its tax deduction but the employee faces no additional penalty beyond ordinary income tax",
+      "The deferred compensation must be paid out within 90 days as ordinary income, with no additional surcharge",
+      "The employee owes income tax on the full deferred amount, plus a 20% excise tax, plus an interest penalty — all recognized in the year the violation occurs"
+    ],
+    "correctIndex": 3,
+    "explanation": "Section 409A violations result in harsh consequences for the employee: immediate income inclusion, a 20% excise tax, and an interest charge. This is why 409A compliance is critical for deferred stock units, certain below-FMV option designs, and executive deferred compensation plans."
   },
   {
     "active": true,
-    "category": "Corporate Governance",
-    "choices": [
-      "Any shareholder can sell whenever they want",
-      "Rule 10b5-1 allows insiders to set up pre-planned trading schedules to avoid insider trading allegations",
-      "Rule 10b5-1 prohibits all insider share sales",
-      "Rule 10b5-1 only applies to options, not shares"
-    ],
-    "correctIndex": 1,
-    "difficulty": "hard",
-    "explanation": "Rule 10b5-1 trading plans allow corporate insiders to establish predetermined schedules for buying or selling shares. When properly adopted during an open trading window and in good faith, these plans provide an affirmative defense against insider trading claims.",
+    "category": "Tax & Compliance",
     "id": "q114",
-    "question": "What is the purpose of a Rule 10b5-1 trading plan?"
+    "difficulty": "hard",
+    "question": "In a qualifying Section 423 ESPP disposition, how is the gain taxed?",
+    "choices": [
+      "All gain is treated as long-term capital gain with zero ordinary income — similar to qualified small business stock",
+      "The lesser of (a) actual gain or (b) the offering-date discount is taxed as ordinary income; additional appreciation above FMV at purchase date is long-term capital gain",
+      "The full offering-date discount plus all post-purchase appreciation is taxed as ordinary income in the year of sale",
+      "The purchase discount is a tax-exempt employer fringe benefit; only post-purchase appreciation is taxable at capital gains rates"
+    ],
+    "correctIndex": 1,
+    "explanation": "In a qualifying Section 423 ESPP disposition, ordinary income equals the lesser of: (a) actual gain on sale, or (b) the discount measured at the offering start date price. Any appreciation above FMV at the purchase date is long-term capital gain. Disqualifying dispositions convert the full discount at purchase into ordinary income."
   },
   {
     "active": true,
-    "category": "Corporate Governance",
-    "choices": [
-      "Common stock always gets paid first",
-      "All shareholders split proceeds equally regardless of share class",
-      "Preferred shareholders have priority through liquidation preferences, and common holders receive whatever remains",
-      "The board decides payment order after the event"
-    ],
-    "correctIndex": 2,
-    "difficulty": "medium",
-    "explanation": "In a liquidation or acquisition, preferred stockholders are paid first according to their liquidation preferences (often 1x their investment). Common stockholders, including most employees, receive what's left after all preferences are satisfied.",
+    "category": "Tax & Compliance",
     "id": "q115",
-    "question": "What determines the order of payout in a liquidity event?"
+    "difficulty": "hard",
+    "question": "How does California treat equity compensation income for employees who move out of state before vesting?",
+    "choices": [
+      "California waives all tax claims on equity income once an employee establishes legal domicile in another state",
+      "California taxes all equity income as if the employee worked there full-time for the entire vesting period regardless of location",
+      "California apportions equity income based on the proportion of the vesting period worked in California, and can tax departing employees for equity sourced to California work periods even after they leave the state",
+      "California exempts equity compensation from state income tax if the underlying shares are held for more than 2 years from grant"
+    ],
+    "correctIndex": 2,
+    "explanation": "California aggressively taxes equity compensation. It apportions income based on the portion of the vesting period worked in-state and continues to assert tax on that California-sourced portion even after an employee moves away. This makes departure tax planning critical for equity-heavy employees leaving California."
   },
   {
     "active": true,
-    "category": "Equity Plan Design",
-    "choices": [
-      "Time-based vesting releases shares according to a schedule tied to continued employment",
-      "Time-based vesting requires hitting revenue targets",
-      "Time-based vesting only applies to executives",
-      "Time-based vesting means shares vest immediately on grant"
-    ],
-    "correctIndex": 0,
-    "difficulty": "easy",
-    "explanation": "Time-based vesting ties equity release to continued service. The most common schedule is 4 years with a 1-year cliff, meaning 25% vests after year one, then the rest monthly or quarterly over the remaining 3 years.",
+    "category": "Tax & Compliance",
     "id": "q116",
-    "question": "How does time-based vesting work?"
+    "difficulty": "medium",
+    "question": "How is equity compensation income typically reported on an employee's W-2?",
+    "choices": [
+      "RSU vest and NSO exercise income is included in Box 1 as ordinary wages; NSO option spread is also reported in Box 12 with code 'V'",
+      "All equity income is reported separately on a Form 1099-B issued by the equity plan broker, not on the W-2",
+      "RSU income is reported in Box 14 of the W-2 as a non-taxable supplemental employer benefit",
+      "Equity income appears on a separate W-2C issued within 60 days after each individual vest or exercise event"
+    ],
+    "correctIndex": 0,
+    "explanation": "Equity compensation income is treated as supplemental wages and included in Box 1 of the W-2. NSO spread is additionally reported in Box 12 with code 'V'. Employees often underreport basis when selling shares because they fail to recognize that the W-2 already included the ordinary income component."
   },
   {
     "active": true,
-    "category": "Equity Plan Design",
-    "choices": [
-      "Shares vest only when specific business targets are achieved",
-      "Shares vest immediately on the grant date",
-      "Shares vest only upon termination",
-      "Shares vest based on the stock price alone"
-    ],
-    "correctIndex": 0,
-    "difficulty": "medium",
-    "explanation": "Performance-based vesting conditions tie equity release to achieving specific goals â€” revenue milestones, EBITDA targets, stock price hurdles, or other KPIs. These grants only deliver shares when the conditions are met within a defined period.",
+    "category": "Tax & Compliance",
     "id": "q117",
-    "question": "What defines performance-based vesting?"
+    "difficulty": "medium",
+    "question": "What is IRS Form 3921 and when is it issued?",
+    "choices": [
+      "The form employees use to elect ISO treatment over NSO treatment when given a choice of award type at grant",
+      "The IRS form companies must provide to employees and file with the IRS for each ISO exercise during the year — reporting details needed to calculate AMT and track ISO holding periods",
+      "A form companies use to report the grant-date fair value of all ISO awards outstanding at year-end",
+      "An IRS certification form confirming that a company's ISO plan qualifies as tax-advantaged under the IRC"
+    ],
+    "correctIndex": 1,
+    "explanation": "Form 3921 is provided by the company to employees and filed with the IRS for every ISO exercise. It reports the grant date, exercise date, exercise price, FMV at exercise, and shares exercised — information employees need to determine their AMT preference item, track the ISO holding period, and calculate basis correctly."
   },
   {
     "active": true,
-    "category": "Equity Plan Design",
-    "choices": [
-      "It guarantees all options will be exercised",
-      "It allows the company to satisfy equity obligations with shares or cash",
-      "It doubles the option grant size",
-      "It provides a tax exemption for the company"
-    ],
-    "correctIndex": 1,
-    "difficulty": "medium",
-    "explanation": "A net settlement feature lets the company settle equity awards by issuing only the net shares (after deducting exercise cost and/or tax withholding) rather than requiring the holder to pay cash. This is convenient for employees and reduces the need for sell-to-cover transactions.",
+    "category": "Tax & Compliance",
     "id": "q118",
-    "question": "What is net settlement in equity compensation?"
+    "difficulty": "easy",
+    "question": "How long must equity award shares be held after vesting or exercise to qualify for long-term capital gains treatment?",
+    "choices": [
+      "At least 6 months from the date of share acquisition (vest date for RSUs, exercise date for options)",
+      "At least 1 year from the original grant date of the underlying equity award",
+      "More than 1 year from the date of acquisition — the vest date for RSUs or the exercise date for options",
+      "At least 2 years from grant date AND more than 1 year from acquisition — the same dual test as the ISO qualifying disposition requirement"
+    ],
+    "correctIndex": 2,
+    "explanation": "To qualify for long-term capital gains rates, shares must be held for more than one year from the date they were acquired. For RSUs, the clock starts on the vest/delivery date; for options, on the exercise date. Shares sold within one year generate short-term capital gains taxed as ordinary income."
   },
   {
     "active": true,
-    "category": "Equity Plan Design",
-    "choices": [
-      "180 days only",
-      "30 days only",
-      "Typically 90 days, though plans may allow shorter or longer periods",
-      "There is no time limit after termination"
-    ],
-    "correctIndex": 2,
-    "difficulty": "medium",
-    "explanation": "Most stock option plans give departing employees 90 days post-termination to exercise vested options, though some companies have extended this to 1â€“10 years. After the exercise window closes, unexercised options are forfeited.",
+    "category": "Tax & Compliance",
     "id": "q119",
-    "question": "What is the typical post-termination exercise period for stock options?"
+    "difficulty": "medium",
+    "question": "What is the tax advantage of donating long-term appreciated company stock directly to charity?",
+    "choices": [
+      "The donor deducts only the original cost basis and avoids capital gains tax — the same net benefit as donating cash proceeds",
+      "The appreciation is treated as ordinary income deductible from W-2 wages in the year of the donation",
+      "The donor can exclude the appreciation from AMT income but deducts only the cost basis",
+      "The donor deducts the full fair market value AND avoids paying capital gains tax on the built-in appreciation — maximizing both the charitable deduction and the tax savings"
+    ],
+    "correctIndex": 3,
+    "explanation": "Donating long-term appreciated company stock directly to a qualified charity allows a deduction for the full FMV while completely avoiding capital gains tax on the built-in appreciation — far more tax-efficient than selling shares and donating the after-tax cash proceeds."
   },
   {
     "active": true,
-    "category": "Equity Plan Design",
-    "choices": [
-      "An ESPP lets employees purchase company stock at a discount through payroll deductions",
-      "An ESPP is a retirement savings plan",
-      "An ESPP only benefits C-suite executives",
-      "An ESPP requires employees to hold shares for 10 years"
-    ],
-    "correctIndex": 0,
-    "difficulty": "easy",
-    "explanation": "An Employee Stock Purchase Plan (ESPP) allows employees to buy company stock at a discount (typically 15% off the lower of the price at the start or end of the offering period) through payroll deductions. Section 423 ESPPs must be offered to all eligible employees.",
+    "category": "Tax & Compliance",
     "id": "q120",
-    "question": "What is an Employee Stock Purchase Plan (ESPP)?"
+    "difficulty": "medium",
+    "question": "What is the 3.8% Net Investment Income Tax (NIIT) and how does it apply to equity compensation?",
+    "choices": [
+      "An additional 3.8% Medicare surtax on net investment income (including capital gains from equity award shares) for high earners above $200K single / $250K married filing jointly",
+      "A 3.8% payroll withholding tax on all equity vest events for employees earning over $1 million annually",
+      "A state-level capital gains surtax of 3.8% levied by high-tax states on top of federal capital gains taxes",
+      "An employer-only payroll tax of 3.8% on total equity compensation expense exceeding $5 million per year"
+    ],
+    "correctIndex": 0,
+    "explanation": "The NIIT, enacted under the ACA, imposes a 3.8% surtax on the lesser of net investment income or the excess of MAGI over $200K (single) / $250K (joint). Capital gains from selling equity award shares can be subject to NIIT, pushing the effective long-term capital gains rate to 23.8% for top earners."
   },
   {
     "active": true,
-    "category": "Accounting & Financial Reporting",
-    "choices": [
-      "Cash accounting method",
-      "Mark-to-market accounting",
-      "ASC 718 (formerly SFAS 123R) requires companies to recognize share-based compensation expense",
-      "There is no specific accounting standard for equity compensation"
-    ],
-    "correctIndex": 2,
-    "difficulty": "hard",
-    "explanation": "ASC 718 (Compensationâ€”Stock Compensation) requires companies to measure and recognize the cost of equity awards at fair value over the requisite service period. This applies to stock options, RSUs, PSUs, and ESPP shares.",
+    "category": "Administration & Operations",
     "id": "q121",
-    "question": "What accounting standard governs share-based compensation expense?"
+    "difficulty": "easy",
+    "question": "What is a 'grant agreement' (award agreement) in equity plan administration?",
+    "choices": [
+      "The proxy statement exhibit listing all outstanding equity awards by executive for SEC annual disclosure",
+      "The Board resolution authorizing the annual equity plan share reserve increase",
+      "The binding legal document between company and employee specifying the terms of a specific equity award — grant date, share count, vesting schedule, exercise price, and conditions",
+      "The shareholder-approved plan document that governs all equity grants company-wide"
+    ],
+    "correctIndex": 2,
+    "explanation": "A grant agreement is the binding contract for each individual equity award. It specifies the grant date, number of shares/units, vesting schedule, exercise price (for options), post-termination exercise windows, and other key terms. Employees typically accept their agreements electronically through the equity platform."
   },
   {
     "active": true,
-    "category": "Accounting & Financial Reporting",
-    "choices": [
-      "The intrinsic value method",
-      "The cost-plus method",
-      "The Black-Scholes or binomial lattice model",
-      "The discounted cash flow model"
-    ],
-    "correctIndex": 2,
-    "difficulty": "hard",
-    "explanation": "Under ASC 718, stock options must be valued using an option pricing model â€” typically Black-Scholes-Merton or a binomial lattice model. Key inputs include the stock price, exercise price, expected volatility, expected term, risk-free rate, and expected dividend yield.",
+    "category": "Administration & Operations",
     "id": "q122",
-    "question": "How are stock options typically valued for financial reporting purposes?"
+    "difficulty": "medium",
+    "question": "When does an equity plan amendment require shareholder approval at a listed company?",
+    "choices": [
+      "Any plan change — including administrative updates — requires a full shareholder vote under SEC rules",
+      "Material amendments — such as increasing the share reserve, lowering option exercise prices (repricing), extending option terms, or expanding eligible participants — require shareholder approval under exchange listing rules",
+      "Only amendments that affect outstanding awards (rather than future grants) require a shareholder vote",
+      "Equity plan amendments never require shareholder approval; only initial plan adoption requires a vote"
+    ],
+    "correctIndex": 1,
+    "explanation": "NYSE and Nasdaq listing rules require shareholder approval for material equity plan amendments. Key triggers: increasing the share reserve, repricing (lowering exercise prices), extending option terms beyond the plan maximum, and materially expanding eligible participants. Non-material administrative changes typically don't require a vote."
   },
   {
     "active": true,
-    "category": "Accounting & Financial Reporting",
-    "choices": [
-      "All at once on the grant date",
-      "Only upon exercise or settlement",
-      "Over the requisite service period (typically the vesting period)",
-      "Equally every quarter regardless of vesting"
-    ],
-    "correctIndex": 2,
-    "difficulty": "medium",
-    "explanation": "Under ASC 718, share-based compensation expense is recognized ratably over the requisite service period, which generally corresponds to the vesting schedule. For graded vesting, companies may use either the straight-line or accelerated method.",
+    "category": "Administration & Operations",
     "id": "q123",
-    "question": "When is equity compensation expense recognized on the income statement?"
+    "difficulty": "medium",
+    "question": "What is the 'Compensation Discussion and Analysis' (CD&A) in a public company proxy statement?",
+    "choices": [
+      "The audited financial footnote in the 10-K disclosing stock-based compensation expense under ASC 718",
+      "The SEC-required exhibit listing the grant-date fair value of all equity awards outstanding at year-end",
+      "A benchmarking table comparing executive equity grant values to peer company data submitted to ISS",
+      "A required narrative section of the proxy statement explaining the company's executive compensation philosophy, program design, decisions, and outcomes — written from management's perspective"
+    ],
+    "correctIndex": 3,
+    "explanation": "The CD&A is required in the annual proxy statement for public companies. It explains the why and how of executive pay — philosophy, program elements (including equity), performance metrics, and how the committee made pay decisions. It is the primary document investors and proxy advisory firms use to evaluate executive compensation."
   },
   {
     "active": true,
-    "category": "Accounting & Financial Reporting",
-    "choices": [
-      "Expected volatility is always 0% for private companies",
-      "Private companies use peer company volatility as a proxy since they lack public trading history",
-      "Private companies are exempt from reporting volatility",
-      "They use the VIX index directly"
-    ],
-    "correctIndex": 1,
-    "difficulty": "hard",
-    "explanation": "Private companies without public trading history typically estimate expected volatility by analyzing the historical stock price volatility of comparable public companies in the same industry. This peer group approach is the most common method for 409A valuations and ASC 718 expense calculations.",
+    "category": "Administration & Operations",
     "id": "q124",
-    "question": "How do private companies estimate expected volatility for option pricing?"
+    "difficulty": "medium",
+    "question": "What is 'burn rate' in equity plan administration?",
+    "choices": [
+      "The annual rate at which a company grants equity from its plan reserve, expressed as a percentage of weighted-average shares outstanding",
+      "The rate at which unvested equity awards are forfeited when employees leave — used as an ASC 718 expense input",
+      "The percentage of outstanding options exercised in a given year as a proportion of total vested awards",
+      "The rate at which newly hired employees receive grants compared to the rate for tenured employees"
+    ],
+    "correctIndex": 0,
+    "explanation": "Burn rate measures how fast a company consumes its equity plan reserve: shares granted during the year (or rolling 3-year average) divided by weighted-average shares outstanding. ISS and Glass Lewis publish industry-specific burn rate caps; exceeding them can trigger a negative vote recommendation on equity plan proposals at annual meetings."
   },
   {
     "active": true,
-    "category": "Accounting & Financial Reporting",
-    "choices": [
-      "An increase in net income",
-      "No impact on financial statements",
-      "A forfeiture triggers a reversal of previously recognized compensation expense",
-      "A forfeiture doubles the compensation expense"
-    ],
-    "correctIndex": 2,
-    "difficulty": "medium",
-    "explanation": "When an equity award is forfeited (e.g., employee leaves before vesting), previously recognized compensation expense related to that award is reversed. Companies can either estimate forfeitures upfront or recognize them as they occur.",
+    "category": "Administration & Operations",
     "id": "q125",
-    "question": "What happens to the accounting for an equity award when it is forfeited?"
+    "difficulty": "medium",
+    "question": "What is a 'transfer agent' and what role do they play in equity compensation?",
+    "choices": [
+      "The company's internal stock plan administration team that processes grant approvals and employee communications",
+      "The SEC division that oversees registration and transfer of public company securities",
+      "A financial institution appointed by a public company to maintain the official shareholder record, process share transfers, manage equity award settlements, and handle dividend payments",
+      "A broker-dealer that facilitates 10b5-1 plan execution for insiders on behalf of the company"
+    ],
+    "correctIndex": 2,
+    "explanation": "A transfer agent (e.g., Computershare, Equiniti, Broadridge) maintains the official shareholder records, processes transfers between buyers and sellers, manages dividend payments, and settles equity award deliveries. They work closely with equity administrators and brokers to ensure timely RSU delivery and option exercise settlement."
   },
   {
     "active": true,
-    "category": "Securities Regulation",
-    "choices": [
-      "Rule 144 governs the resale of restricted and control securities",
-      "Rule 144 sets the minimum wage for executives",
-      "Rule 144 requires all shares to be held for 10 years",
-      "Rule 144 only applies to foreign investors"
-    ],
-    "correctIndex": 0,
-    "difficulty": "hard",
-    "explanation": "SEC Rule 144 provides a safe harbor for reselling restricted securities (acquired in private placements) and control securities (held by affiliates). It imposes holding periods, volume limits, filing requirements, and manner-of-sale conditions.",
+    "category": "Administration & Operations",
     "id": "q126",
-    "question": "What does SEC Rule 144 regulate?"
+    "difficulty": "hard",
+    "question": "What is the 'treasury stock method' used for in calculating diluted EPS?",
+    "choices": [
+      "A method of counting only treasury (repurchased) shares when computing basic earnings per share",
+      "An ASC 718 approach to recognizing option expense using option proceeds as a theoretical share buyback credit",
+      "The method used to determine how many shares must be repurchased to keep a plan's burn rate below ISS thresholds",
+      "An SEC-prescribed diluted EPS calculation that assumes in-the-money options are exercised and proceeds used to repurchase shares at the average market price — with the net additional shares added to diluted share count"
+    ],
+    "correctIndex": 3,
+    "explanation": "The treasury stock method (TSM) computes the dilutive effect of options for diluted EPS. It assumes all in-the-money options are exercised, generating proceeds used to repurchase shares at the average market price. The net additional shares (exercised minus repurchased) are added to the denominator of diluted EPS."
   },
   {
     "active": true,
-    "category": "Securities Regulation",
-    "choices": [
-      "1 month for reporting companies",
-      "6 months for reporting companies, 1 year for non-reporting companies",
-      "2 years for all companies",
-      "There is no holding period"
-    ],
-    "correctIndex": 1,
-    "difficulty": "hard",
-    "explanation": "Under Rule 144, restricted securities of SEC-reporting companies must be held for 6 months before resale. For non-reporting (private) companies, the holding period is 1 year. Affiliates face additional volume and filing requirements even after the holding period.",
+    "category": "Administration & Operations",
     "id": "q127",
-    "question": "What is the Rule 144 holding period for restricted securities?"
+    "difficulty": "easy",
+    "question": "What does a 'stock plan administrator' do?",
+    "choices": [
+      "A dedicated equity compensation specialist managing grant processing, tax withholding coordination, broker/transfer agent relationships, employee communications, and financial reporting support for the equity program",
+      "A Board-appointed executive responsible for all insider trading compliance and Form 4 filings",
+      "A third-party auditor who reviews equity plan administration practices annually for ASC 718 compliance",
+      "The corporate secretary responsible for maintaining Board minutes and unanimous written consents for equity grants"
+    ],
+    "correctIndex": 0,
+    "explanation": "A stock plan administrator manages daily operations: processing grants, coordinating with brokers and transfer agents, ensuring proper tax withholding, communicating with employees, maintaining the equity platform, and supporting accounting and SEC reporting. The NASPP and CEP credential serve this community."
   },
   {
     "active": true,
-    "category": "Securities Regulation",
-    "choices": [
-      "Section 16 requires all employees to report trades within 24 hours",
-      "Section 16 applies only to directors, officers, and 10%+ beneficial owners of public companies",
-      "Section 16 exempts all equity compensation transactions",
-      "Section 16 only applies to companies with under 100 employees"
-    ],
-    "correctIndex": 1,
-    "difficulty": "hard",
-    "explanation": "Section 16 of the Securities Exchange Act of 1934 imposes reporting and short-swing profit disgorgement rules on directors, officers, and 10%+ shareholders of SEC-registered companies. These insiders must file Forms 3, 4, and 5 disclosing their transactions.",
+    "category": "Administration & Operations",
     "id": "q128",
-    "question": "Who is subject to Section 16 reporting requirements?"
+    "difficulty": "medium",
+    "question": "What is the difference between DRS (Direct Registration System) and 'street name' registration for equity award shares?",
+    "choices": [
+      "DRS shares can be sold immediately after vesting; street name shares require a mandatory 30-day holding period",
+      "DRS holds shares in the investor's name directly on the issuer's books via the transfer agent; street name holds shares in the broker's name on the investor's behalf",
+      "DRS registration is required by law for all insider-held shares; street name is restricted to non-affiliate employees",
+      "DRS shares receive dividend payments directly from the company; street name shares receive dividends only through the brokerage account"
+    ],
+    "correctIndex": 1,
+    "explanation": "Direct Registration System (DRS) registers shares in the investor's own name on the issuer's transfer agent books — no broker intermediary. 'Street name' holds shares in the broker's name for the investor's benefit, which is the standard for most brokerage accounts and equity plan deliveries."
   },
   {
     "active": true,
-    "category": "Securities Regulation",
-    "choices": [
-      "There is no blackout period",
-      "Only during the first week of each quarter",
-      "Typically during the period before earnings releases when insiders possess material non-public information",
-      "Permanently â€” insiders can never trade"
-    ],
-    "correctIndex": 2,
-    "difficulty": "medium",
-    "explanation": "Trading blackout periods restrict when insiders can buy or sell company stock. They typically begin several weeks before quarterly earnings announcements and end 1-2 business days after the release, when MNPI has been publicly disseminated.",
+    "category": "Administration & Operations",
     "id": "q129",
-    "question": "When do trading blackout periods typically apply?"
+    "difficulty": "easy",
+    "question": "What does 'T+1 settlement' mean in the context of equity compensation participants selling shares?",
+    "choices": [
+      "Options must be exercised within 1 business day of a vest event or they are automatically cancelled by the plan",
+      "RSU tax withholding must be remitted to the IRS within 1 business day of a vest event under payroll tax deposit rules",
+      "Equity award shares sold by an employee settle — with cash credited to the account — 1 business day after the trade date",
+      "IPO lockup periods must expire at least 1 trading day before the next scheduled earnings announcement"
+    ],
+    "correctIndex": 2,
+    "explanation": "T+1 settlement (effective May 28, 2024 in the US) means securities trades settle one business day after the trade date: shares are delivered and cash credited the next business day. Previously T+2, the shortening to T+1 was designed to reduce counterparty risk and margin requirements."
   },
   {
     "active": true,
-    "category": "Securities Regulation",
-    "choices": [
-      "A legend is a story about the company's founding",
-      "A legend is a certificate marking that shares are restricted and cannot be freely traded",
-      "A legend is the company's stock ticker symbol",
-      "A legend is the CEO's signature on share certificates"
-    ],
-    "correctIndex": 1,
-    "difficulty": "medium",
-    "explanation": "A restrictive legend is a notation placed on stock certificates (or recorded in book-entry form) indicating the shares are restricted securities that cannot be freely transferred without registration or an exemption from registration under applicable securities laws.",
+    "category": "Administration & Operations",
     "id": "q130",
-    "question": "What is a restrictive legend on a stock certificate?"
+    "difficulty": "medium",
+    "question": "What does the Section 6039 reporting requirement cover in equity plan administration?",
+    "choices": [
+      "A quarterly SEC filing covering share repurchase activity and insider trading plan disclosures",
+      "An annual IRS audit process reviewing a company's equity plan tax withholding practices",
+      "A Form 4 amendment required when an insider's original transaction report contains an error",
+      "Annual information returns (Forms 3921 and 3922) companies must file with the IRS and furnish to employees for ISO exercises and Section 423 ESPP share transfers"
+    ],
+    "correctIndex": 3,
+    "explanation": "IRC Section 6039 requires companies to file information returns with the IRS and provide statements to employees for ISO exercises (Form 3921) and Section 423 ESPP transfers (Form 3922). Employee copies are due by January 31; IRS copies by March 31 (electronic). Penalties apply for late or incorrect filings."
   },
   {
     "active": true,
-    "category": "M&A and Liquidity Events",
-    "choices": [
-      "Single-trigger acceleration vests equity upon a change of control alone",
-      "Single-trigger requires both a change of control and a termination",
-      "Single-trigger means vesting stops immediately",
-      "Single-trigger only applies to stock options, not RSUs"
-    ],
-    "correctIndex": 0,
-    "difficulty": "medium",
-    "explanation": "Single-trigger acceleration means equity vests automatically upon a change of control (acquisition, merger). Double-trigger requires both a change of control AND a qualifying termination (usually within 12-24 months). Double-trigger is more common and acquirer-friendly.",
+    "category": "Global Equity",
     "id": "q131",
-    "question": "What is single-trigger acceleration?"
+    "difficulty": "hard",
+    "question": "How does Germany tax RSU awards for employees?",
+    "choices": [
+      "Germany taxes RSU income as employment income (wage tax) at delivery/vesting, with employer and employee social insurance contributions required — there is no special tax-advantaged equity plan in Germany comparable to the UK EMI or US ISO",
+      "Germany provides a flat 20% withholding rate on all equity income, with employees filing to recover any excess",
+      "Germany defers all equity income tax until shares are sold, when it is taxed as capital gains at a flat 25%",
+      "German RSU income is exempt from tax for the first EUR 10,000 annually under Germany's employer benefit allowance"
+    ],
+    "correctIndex": 0,
+    "explanation": "Germany taxes RSU income as ordinary employment income (Lohnsteuer) at the time of delivery, with both employer and employee social insurance (Sozialversicherung) contributions due. Unlike the US or UK, Germany has no statutory tax-favored equity plan for most employees. The employer must withhold through payroll."
   },
   {
     "active": true,
-    "category": "M&A and Liquidity Events",
-    "choices": [
-      "All equity is always canceled for nothing",
-      "The treatment depends on the acquisition agreement â€” awards may be assumed, substituted, cashed out, or canceled",
-      "All equity automatically converts to the acquirer's stock",
-      "Equity is frozen for 5 years post-acquisition"
-    ],
-    "correctIndex": 1,
-    "difficulty": "medium",
-    "explanation": "In an acquisition, unvested equity treatment is negotiated in the merger agreement. Common outcomes include assumption (converted to acquirer equity), substitution (replaced with equivalent acquirer awards), cash-out (paid in cash), or cancellation with or without compensation.",
+    "category": "Global Equity",
     "id": "q132",
-    "question": "What happens to unvested equity awards in an acquisition?"
+    "difficulty": "hard",
+    "question": "What is the UK employer's PAYE obligation for RSU vestings and unapproved option exercises?",
+    "choices": [
+      "UK employers file a quarterly supplemental payroll return with HMRC but are not required to withhold income tax from employees",
+      "UK employers must operate PAYE withholding for income tax and National Insurance (both employee and employer NIC) through payroll at each RSU vesting or unapproved option exercise event",
+      "UK employees self-report and pay all equity income tax annually on their self-assessment return, with no employer withholding required",
+      "UK employers pay only employer NIC on equity income; income tax is always the employee's separate responsibility"
+    ],
+    "correctIndex": 1,
+    "explanation": "In the UK, employers must operate PAYE withholding for income tax and NICs — both employee and employer — at each RSU vest or unapproved option exercise event. This requires processing equity events through payroll and making real-time information (RTI) submissions to HMRC."
   },
   {
     "active": true,
-    "category": "M&A and Liquidity Events",
-    "choices": [
-      "A secondary sale is when the company issues new shares",
-      "A secondary sale is when existing shareholders sell their shares to other investors",
-      "A secondary sale occurs only at IPO",
-      "A secondary sale means the company buys back all outstanding shares"
-    ],
-    "correctIndex": 1,
-    "difficulty": "easy",
-    "explanation": "A secondary sale (or secondary transaction) occurs when existing shareholders sell their shares to new buyers, rather than the company issuing new shares. This provides liquidity to shareholders without diluting existing ownership or changing the company's capitalization.",
+    "category": "Global Equity",
     "id": "q133",
-    "question": "What is a secondary sale of shares?"
+    "difficulty": "hard",
+    "question": "What GDPR obligations apply to companies managing equity plans for employees in the EU?",
+    "choices": [
+      "GDPR requires companies to grant equity to EU residents only through locally regulated brokers within the EU",
+      "GDPR prohibits sharing employee equity data with any US-based equity platform without individual opt-in consent from every employee",
+      "Companies must have a lawful basis for processing employees' equity-related personal data, provide data privacy notices, and comply with cross-border data transfer rules when sending data to non-EU equity platforms",
+      "GDPR makes it illegal to use employees' personal data to determine equity grant amounts or vesting schedules"
+    ],
+    "correctIndex": 2,
+    "explanation": "GDPR creates significant obligations for global equity programs: a lawful processing basis, data privacy notices explaining data use, and cross-border transfer safeguards when sending employee data to US platforms. Non-compliance can result in fines up to 4% of global annual revenue."
   },
   {
     "active": true,
-    "category": "M&A and Liquidity Events",
-    "choices": [
-      "30 days",
-      "90 days",
-      "Usually 90 to 180 days, restricting insiders from selling after IPO",
-      "There is no lockup period for IPOs"
-    ],
-    "correctIndex": 2,
-    "difficulty": "medium",
-    "explanation": "An IPO lockup period (typically 90-180 days) prevents insiders, employees, and early investors from selling their shares immediately after a public offering. This prevents a flood of shares that could depress the stock price.",
+    "category": "Global Equity",
     "id": "q134",
-    "question": "What is a typical IPO lockup period?"
+    "difficulty": "hard",
+    "question": "How does Japan generally treat stock option and RSU income for employees?",
+    "choices": [
+      "Japan provides a flat 20.315% tax rate on all equity income regardless of award type or holding period",
+      "Japan has no income tax on equity compensation for employees on work visas if shares are held more than 12 months",
+      "Japan allows all equity income to be deferred until sale under standard equity accounting treatment",
+      "Japan taxes stock option and RSU income as employment income at rates up to ~55%, with a limited 'Tax Qualified Stock Option' regime available under Article 29-2 for plans meeting strict criteria"
+    ],
+    "correctIndex": 3,
+    "explanation": "Japan's default equity tax treatment is unfavorable: option spread and RSU vest income are employment income taxed at rates up to ~55%. Japan's Article 29-2 Tax Qualified Stock Option (TQSO) can defer recognition until sale, but the strict eligibility requirements are rarely met by multinational equity plans."
   },
   {
     "active": true,
-    "category": "M&A and Liquidity Events",
-    "choices": [
-      "A tender offer in private companies is always illegal",
-      "A tender offer allows employees and shareholders to sell some or all vested shares back to the company or to an outside buyer",
-      "A tender offer forces all employees to sell 100% of their shares",
-      "A tender offer only applies to public companies"
-    ],
-    "correctIndex": 1,
-    "difficulty": "medium",
-    "explanation": "Private company tender offers provide a structured liquidity event where employees and other shareholders can sell vested shares. These are typically organized by the company or facilitated by secondary market platforms, often at a price set by a recent valuation.",
+    "category": "Global Equity",
     "id": "q135",
-    "question": "What is a tender offer in the context of private company equity?"
+    "difficulty": "hard",
+    "question": "How does Brazil treat equity compensation for tax and labor law purposes?",
+    "choices": [
+      "Equity income is generally taxable as employment income at progressive rates up to 27.5%, and labor courts may classify equity as part of the employment relationship — potentially subjecting it to social contributions and severance calculations",
+      "Brazil provides a full tax exemption on equity income for employees of foreign-headquartered companies operating in Brazil",
+      "Brazilian employees pay a flat 15% withholding tax on all equity award proceeds, with no INSS social security contributions required",
+      "Brazil requires all equity grants to employees in Brazil to receive prior approval from the CVM before issuance"
+    ],
+    "correctIndex": 0,
+    "explanation": "Brazil's equity treatment is complex: income is generally taxable as employment wages at progressive rates up to 27.5%. Brazilian labor courts have classified equity as part of the employment relationship in some cases, triggering INSS contributions, FGTS inclusions, and impact on statutory benefit calculations. Careful plan structuring is critical."
   },
   {
     "active": true,
-    "category": "Transfer Agent & Share Administration",
-    "choices": [
-      "A transfer agent is the company's external auditor",
-      "A transfer agent maintains the official registry of shareholders and processes share transactions",
-      "A transfer agent decides how much equity each employee receives",
-      "A transfer agent sets the stock price"
-    ],
-    "correctIndex": 1,
-    "difficulty": "easy",
-    "explanation": "A transfer agent is a third party that maintains the official record of share ownership, processes transfers, issues and cancels certificates, handles lost certificates, and assists with corporate actions like stock splits and dividends.",
+    "category": "Global Equity",
     "id": "q136",
-    "question": "What role does a transfer agent play?"
+    "difficulty": "medium",
+    "question": "What is the difference between UK 'tax-advantaged' and 'unapproved' employee share plans?",
+    "choices": [
+      "Tax-advantaged plans require HMRC to pre-approve every individual grant; unapproved plans have blanket annual authorization",
+      "Tax-advantaged plans (EMI, CSOP, SIP, SAYE) provide income tax and NIC advantages for employees and potential corporate deductions; unapproved plans (most multinational RSUs and options) are subject to full PAYE and NIC at vest or exercise",
+      "Unapproved plans can only be offered to UK citizens; tax-advantaged plans are open to all employees regardless of nationality",
+      "Tax-advantaged plans can only be established by UK-headquartered companies; subsidiaries of US companies must use unapproved plans"
+    ],
+    "correctIndex": 1,
+    "explanation": "The UK has four tax-advantaged ('approved') plans: EMI, CSOP, SIP, and SAYE. These offer income tax and NIC advantages and potential employer deductions. Most multinational RSU and option grants to UK employees use 'unapproved' structures (subject to full PAYE and NIC), since satisfying the strict requirements of approved plans is often impractical at scale."
   },
   {
     "active": true,
-    "category": "Transfer Agent & Share Administration",
-    "choices": [
-      "An opinion of counsel confirms the attorney's favorite stock picks",
-      "It's a legal opinion confirming that shares can be transferred in compliance with securities laws",
-      "It's a document the SEC must approve before any trade",
-      "It's the transfer agent's valuation of the shares"
-    ],
-    "correctIndex": 1,
-    "difficulty": "hard",
-    "explanation": "An opinion of counsel (or legal opinion letter) is provided by an attorney to the transfer agent confirming that a proposed share transfer complies with applicable securities laws and that restrictive legends can be removed. Transfer agents typically require this before processing restricted share transfers.",
+    "category": "Global Equity",
     "id": "q137",
-    "question": "What is an opinion of counsel in the context of share transfers?"
+    "difficulty": "hard",
+    "question": "What is notable about Singapore's tax treatment of equity compensation?",
+    "choices": [
+      "Singapore imposes a 22% flat withholding tax on all equity income collected through the employer's payroll",
+      "Singapore exempts all equity income from tax under its territorial system for qualifying Employment Pass holders",
+      "Singapore has no capital gains tax, so equity income is taxed as employment income — though qualifying equity plans under Singapore's QEEBR scheme can defer and spread the taxable amount over the vesting period",
+      "Singapore taxes equity income only if shares are sold within 12 months of vesting, treating it as a short-term gain"
+    ],
+    "correctIndex": 2,
+    "explanation": "Singapore has no capital gains tax, so equity income (RSU vest, option exercise spread) is taxed as employment income. Under the Qualified Employee Equity-Based Remuneration (QEEBR) scheme, employees can defer recognition and spread equity income over the vesting period (up to 4 years), reducing the effective rate."
   },
   {
     "active": true,
-    "category": "Transfer Agent & Share Administration",
-    "choices": [
-      "Book-entry means shares are recorded electronically without physical certificates",
-      "Book-entry means shares are recorded in a physical ledger book",
-      "Book-entry means the shares are held at a bank",
-      "Book-entry means the shares can only be traded in person"
-    ],
-    "correctIndex": 0,
-    "difficulty": "easy",
-    "explanation": "Book-entry (or electronic) form means ownership is recorded in a computerized system rather than evidenced by physical stock certificates. Most modern share ownership is maintained in book-entry form for efficiency and security.",
+    "category": "Global Equity",
     "id": "q138",
-    "question": "What does 'book-entry' share ownership mean?"
+    "difficulty": "hard",
+    "question": "How does the Netherlands tax employee equity awards?",
+    "choices": [
+      "The Netherlands provides a complete capital gains exemption on equity income under the '30% ruling' for all qualifying expat employees",
+      "Dutch employees pay no income tax on equity income; only social security contributions at a flat 28% rate apply",
+      "The Netherlands defers all equity income tax until shares are sold under its 'box 3' investment wealth framework",
+      "The Netherlands taxes RSU and option income as employment income at progressive rates up to 49.5%, with full payroll tax withholding required; qualifying expats on the '30% ruling' may receive partial relief"
+    ],
+    "correctIndex": 3,
+    "explanation": "Netherlands taxes RSU vest and option exercise income as 'box 1' employment income at rates up to 49.5%, with full payroll tax (wage tax + social insurance) withholding by the employer. The '30% ruling' for qualifying highly skilled migrants allows 30% of the taxable base to be paid as a tax-free allowance, reducing the effective rate."
   },
   {
     "active": true,
-    "category": "Transfer Agent & Share Administration",
-    "choices": [
-      "The shareholder cannot recover the shares",
-      "The company issues replacement shares immediately with no process",
-      "The shareholder must obtain a surety bond and sign an affidavit of loss before replacement certificates are issued",
-      "Lost certificates are automatically replaced by the SEC"
-    ],
-    "correctIndex": 2,
-    "difficulty": "hard",
-    "explanation": "When a stock certificate is lost, the shareholder typically must submit an affidavit of loss and purchase a surety bond (usually 2-3% of the share value) to indemnify the company and transfer agent against claims from anyone who might find the original certificate.",
+    "category": "Global Equity",
     "id": "q139",
-    "question": "What happens when a physical stock certificate is lost?"
+    "difficulty": "hard",
+    "question": "How does Mexico treat equity compensation income for tax purposes?",
+    "choices": [
+      "Equity income is generally taxable as employment income at progressive rates up to 35%, with employer withholding of income tax and IMSS social security contributions required at vest or exercise",
+      "Mexico provides a full capital gains exemption on equity income from foreign parent companies under its territorial tax principles",
+      "Mexican employees pay a flat 10% withholding tax on all equity compensation, with no IMSS contributions required",
+      "Mexico requires all equity grants to employees in Mexico to receive prior approval from the CNBV before issuance"
+    ],
+    "correctIndex": 0,
+    "explanation": "Mexico taxes RSU and option income as employment income at progressive rates up to 35%, with mandatory IMSS and income tax withholding through payroll. Cross-border recharge agreements between the parent and Mexican subsidiary are important for deductibility. SAT has stepped up enforcement on equity income in recent years."
   },
   {
     "active": true,
-    "category": "Transfer Agent & Share Administration",
-    "choices": [
-      "DWAC allows same-day electronic deposits and withdrawals of securities between a transfer agent and a brokerage",
-      "DWAC is a type of stock option",
-      "DWAC stands for Daily Weighted Average Cost",
-      "DWAC is a regulatory filing required by the SEC"
-    ],
-    "correctIndex": 0,
-    "difficulty": "hard",
-    "explanation": "DWAC (Deposit/Withdrawal at Custodian) is an electronic method for transferring securities between a transfer agent and DTC (Depository Trust Company) participant brokerages. It enables faster, paperless settlement compared to physical certificate transfers.",
+    "category": "Global Equity",
     "id": "q140",
-    "question": "What is a DWAC transfer?"
+    "difficulty": "hard",
+    "question": "How does South Korea treat employee equity compensation for tax and regulatory purposes?",
+    "choices": [
+      "South Korea taxes all equity income as capital gains at a flat 22% rate, with no employer withholding obligation",
+      "South Korea taxes RSU and option income as earned income at rates up to ~49.5%, requires employer withholding, and mandates FSC securities filings for equity plans covering Korean employees",
+      "South Korea provides a 5-year tax exemption on equity income for employees of foreign-headquartered companies operating in Korea",
+      "Korean employees pay tax on equity income only at the point of sale — not at vesting or exercise — under a deferral arrangement similar to ISO rules"
+    ],
+    "correctIndex": 1,
+    "explanation": "South Korea taxes RSU vest and stock option income as earned income at progressive rates up to ~49.5% (including local income surtax). Employers must withhold through payroll. Additionally, foreign companies with equity plans covering Korean employees must register with the Financial Services Commission (FSC) under Korean securities law."
   },
   {
     "active": true,
-    "category": "Clawbacks & Compliance",
-    "choices": [
-      "Clawback provisions are only found in employment contracts",
-      "The Dodd-Frank clawback rule requires public companies to recover erroneously awarded incentive compensation after an accounting restatement",
-      "Clawback provisions only apply to base salary",
-      "Clawback rules are voluntary and have no legal enforcement"
-    ],
-    "correctIndex": 1,
-    "difficulty": "hard",
-    "explanation": "SEC Rule 10D-1 (implementing Dodd-Frank Section 954) requires listed companies to adopt and enforce policies to recover erroneously awarded incentive-based compensation from current and former executive officers following an accounting restatement, regardless of fault.",
+    "category": "Fun / Industry Culture",
     "id": "q141",
-    "question": "What does the Dodd-Frank clawback rule require?"
-  },
-  {
-    "active": true,
-    "category": "Clawbacks & Compliance",
-    "choices": [
-      "Current and former executive officers of listed companies",
-      "All employees at every level",
-      "Only the CEO",
-      "Only employees who committed fraud"
-    ],
-    "correctIndex": 0,
-    "difficulty": "hard",
-    "explanation": "The SEC's Dodd-Frank clawback rule applies to current and former executive officers (including the CEO, CFO, and other Section 16 officers) during the three-year lookback period preceding a restatement. It is a no-fault standard â€” recovery is required regardless of misconduct.",
-    "id": "q142",
-    "question": "Who is subject to compensation clawbacks under the SEC's final rule?"
-  },
-  {
-    "active": true,
-    "category": "Clawbacks & Compliance",
-    "choices": [
-      "Section 280G limits charitable deductions",
-      "Section 280G imposes an excise tax on excess parachute payments triggered by a change of control",
-      "Section 280G regulates stock option exercise prices",
-      "Section 280G sets minimum vesting schedules"
-    ],
-    "correctIndex": 1,
-    "difficulty": "hard",
-    "explanation": "IRC Section 280G defines 'parachute payments' as compensation contingent on a change of control that exceeds 3x the executive's base amount. Excess amounts face a 20% excise tax on the recipient (Section 4999) and are non-deductible for the company.",
-    "id": "q143",
-    "question": "What does IRC Section 280G address?"
-  },
-  {
-    "active": true,
-    "category": "Clawbacks & Compliance",
-    "choices": [
-      "ERISA governs all equity compensation plans",
-      "Equity incentive plans are generally exempt from ERISA because they don't involve employer contributions to a fund",
-      "ERISA requires all equity plans to have a 5-year vesting cliff",
-      "ERISA only applies to companies with more than 500 employees"
-    ],
-    "correctIndex": 1,
-    "difficulty": "hard",
-    "explanation": "ERISA (Employee Retirement Income Security Act) primarily covers retirement and welfare benefit plans. Stock option and equity incentive plans are generally not subject to ERISA because they don't involve employer contributions to a trust fund, though certain deferred compensation arrangements may trigger ERISA requirements.",
-    "id": "q144",
-    "question": "Does ERISA apply to equity compensation plans?"
-  },
-  {
-    "active": true,
-    "category": "Clawbacks & Compliance",
-    "choices": [
-      "Proxy advisory firms write the company's proxy statement",
-      "Proxy advisory firms like ISS and Glass Lewis advise institutional investors on how to vote on say-on-pay and equity plan proposals",
-      "Proxy advisory firms only deal with mergers and acquisitions",
-      "Proxy advisory firms set executive compensation levels"
-    ],
-    "correctIndex": 1,
     "difficulty": "medium",
-    "explanation": "Proxy advisory firms (ISS, Glass Lewis) analyze corporate governance and compensation practices, then issue voting recommendations to institutional shareholders. Their say-on-pay and equity plan recommendations significantly influence shareholder voting outcomes.",
-    "id": "q145",
-    "question": "What role do proxy advisory firms play in equity compensation?"
-  },
-  {
-    "active": true,
-    "category": "Equity Technology & Data",
+    "question": "What is an 'acqui-hire' in startup and VC terminology?",
     "choices": [
-      "A stock plan administration platform only generates tax forms",
-      "Platforms like Shareworks, E*TRADE, and Fidelity manage the end-to-end lifecycle of equity awards from grant to settlement",
-      "Stock plan platforms are only used by companies with over 10,000 employees",
-      "All equity administration must be done manually in spreadsheets"
-    ],
-    "correctIndex": 1,
-    "difficulty": "easy",
-    "explanation": "Stock plan administration platforms automate grant management, vesting tracking, exercise processing, tax withholding, regulatory compliance, participant communications, and reporting. They serve as the system of record for all equity compensation activity.",
-    "id": "q146",
-    "question": "What does a stock plan administration platform do?"
-  },
-  {
-    "active": true,
-    "category": "Equity Technology & Data",
-    "choices": [
-      "An equity management system (EMS) for private companies focuses only on 409A valuations",
-      "Platforms like Carta, Pulley, and AngelList maintain cap tables, manage equity grants, and facilitate compliance for private companies",
-      "Private companies don't need equity management systems",
-      "An EMS only tracks investor ownership, not employee equity"
-    ],
-    "correctIndex": 1,
-    "difficulty": "easy",
-    "explanation": "Private company equity management systems provide cap table management, equity grant tracking, 409A valuation support, scenario modeling, SEC compliance tools, and electronic securities issuance â€” replacing error-prone spreadsheets.",
-    "id": "q147",
-    "question": "What is the role of an equity management system for private companies?"
-  },
-  {
-    "active": true,
-    "category": "Equity Technology & Data",
-    "choices": [
-      "The grant date is irrelevant for record-keeping",
-      "The grant date determines the fair market value used for accounting and tax purposes",
-      "The grant date is always the same as the vesting date",
-      "The grant date is when the employee first joins the company"
-    ],
-    "correctIndex": 1,
-    "difficulty": "medium",
-    "explanation": "The grant date establishes the fair market value used for ASC 718 expense measurement, IRC 409A compliance, and exercise price setting. It's the date when the company and employee have a mutual understanding of the key terms and the board has approved the grant.",
-    "id": "q148",
-    "question": "Why is the grant date important in equity compensation record-keeping?"
-  },
-  {
-    "active": true,
-    "category": "Equity Technology & Data",
-    "choices": [
-      "Waterfall analysis only measures water usage in corporate offices",
-      "A waterfall analysis models how acquisition proceeds flow through the cap table based on liquidation preferences and share classes",
-      "Waterfall analysis calculates employee bonuses",
-      "A waterfall analysis is an agile project management framework"
-    ],
-    "correctIndex": 1,
-    "difficulty": "hard",
-    "explanation": "A waterfall (or proceeds distribution) analysis models the flow of money in a liquidity event, showing how proceeds cascade from senior preferred to junior preferred to common shares based on liquidation preferences, participation rights, and conversion scenarios.",
-    "id": "q149",
-    "question": "What is a waterfall analysis in cap table management?"
-  },
-  {
-    "active": true,
-    "category": "Equity Technology & Data",
-    "choices": [
-      "Scenario modeling predicts the weather",
-      "Scenario modeling only applies to public companies",
-      "It lets stakeholders project ownership percentages and payouts under different funding, exit, and dilution scenarios",
-      "Scenario modeling is illegal under securities law"
+      "When a VC fund acquires a controlling stake in a startup specifically to replace the founding team with professional management",
+      "When a startup uses its equity compensation budget to poach key talent from a larger competitor",
+      "An acquisition primarily motivated by gaining the target company's engineering or specialist talent — often at a price too low to generate meaningful proceeds for common stockholders and rank-and-file employees",
+      "When two startups merge their equity incentive plans as part of a merger-of-equals transaction"
     ],
     "correctIndex": 2,
+    "explanation": "An acqui-hire is when a larger company acquires a startup primarily for its talent — not its product or IP. The deal price is often just enough to cover obligations, leaving common stockholders (employees with options) with little or nothing after liquidation preferences. Acqui-hires are a common exit for struggling startups and a cautionary tale about the limits of employee equity."
+  },
+  {
+    "active": true,
+    "category": "Fun / Industry Culture",
+    "id": "q142",
+    "difficulty": "hard",
+    "question": "What is a 'ratchet' in venture capital deal terms and how does it affect employee equity?",
+    "choices": [
+      "A VC provision that automatically increases the employee equity pool after a Series A to prevent dilution",
+      "A right allowing a VC to purchase additional shares to maintain its ownership percentage in future financing rounds",
+      "A standard ESPP feature that resets the purchase price at the lowest point during a 2-year offering period",
+      "A VC investor protection guaranteeing a minimum return — often by issuing additional shares to investors if the exit price falls below their target — which can directly dilute or eliminate common stockholder (employee) equity proceeds"
+    ],
+    "correctIndex": 3,
+    "explanation": "A ratchet guarantees investors a minimum return. A 'full ratchet' adjusts the investor's conversion price to match any down-round price; 'weighted average' ratchets are less aggressive. Ratchets directly affect employee equity: if the exit price disappoints investors, the ratchet issues more shares to investors — diluting or wiping out common stockholder proceeds."
+  },
+  {
+    "active": true,
+    "category": "Fun / Industry Culture",
+    "id": "q143",
     "difficulty": "medium",
-    "explanation": "Cap table scenario modeling allows companies and investors to project how future events â€” new funding rounds, option pool expansions, exits at various valuations â€” would affect ownership percentages, dilution, and payout amounts for each stakeholder.",
+    "question": "What made Snap's 2017 IPO notable from an employee equity and corporate governance perspective?",
+    "choices": [
+      "Snap issued only non-voting Class A shares to the public (including at employee lockup expiration), while founders Evan Spiegel and Bobby Murphy retained exclusive voting control — one of the most extreme dual-class governance structures ever used at an IPO",
+      "Snap delayed all employee RSU vesting by 24 months post-IPO, far longer than the standard 6-month lockup period",
+      "Snap's IPO required employees to purchase their RSU shares at the IPO price rather than receive them via standard free delivery",
+      "Snap structured its 2017 IPO as a direct listing to eliminate the employee lockup period entirely"
+    ],
+    "correctIndex": 0,
+    "explanation": "Snap's March 2017 IPO was unprecedented: it offered only Class A shares (zero votes) to the public while founders retained all voting power via Class B/C shares. After IPO, Snap's stock underperformed for years, leaving many employees with RSUs worth a fraction of grant-date value and no shareholder voice on governance matters."
+  },
+  {
+    "active": true,
+    "category": "Fun / Industry Culture",
+    "id": "q144",
+    "difficulty": "medium",
+    "question": "What is an ESOP (Employee Stock Ownership Plan) and how does it differ from a stock option incentive plan?",
+    "choices": [
+      "A tax-advantaged ESPP variant designed for employees of non-profit organizations that cannot access traditional stock option plans",
+      "A qualified retirement plan funded with company stock — a form of employee ownership and retirement savings that is legally distinct from equity incentive plans (options, RSUs) used for compensation",
+      "A company-wide stock option plan where all employees receive the same number of options annually regardless of level or tenure",
+      "An executive-only restricted stock plan granting C-suite leaders shares as a long-term retention incentive"
+    ],
+    "correctIndex": 1,
+    "explanation": "An ESOP is a qualified retirement plan funded with company stock, used for broad-based employee ownership, retirement savings, and succession planning (especially at private companies). Famous ESOP companies include Publix Super Markets and W.L. Gore. Distinct from equity incentive plans (ISOs, NSOs, RSUs) that compensate employees for service."
+  },
+  {
+    "active": true,
+    "category": "Fun / Industry Culture",
+    "id": "q145",
+    "difficulty": "medium",
+    "question": "What was Warren Buffett's famous stance on stock option accounting?",
+    "choices": [
+      "Buffett argued options should be valued using intrinsic value only — ignoring time value — to simplify income statement reporting",
+      "Buffett was a champion of broad-based stock options at Berkshire Hathaway portfolio companies throughout the 1990s",
+      "Buffett famously argued that if options 'aren't a form of compensation, what are they? And if compensation isn't an expense, what is it?' — criticizing companies that didn't expense options in their income statements before FAS 123R required it",
+      "Buffett successfully lobbied Congress in the 1990s to permanently exclude stock option grants from reported corporate earnings"
+    ],
+    "correctIndex": 2,
+    "explanation": "Warren Buffett was among the most vocal critics of the pre-FAS 123R practice of not expensing stock options. His rhetorical question became one of the most quoted lines in the option accounting debate. Berkshire Hathaway voluntarily expensed options before FASB required it under FAS 123R."
+  },
+  {
+    "active": true,
+    "category": "Fun / Industry Culture",
+    "id": "q146",
+    "difficulty": "easy",
+    "question": "What informal term describes the widespread employee equity loss after the 2022 tech valuation correction?",
+    "choices": [
+      "'The Great Option Reset' — a period when companies conducted mass option repricings to restore equity value for employees",
+      "'The Equity Ice Age' — a regulatory freeze on new equity grants during the Federal Reserve's rate-hiking cycle",
+      "'The Vesting Cliff Crisis' — when large numbers of employees hit their cliff and received shares worth a fraction of the grant-date value",
+      "'The Great Equity Hangover' — when employees hired at 2020-2021 peak valuations found their RSUs worth a fraction of the grant-date value as tech stocks collapsed 50-90%"
+    ],
+    "correctIndex": 3,
+    "explanation": "The 2021-2022 tech correction hammered many high-flying tech stocks — Peloton, Netflix, Shopify, and hundreds of others fell 50-90%. Employees hired at peak valuations held RSUs granted at inflated prices that were suddenly worth a fraction of their value, creating the 'Great Equity Hangover.'"
+  },
+  {
+    "active": true,
+    "category": "Fun / Industry Culture",
+    "id": "q147",
+    "difficulty": "medium",
+    "question": "What was notable about Elon Musk's 2018 Tesla CEO compensation package?",
+    "choices": [
+      "It consisted entirely of performance stock options (no salary, no RSUs) tied to 12 operational and market cap milestones — with a peak potential value exceeding $50 billion, making it the largest CEO pay package in history",
+      "It was structured as 10 annual RSU tranches each vesting only if Tesla maintained 5% annual revenue growth",
+      "It paid Musk a $1 annual salary plus a guaranteed $1 billion lump-sum RSU grant upon reaching $100B market cap",
+      "It was rejected by shareholders twice before being implemented by the Board under Delaware corporate law emergency provisions"
+    ],
+    "correctIndex": 0,
+    "explanation": "Musk's 2018 Tesla plan was unprecedented: 12 tranches of stock options (each ~1% of diluted shares), exercisable only upon achieving both operational and market cap milestones. With zero salary or RSUs, his entire pay was at-risk equity. At Tesla's peak, the package was valued at over $50 billion — the largest CEO compensation package ever awarded."
+  },
+  {
+    "active": true,
+    "category": "Fun / Industry Culture",
+    "id": "q148",
+    "difficulty": "medium",
+    "question": "What does Jensen Huang's wealth story illustrate about equity compensation?",
+    "choices": [
+      "Annual grant refresh programs — not founder shares — create the most wealth for tech company employees over the full career arc",
+      "Co-founder equity held with conviction through market cycles can create extraordinary wealth — Huang's Nvidia stake made him one of the world's richest people as AI demand drove Nvidia's market cap past $3 trillion",
+      "RSU grants are always superior to stock options for founders because they have value even if the stock price declines",
+      "Founders who take below-market salaries always outperform financially because retained equity compounds faster than cash"
+    ],
+    "correctIndex": 1,
+    "explanation": "Jensen Huang co-founded Nvidia in 1993 and has largely held his stake through multiple boom-and-bust cycles. As AI computing demand exploded, Nvidia's market cap surged past $3 trillion in 2024, making Huang one of the wealthiest people on earth — primarily through his original founder shares."
+  },
+  {
+    "active": true,
+    "category": "Fun / Industry Culture",
+    "id": "q149",
+    "difficulty": "medium",
+    "question": "What is the practice of immediately selling RSU shares upon vesting commonly called?",
+    "choices": [
+      "'Accelerated liquidation' — selling shares before the required post-vest holding period to lock in gains early",
+      "'Same-day vest and exercise' — a cashless exercise technique unique to RSU awards settled in shares",
+      "'Sell-to-cover' or 'immediate sale on vest' — a common strategy recommended by financial advisors to avoid dangerous over-concentration in employer stock",
+      "'Short-swing sale' — a practice that triggers Section 16(b) disgorgement liability for non-insider employees"
+    ],
+    "correctIndex": 2,
+    "explanation": "Many equity-compensated employees immediately sell vested shares — 'sell-to-cover' or 'same-day sale on vest' — to convert equity to cash and avoid over-concentration in their employer's stock. Financial advisors frequently recommend this approach after high-profile collapses like Enron highlighted the dangers of holding too much employer stock."
+  },
+  {
+    "active": true,
+    "category": "Fun / Industry Culture",
     "id": "q150",
-    "question": "What is scenario modeling on a cap table?"
+    "difficulty": "medium",
+    "question": "What happened to WeWork employee equity during the company's infamous 2019 IPO collapse?",
+    "choices": [
+      "WeWork successfully IPO'd at a reduced $15 billion valuation in late 2019, providing employees liquidity at a modest discount",
+      "WeWork's CEO Adam Neumann voluntarily returned his equity compensation as a goodwill gesture to employees",
+      "WeWork conducted a mandatory tender offer buying out all employee equity at $10 per share before withdrawing the IPO",
+      "WeWork's valuation imploded from $47 billion to under $8 billion and the IPO was withdrawn — thousands of employees saw their RSUs and options become nearly worthless, and WeWork ultimately filed for bankruptcy in 2023"
+    ],
+    "correctIndex": 3,
+    "explanation": "WeWork was valued at $47 billion in early 2019. Its S-1 filing exposed governance red flags and unsustainable economics, causing investors to flee. The valuation collapsed, the IPO was pulled, and a SoftBank-led bailout restructured the company. Thousands of employees saw their equity become nearly worthless — and WeWork filed for bankruptcy in November 2023."
   }
 ]

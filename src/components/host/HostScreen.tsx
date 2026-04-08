@@ -256,6 +256,42 @@ export default function HostScreen() {
           0%, 100% { transform: scale(1); opacity: 0.7; }
           50%       { transform: scale(1.08); opacity: 1; }
         }
+        @keyframes owlFloat {
+          0%, 100% { transform: translateY(0) rotate(-3deg); }
+          50%      { transform: translateY(-10px) rotate(-3deg); }
+        }
+        @keyframes owlWobble {
+          0%, 100% { transform: rotate(0deg); }
+          25%      { transform: rotate(-6deg); }
+          75%      { transform: rotate(6deg); }
+        }
+        @keyframes owlSlideLeft {
+          from { opacity: 0; transform: translateX(-40px) rotate(-5deg); }
+          to   { opacity: 1; transform: translateX(0) rotate(-5deg); }
+        }
+        @keyframes owlSlideRight {
+          from { opacity: 0; transform: translateX(40px); }
+          to   { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes owlNod {
+          0%, 100% { transform: rotate(0deg); }
+          30%      { transform: rotate(4deg); }
+          60%      { transform: rotate(-3deg); }
+        }
+        @keyframes owlCelebrate {
+          0%, 100% { transform: scale(1) translateY(0); }
+          25%      { transform: scale(1.05) translateY(-8px); }
+          50%      { transform: scale(1) translateY(0); }
+          75%      { transform: scale(1.03) translateY(-5px); }
+        }
+        .owl-float     { animation: owlFloat 4s ease-in-out infinite; }
+        .owl-wobble     { animation: owlWobble 3s ease-in-out infinite; }
+        .owl-slide-left { animation: owlSlideLeft 0.5s ease-out both; }
+        .owl-slide-right{ animation: owlSlideRight 0.5s ease-out both; }
+        .owl-nod        { animation: owlSlideRight 0.5s ease-out both, owlNod 2.5s ease-in-out 0.5s infinite; }
+        .owl-celebrate  { animation: owlCelebrate 2s ease-in-out infinite; }
+        .owl-bob-sm     { animation: owlFloat 5s ease-in-out infinite; }
+        .owl-wobble-sm  { animation: owlWobble 4s ease-in-out infinite; }
         .title-float { animation: titleFloat 3s ease-in-out infinite; }
         .pulse-glow  { animation: pulseGlow 2s ease-in-out infinite; }
         .scan-pulse  { animation: scanPulse 1.8s ease-in-out infinite; }
@@ -268,44 +304,52 @@ export default function HostScreen() {
       {/* ── LOBBY ─────────────────────────────────────────────────────────────── */}
       {status === 'lobby' && (
         <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
-          {/* Game title */}
-          <div className="text-center title-float" style={{ lineHeight: 1 }}>
-            <div
-              style={{
-                fontFamily: "'Bungee', cursive",
-                fontSize: 'clamp(4rem, 9vw, 8rem)',
-                color: '#ffffff',
-                textShadow: '0 0 40px rgba(172,34,40,0.7), 0 4px 0 rgba(172,34,40,0.8), 0 8px 0 rgba(100,10,14,0.6)',
-                letterSpacing: '0.02em',
-                lineHeight: 1,
-              }}
-            >
-              Cap Table
-            </div>
-            <div
-              style={{
-                fontFamily: "'Bungee', cursive",
-                fontSize: 'clamp(3.5rem, 8vw, 7rem)',
-                color: '#AC2228',
-                textShadow: '0 0 30px rgba(172,34,40,0.5), 0 4px 0 rgba(100,10,14,0.8)',
-                letterSpacing: '0.02em',
-                lineHeight: 1,
-              }}
-            >
-              Catastrophe
-            </div>
-            <div
-              style={{
-                fontFamily: "'Rajdhani','Roboto',sans-serif",
-                fontSize: '1.4rem',
-                fontWeight: 600,
-                color: 'rgba(255,255,255,0.55)',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                marginTop: '12px',
-              }}
-            >
-              Test Your Equity IQ
+          {/* Game title with Wise Owl */}
+          <div className="flex items-center justify-center gap-6">
+            <img
+              src="/Wise_Owl.png"
+              alt=""
+              className="owl-float hidden lg:block"
+              style={{ width: '190px', height: '190px', objectFit: 'contain', flexShrink: 0 }}
+            />
+            <div className="text-center title-float" style={{ lineHeight: 1 }}>
+              <div
+                style={{
+                  fontFamily: "'Bungee', cursive",
+                  fontSize: 'clamp(4rem, 9vw, 8rem)',
+                  color: '#ffffff',
+                  textShadow: '0 0 40px rgba(172,34,40,0.7), 0 4px 0 rgba(172,34,40,0.8), 0 8px 0 rgba(100,10,14,0.6)',
+                  letterSpacing: '0.02em',
+                  lineHeight: 1,
+                }}
+              >
+                Cap Table
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Bungee', cursive",
+                  fontSize: 'clamp(3.5rem, 8vw, 7rem)',
+                  color: '#AC2228',
+                  textShadow: '0 0 30px rgba(172,34,40,0.5), 0 4px 0 rgba(100,10,14,0.8)',
+                  letterSpacing: '0.02em',
+                  lineHeight: 1,
+                }}
+              >
+                Catastrophe
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Rajdhani','Roboto',sans-serif",
+                  fontSize: '1.4rem',
+                  fontWeight: 600,
+                  color: 'rgba(255,255,255,0.55)',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  marginTop: '12px',
+                }}
+              >
+                Test Your Equity IQ
+              </div>
             </div>
           </div>
 
@@ -464,8 +508,16 @@ export default function HostScreen() {
           </div>
 
           {currentQuestion ? (
-            <div className="text-white text-4xl font-bold text-center max-w-4xl leading-tight">
-              {currentQuestion.question}
+            <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
+              <img
+                src="/Confused_Owl.png"
+                alt=""
+                className="owl-slide-left hidden lg:block"
+                style={{ width: '120px', height: '120px', objectFit: 'contain', flexShrink: 0 }}
+              />
+              <div className="text-white text-4xl font-bold text-center max-w-4xl leading-tight">
+                {currentQuestion.question}
+              </div>
             </div>
           ) : (
             <div className="text-gray-400 text-2xl animate-pulse">Loading question...</div>
@@ -517,8 +569,16 @@ export default function HostScreen() {
 
           {currentQuestion && (
             <>
-              <div className="text-white text-3xl font-bold text-center max-w-4xl leading-tight">
-                {currentQuestion.question}
+              <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
+                <div className="text-white text-3xl font-bold text-center max-w-4xl leading-tight">
+                  {currentQuestion.question}
+                </div>
+                <img
+                  src="/Wise_Owl.png"
+                  alt=""
+                  className="owl-nod hidden lg:block"
+                  style={{ width: '150px', height: '150px', objectFit: 'contain', flexShrink: 0 }}
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-4 w-full max-w-5xl">
@@ -566,21 +626,35 @@ export default function HostScreen() {
       {status === 'leaderboard' && (
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
           <div className="flex items-center justify-between w-full max-w-2xl">
-            <div
-              style={{
-                fontFamily: "'Bungee', cursive",
-                fontSize: '2.5rem',
-                color: '#AC2228',
-                letterSpacing: '0.04em',
-                textShadow: '0 0 20px rgba(172,34,40,0.4)',
-              }}
-            >
-              Leaderboard
+            <img
+              src="/Wise_Owl.png"
+              alt=""
+              className="owl-bob-sm hidden lg:block"
+              style={{ width: '100px', height: '100px', objectFit: 'contain' }}
+            />
+            <div className="flex flex-col items-center">
+              <div
+                style={{
+                  fontFamily: "'Bungee', cursive",
+                  fontSize: '2.5rem',
+                  color: '#AC2228',
+                  letterSpacing: '0.04em',
+                  textShadow: '0 0 20px rgba(172,34,40,0.4)',
+                }}
+              >
+                Leaderboard
+              </div>
+              <div className="text-gray-400 text-lg">
+                {isLastQuestion ? 'Winner in' : 'Next question in'}{' '}
+                <span className="text-white font-black text-2xl">{phaseCountdown}s</span>
+              </div>
             </div>
-            <div className="text-gray-400 text-lg">
-              {isLastQuestion ? 'Winner in' : 'Next question in'}{' '}
-              <span className="text-white font-black text-2xl">{phaseCountdown}s</span>
-            </div>
+            <img
+              src="/Confused_Owl.png"
+              alt=""
+              className="owl-wobble-sm hidden lg:block"
+              style={{ width: '100px', height: '100px', objectFit: 'contain' }}
+            />
           </div>
 
           <div className="w-full max-w-2xl flex flex-col gap-3">
@@ -629,6 +703,12 @@ export default function HostScreen() {
         >
           <Confetti />
           <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+            <img
+              src="/Wise_Owl.png"
+              alt=""
+              className="owl-celebrate"
+              style={{ width: '200px', height: '200px', objectFit: 'contain' }}
+            />
             <div style={{ fontSize: '6rem', lineHeight: 1 }}>&#127942;</div>
 
             <div
