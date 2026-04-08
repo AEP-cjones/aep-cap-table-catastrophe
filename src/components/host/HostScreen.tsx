@@ -362,7 +362,7 @@ export default function HostScreen() {
             loading="eager"
             style={{
               position: 'absolute',
-              left: '-8%',
+              left: '-15%',
               top: '8%',
               height: '65vh',
               width: 'auto',
@@ -375,7 +375,7 @@ export default function HostScreen() {
           {/* Centered content — sits above the owl, shifted slightly right */}
           <div
             className="flex flex-col items-center justify-center gap-5"
-            style={{ position: 'relative', zIndex: 2, height: '100%', padding: '1rem 2rem', paddingLeft: '5%' }}
+            style={{ position: 'relative', zIndex: 2, height: '100%', padding: '1rem 2rem', paddingLeft: '8%' }}
           >
             {/* Title */}
             <div className="text-center title-float" style={{ lineHeight: 1 }}>
