@@ -304,18 +304,18 @@ export default function HostScreen() {
       {/* ── LOBBY ─────────────────────────────────────────────────────────────── */}
       {status === 'lobby' && (
         <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
-          {/* Wise Owl mascot — centered above title */}
-          <img
-            src="/Wise_Owl.webp"
-            alt=""
-            className="owl-float hidden lg:block"
-            width={900}
-            height={600}
-            loading="eager"
-            style={{ width: '420px', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 24px rgba(255,200,50,0.35)) drop-shadow(0 0 60px rgba(172,34,40,0.25))', marginBottom: '-16px', marginLeft: 'auto', marginRight: 'auto' }}
-          />
-          {/* Game title */}
-          <div className="text-center title-float" style={{ lineHeight: 1 }}>
+          {/* Owl + Title row — centered as a unit */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '40px' }}>
+            <img
+              src="/Wise_Owl.webp"
+              alt=""
+              className="owl-float hidden lg:block"
+              width={900}
+              height={600}
+              loading="eager"
+              style={{ width: '350px', height: 'auto', objectFit: 'contain', flexShrink: 0, filter: 'drop-shadow(0 0 24px rgba(255,200,50,0.35)) drop-shadow(0 0 60px rgba(172,34,40,0.25))' }}
+            />
+            <div className="text-center title-float" style={{ lineHeight: 1 }}>
               <div
                 style={{
                   fontFamily: "'Bungee', cursive",
@@ -353,6 +353,7 @@ export default function HostScreen() {
               >
                 Test Your Equity IQ
               </div>
+            </div>
           </div>
 
           <div className="flex flex-col lg:flex-row items-center gap-10 w-full max-w-5xl">
