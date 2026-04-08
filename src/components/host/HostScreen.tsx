@@ -304,15 +304,18 @@ export default function HostScreen() {
       {/* ── LOBBY ─────────────────────────────────────────────────────────────── */}
       {status === 'lobby' && (
         <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
-          {/* Game title with Wise Owl */}
-          <div className="flex items-center justify-center gap-10">
-            <img
-              src="/Wise_Owl.png"
-              alt=""
-              className="owl-float hidden lg:block"
-              style={{ width: '350px', height: '350px', objectFit: 'contain', flexShrink: 0, filter: 'drop-shadow(0 0 24px rgba(255,200,50,0.35)) drop-shadow(0 0 60px rgba(172,34,40,0.25))' }}
-            />
-            <div className="text-center title-float" style={{ lineHeight: 1 }}>
+          {/* Wise Owl mascot — centered above title */}
+          <img
+            src="/Wise_Owl.webp"
+            alt=""
+            className="owl-float hidden lg:block"
+            width={900}
+            height={600}
+            loading="eager"
+            style={{ width: '420px', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 24px rgba(255,200,50,0.35)) drop-shadow(0 0 60px rgba(172,34,40,0.25))', marginBottom: '-16px', marginLeft: 'auto', marginRight: 'auto' }}
+          />
+          {/* Game title */}
+          <div className="text-center title-float" style={{ lineHeight: 1 }}>
               <div
                 style={{
                   fontFamily: "'Bungee', cursive",
@@ -350,7 +353,6 @@ export default function HostScreen() {
               >
                 Test Your Equity IQ
               </div>
-            </div>
           </div>
 
           <div className="flex flex-col lg:flex-row items-center gap-10 w-full max-w-5xl">
@@ -510,7 +512,7 @@ export default function HostScreen() {
           {currentQuestion ? (
             <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
               <img
-                src="/Confused_Owl.png"
+                src="/Confused_Owl.webp"
                 alt=""
                 className="owl-slide-left hidden lg:block"
                 style={{ width: '120px', height: '120px', objectFit: 'contain', flexShrink: 0 }}
@@ -574,7 +576,7 @@ export default function HostScreen() {
                   {currentQuestion.question}
                 </div>
                 <img
-                  src="/Wise_Owl.png"
+                  src="/Wise_Owl.webp"
                   alt=""
                   className="owl-nod hidden lg:block"
                   style={{ width: '150px', height: '150px', objectFit: 'contain', flexShrink: 0 }}
@@ -627,7 +629,7 @@ export default function HostScreen() {
         <div className="flex-1 flex flex-col items-center justify-start gap-6 p-8">
           <div className="flex items-center justify-between w-full max-w-2xl">
             <img
-              src="/Wise_Owl.png"
+              src="/Wise_Owl.webp"
               alt=""
               className="owl-bob-sm hidden lg:block"
               style={{ width: '100px', height: '100px', objectFit: 'contain' }}
@@ -650,7 +652,7 @@ export default function HostScreen() {
               </div>
             </div>
             <img
-              src="/Confused_Owl.png"
+              src="/Confused_Owl.webp"
               alt=""
               className="owl-wobble-sm hidden lg:block"
               style={{ width: '100px', height: '100px', objectFit: 'contain' }}
@@ -704,7 +706,7 @@ export default function HostScreen() {
           <Confetti />
           <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
             <img
-              src="/Wise_Owl.png"
+              src="/Wise_Owl.webp"
               alt=""
               className="owl-celebrate"
               style={{ width: '200px', height: '200px', objectFit: 'contain' }}

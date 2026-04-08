@@ -363,9 +363,9 @@ export default function PlayerScreen() {
         `}</style>
         <div className="flex-1 flex flex-col items-center justify-center p-6 gap-5">
           {gotIt ? (
-            <img src="/Right_Owl.png" alt="Way To Go!" className="owl-bounce" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
+            <img src="/Right_Owl.webp" alt="Way To Go!" className="owl-bounce" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
           ) : (
-            <img src="/Wrong_Owl.png" alt="Better Luck Next Time!" className="owl-pop" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
+            <img src="/Wrong_Owl.webp" alt="Better Luck Next Time!" className="owl-pop" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
           )}
 
           {currentQuestion && (
