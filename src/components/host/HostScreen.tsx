@@ -353,27 +353,31 @@ export default function HostScreen() {
 
       {/* ── LOBBY ─────────────────────────────────────────────────────────────── */}
       {status === 'lobby' && (
-        <div className="flex-1 flex items-stretch px-4 py-2 gap-4" style={{ minHeight: 0, height: 'calc(100vh - 64px)' }}>
-          {/* LEFT column — Owl */}
-          <div className="hidden lg:flex items-end justify-end flex-shrink-0 overflow-hidden" style={{ width: '42%', padding: 0, margin: 0 }}>
-            <img
-              src="/Wise_Owl.webp"
-              alt=""
-              className="owl-float"
-              loading="eager"
-              style={{
-                height: '85vh',
-                maxHeight: '100%',
-                width: 'auto',
-                objectFit: 'contain',
-                objectPosition: 'right bottom',
-                filter: 'drop-shadow(0 0 40px rgba(255,200,50,0.45)) drop-shadow(0 0 80px rgba(172,34,40,0.35))',
-              }}
-            />
-          </div>
+        <div className="flex-1" style={{ position: 'relative', overflow: 'hidden', height: 'calc(100vh - 64px)' }}>
+          {/* Owl — absolutely positioned, overlaps into the title zone */}
+          <img
+            src="/Wise_Owl.webp"
+            alt=""
+            className="owl-float hidden lg:block"
+            loading="eager"
+            style={{
+              position: 'absolute',
+              left: '2%',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              height: '50vh',
+              width: 'auto',
+              zIndex: 1,
+              pointerEvents: 'none',
+              filter: 'drop-shadow(0 0 40px rgba(255,200,50,0.45)) drop-shadow(0 0 80px rgba(172,34,40,0.35))',
+            }}
+          />
 
-          {/* RIGHT column — all content */}
-          <div className="flex-1 flex flex-col items-center justify-center gap-5">
+          {/* Centered content — sits above the owl, shifted slightly right */}
+          <div
+            className="flex flex-col items-center justify-center gap-5"
+            style={{ position: 'relative', zIndex: 2, height: '100%', padding: '1rem 2rem', paddingLeft: '8%' }}
+          >
             {/* Title */}
             <div className="text-center title-float" style={{ lineHeight: 1 }}>
               <div
