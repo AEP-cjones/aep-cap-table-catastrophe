@@ -362,10 +362,9 @@ export default function HostScreen() {
             loading="eager"
             style={{
               position: 'absolute',
-              left: '2%',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              height: '50vh',
+              left: '0%',
+              top: '8%',
+              height: '65vh',
               width: 'auto',
               zIndex: 1,
               pointerEvents: 'none',
