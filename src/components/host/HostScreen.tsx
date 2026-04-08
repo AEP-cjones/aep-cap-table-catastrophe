@@ -184,8 +184,12 @@ export default function HostScreen() {
     const perGame = config?.questionsPerGame ?? 10
     let selected: string[]
     if (config?.randomizeOrder !== false) {
-      const shuffled = [...activeIds].sort(() => Math.random() - 0.5)
-      selected = shuffled.slice(0, Math.min(perGame, shuffled.length))
+      const arr = [...activeIds]
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]]
+      }
+      selected = arr.slice(0, Math.min(perGame, arr.length))
     } else {
       selected = activeIds.slice(0, Math.min(perGame, activeIds.length))
     }
