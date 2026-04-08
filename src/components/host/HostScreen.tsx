@@ -355,16 +355,18 @@ export default function HostScreen() {
       {status === 'lobby' && (
         <div className="flex-1 flex items-stretch px-4 py-2 gap-4" style={{ minHeight: 0, height: 'calc(100vh - 64px)' }}>
           {/* LEFT column — Owl */}
-          <div className="hidden lg:flex items-center justify-center flex-shrink-0" style={{ width: '35%' }}>
+          <div className="hidden lg:flex items-end justify-end flex-shrink-0 overflow-hidden" style={{ width: '42%', padding: 0, margin: 0 }}>
             <img
               src="/Wise_Owl.webp"
               alt=""
               className="owl-float"
               loading="eager"
               style={{
-                height: '80vh',
+                height: '85vh',
+                maxHeight: '100%',
                 width: 'auto',
                 objectFit: 'contain',
+                objectPosition: 'right bottom',
                 filter: 'drop-shadow(0 0 40px rgba(255,200,50,0.45)) drop-shadow(0 0 80px rgba(172,34,40,0.35))',
               }}
             />
