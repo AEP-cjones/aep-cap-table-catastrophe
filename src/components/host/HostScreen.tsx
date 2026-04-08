@@ -406,7 +406,7 @@ export default function HostScreen() {
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center gap-10 w-full max-w-5xl">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 mx-auto">
             {/* QR + Room Code */}
             <div className="flex flex-col items-center gap-4">
               <div
@@ -434,7 +434,7 @@ export default function HostScreen() {
             </div>
 
             {/* Room code + players */}
-            <div className="flex-1 flex flex-col items-center gap-5 min-w-0">
+            <div className="flex flex-col items-center gap-5">
               <div className="text-center">
                 <div
                   style={{
