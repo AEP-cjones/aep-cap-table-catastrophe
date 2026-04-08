@@ -355,7 +355,7 @@ export default function HostScreen() {
       {status === 'lobby' && (
         <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
           {/* Owl + Title row — centered as a unit */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '40px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '40px', transform: 'translateX(-40px)' }}>
             <img
               src="/Wise_Owl.webp"
               alt=""
@@ -406,7 +406,7 @@ export default function HostScreen() {
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 mx-auto">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 mx-auto" style={{ transform: 'translateX(-40px)' }}>
             {/* QR + Room Code */}
             <div className="flex flex-col items-center gap-4">
               <div
