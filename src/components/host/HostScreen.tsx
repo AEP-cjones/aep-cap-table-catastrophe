@@ -353,18 +353,27 @@ export default function HostScreen() {
 
       {/* ── LOBBY ─────────────────────────────────────────────────────────────── */}
       {status === 'lobby' && (
-        <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
-          {/* Owl + Title row — centered as a unit */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '40px', transform: 'translateX(-40px)' }}>
+        <div className="flex-1 flex items-stretch p-8 gap-8" style={{ minHeight: 0 }}>
+          {/* LEFT column — Owl */}
+          <div className="hidden lg:flex items-center justify-center flex-shrink-0" style={{ width: '38%' }}>
             <img
               src="/Wise_Owl.webp"
               alt=""
-              className="owl-float hidden lg:block"
-              width={900}
-              height={600}
+              className="owl-float"
               loading="eager"
-              style={{ width: '650px', height: 'auto', objectFit: 'contain', flexShrink: 0, filter: 'drop-shadow(0 0 40px rgba(255,200,50,0.45)) drop-shadow(0 0 80px rgba(172,34,40,0.35))' }}
+              style={{
+                width: '100%',
+                maxWidth: '560px',
+                height: 'auto',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 0 40px rgba(255,200,50,0.45)) drop-shadow(0 0 80px rgba(172,34,40,0.35))',
+              }}
             />
+          </div>
+
+          {/* RIGHT column — all content */}
+          <div className="flex-1 flex flex-col items-center justify-center gap-8">
+            {/* Title */}
             <div className="text-center title-float" style={{ lineHeight: 1 }}>
               <div
                 style={{
@@ -404,103 +413,104 @@ export default function HostScreen() {
                 Test Your Equity IQ
               </div>
             </div>
-          </div>
 
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 mx-auto" style={{ transform: 'translateX(-40px)' }}>
-            {/* QR + Room Code */}
-            <div className="flex flex-col items-center gap-4">
-              <div
-                className="scan-pulse"
-                style={{
-                  fontFamily: "'Rajdhani','Roboto',sans-serif",
-                  fontSize: '1.1rem',
-                  fontWeight: 700,
-                  color: 'rgba(255,255,255,0.7)',
-                  letterSpacing: '0.12em',
-                  textTransform: 'uppercase',
-                }}
-              >
-                📱 Scan to Play!
-              </div>
-              <div className="bg-white p-4 rounded-2xl" style={{ boxShadow: '0 0 40px rgba(255,255,255,0.15)' }}>
-                <QRCodeSVG value={`${playUrl}/play?room=${roomCode}`} size={180} />
-              </div>
-              <div className="text-center">
-                <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.85rem', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                  or go to
-                </div>
-                <div className="text-white font-mono text-sm mt-1">{playUrl}/play?room={roomCode}</div>
-              </div>
-            </div>
-
-            {/* Room code + players */}
-            <div className="flex flex-col items-center gap-5">
-              <div className="text-center">
+            {/* QR + Room code row */}
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
+              {/* QR */}
+              <div className="flex flex-col items-center gap-4">
                 <div
+                  className="scan-pulse"
                   style={{
                     fontFamily: "'Rajdhani','Roboto',sans-serif",
-                    fontSize: '1rem',
+                    fontSize: '1.1rem',
                     fontWeight: 700,
-                    color: 'rgba(255,255,255,0.5)',
-                    letterSpacing: '0.16em',
+                    color: 'rgba(255,255,255,0.7)',
+                    letterSpacing: '0.12em',
                     textTransform: 'uppercase',
-                    marginBottom: '4px',
                   }}
                 >
-                  Room Code
+                  📱 Scan to Play!
                 </div>
-                <div
-                  style={{
-                    fontFamily: "'Bungee', cursive",
-                    fontSize: 'clamp(5rem, 12vw, 9rem)',
-                    color: '#AC2228',
-                    lineHeight: 1,
-                    textShadow: '0 0 30px rgba(172,34,40,0.4)',
-                  }}
-                >
-                  {roomCode}
+                <div className="bg-white p-4 rounded-2xl" style={{ boxShadow: '0 0 40px rgba(255,255,255,0.15)' }}>
+                  <QRCodeSVG value={`${playUrl}/play?room=${roomCode}`} size={180} />
+                </div>
+                <div className="text-center">
+                  <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.85rem', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                    or go to
+                  </div>
+                  <div className="text-white font-mono text-sm mt-1">{playUrl}/play?room={roomCode}</div>
                 </div>
               </div>
 
-              <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', fontWeight: 600 }}>
-                {playerList.length} player{playerList.length !== 1 ? 's' : ''} joined
-              </div>
-
-              {playerList.length > 0 && (
-                <div className="flex flex-wrap gap-2 justify-center max-w-lg">
-                  {playerList.map((p) => (
-                    <span
-                      key={p.id}
-                      className="chip-in px-4 py-2 rounded-full text-white font-semibold text-base"
-                      style={{ backgroundColor: '#2d3748', border: '1px solid rgba(255,255,255,0.15)' }}
-                    >
-                      {p.nickname}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              <div className="flex gap-4 mt-2">
-                <button
-                  onClick={handleStartGame}
-                  className="pulse-glow px-12 py-5 rounded-xl text-white text-2xl font-bold uppercase tracking-wide transition-all hover:opacity-95 active:scale-95"
-                  style={{
-                    backgroundColor: '#AC2228',
-                    fontFamily: "'Bungee', cursive",
-                    fontSize: '1.6rem',
-                    letterSpacing: '0.04em',
-                  }}
-                >
-                  Start Game!
-                </button>
-                {playerList.length > 0 && (
-                  <button
-                    onClick={handleReset}
-                    className="px-8 py-5 rounded-xl text-white font-bold uppercase tracking-wide bg-gray-700 hover:bg-gray-600 transition-all text-lg"
+              {/* Room code + players + buttons */}
+              <div className="flex flex-col items-center gap-5">
+                <div className="text-center">
+                  <div
+                    style={{
+                      fontFamily: "'Rajdhani','Roboto',sans-serif",
+                      fontSize: '1rem',
+                      fontWeight: 700,
+                      color: 'rgba(255,255,255,0.5)',
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      marginBottom: '4px',
+                    }}
                   >
-                    Reset
-                  </button>
+                    Room Code
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "'Bungee', cursive",
+                      fontSize: 'clamp(5rem, 12vw, 9rem)',
+                      color: '#AC2228',
+                      lineHeight: 1,
+                      textShadow: '0 0 30px rgba(172,34,40,0.4)',
+                    }}
+                  >
+                    {roomCode}
+                  </div>
+                </div>
+
+                <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', fontWeight: 600 }}>
+                  {playerList.length} player{playerList.length !== 1 ? 's' : ''} joined
+                </div>
+
+                {playerList.length > 0 && (
+                  <div className="flex flex-wrap gap-2 justify-center max-w-lg">
+                    {playerList.map((p) => (
+                      <span
+                        key={p.id}
+                        className="chip-in px-4 py-2 rounded-full text-white font-semibold text-base"
+                        style={{ backgroundColor: '#2d3748', border: '1px solid rgba(255,255,255,0.15)' }}
+                      >
+                        {p.nickname}
+                      </span>
+                    ))}
+                  </div>
                 )}
+
+                <div className="flex gap-4 mt-2">
+                  <button
+                    onClick={handleStartGame}
+                    className="pulse-glow px-12 py-5 rounded-xl text-white text-2xl font-bold uppercase tracking-wide transition-all hover:opacity-95 active:scale-95"
+                    style={{
+                      backgroundColor: '#AC2228',
+                      fontFamily: "'Bungee', cursive",
+                      fontSize: '1.6rem',
+                      letterSpacing: '0.04em',
+                    }}
+                  >
+                    Start Game!
+                  </button>
+                  {playerList.length > 0 && (
+                    <button
+                      onClick={handleReset}
+                      className="px-8 py-5 rounded-xl text-white font-bold uppercase tracking-wide bg-gray-700 hover:bg-gray-600 transition-all text-lg"
+                    >
+                      Reset
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           </div>
