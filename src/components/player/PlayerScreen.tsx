@@ -12,6 +12,7 @@ import {
   getQuestions,
 } from '../../firebase/gameService'
 import { useTimer } from '../../hooks/useTimer'
+import { shuffleChoices } from '../../utils/shuffle'
 
 const CHOICE_LABELS = ['A', 'B', 'C', 'D']
 const CHOICE_COLORS = ['#1d4ed8', '#7c3aed', '#b45309', '#047857']
@@ -29,16 +30,17 @@ function MobileHeader() {
   return (
     <div
       style={{
-        height: '44px',
+        height: '62px',
         flexShrink: 0,
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         padding: '0 16px',
         background: 'linear-gradient(180deg,#1C1E1F 0%,#0F1011 100%)',
         borderBottom: '1px solid rgba(255,255,255,0.14)',
       }}
     >
-      <img src="/aep-logo-white.svg" alt="Accelerated Equity Plans" style={{ height: '26px', width: 'auto', display: 'block' }} />
+      <img src="/aep-logo-white.svg" alt="Accelerated Equity Plans" style={{ height: '28px', width: 'auto', display: 'block' }} />
     </div>
   )
 }
@@ -172,6 +174,12 @@ export default function PlayerScreen() {
     setHasJoined(true)
   }
 
+  // Deterministically shuffle answer choices so the correct answer isn't always "A"
+  const { shuffledChoices: displayChoices, newCorrectIndex } = currentQuestion
+    ? shuffleChoices(currentQuestion.choices, currentQuestion.id)
+    : { shuffledChoices: [] as string[], newCorrectIndex: (i: number) => i }
+  const displayCorrectIndex = currentQuestion ? newCorrectIndex(currentQuestion.correctIndex) : -1
+
   const handleAnswerSelect = async (idx: number) => {
     if (hasAnswered || !gameState || !currentQuestion || !playerId) return
     if (timeRemaining <= 0) return
@@ -179,7 +187,7 @@ export default function PlayerScreen() {
     const timestamp = Date.now()
     const elapsed = timestamp - startTime
     const tl = (config?.timeLimit ?? 20) * 1000
-    const isCorrect = idx === currentQuestion.correctIndex
+    const isCorrect = idx === displayCorrectIndex
     const points = isCorrect ? 100 + Math.round(50 * Math.max(0, (tl - elapsed) / tl)) : 0
     const answer: Answer = { answerIndex: idx, timestamp, isCorrect, points }
     setSelectedAnswer(idx)
@@ -291,7 +299,7 @@ export default function PlayerScreen() {
             {currentQuestion.question}
           </div>
           <div className="flex flex-col gap-3 flex-1">
-            {currentQuestion.choices.map((choice, idx) => (
+            {displayChoices.map((choice, idx) => (
               <button
                 key={idx}
                 onClick={() => handleAnswerSelect(idx)}
@@ -321,7 +329,7 @@ export default function PlayerScreen() {
           <div className="text-white text-2xl font-bold">Answer Submitted!</div>
           {selectedAnswer !== null && currentQuestion && (
             <div className="px-6 py-3 rounded-xl text-white text-lg font-semibold" style={{ backgroundColor: CHOICE_COLORS[selectedAnswer] }}>
-              {CHOICE_LABELS[selectedAnswer]}: {currentQuestion.choices[selectedAnswer]}
+              {CHOICE_LABELS[selectedAnswer]}: {displayChoices[selectedAnswer]}
             </div>
           )}
           <div className="text-gray-400 text-base animate-pulse">Waiting for results...</div>
@@ -355,16 +363,16 @@ export default function PlayerScreen() {
         `}</style>
         <div className="flex-1 flex flex-col items-center justify-center p-6 gap-5">
           {gotIt ? (
-            <img src="/Right_Owl.png" alt="Way To Go!" className="owl-bounce" style={{ width: '180px', height: '180px', objectFit: 'contain' }} />
+            <img src="/Right_Owl.png" alt="Way To Go!" className="owl-bounce" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
           ) : (
-            <img src="/Wrong_Owl.png" alt="Better Luck Next Time!" className="owl-pop" style={{ width: '180px', height: '180px', objectFit: 'contain' }} />
+            <img src="/Wrong_Owl.png" alt="Better Luck Next Time!" className="owl-pop" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
           )}
 
           {currentQuestion && (
             <div className="text-center">
               <div className="text-gray-400 text-sm mb-1">Correct answer:</div>
               <div className="px-6 py-3 rounded-xl text-white text-lg font-semibold" style={{ backgroundColor: '#16a34a' }}>
-                {CHOICE_LABELS[currentQuestion.correctIndex]}: {currentQuestion.choices[currentQuestion.correctIndex]}
+                {CHOICE_LABELS[displayCorrectIndex]}: {displayChoices[displayCorrectIndex]}
               </div>
             </div>
           )}

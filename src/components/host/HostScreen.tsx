@@ -22,6 +22,7 @@ import { useTimer } from '../../hooks/useTimer'
 import Header from '../shared/Header'
 import questionsData from '../../data/questions.json'
 import type { Question as QuestionType } from '../../types'
+import { shuffleChoices } from '../../utils/shuffle'
 
 const CHOICE_LABELS = ['A', 'B', 'C', 'D']
 const ANSWER_REVEAL_DURATION = 5
@@ -210,10 +211,14 @@ export default function HostScreen() {
 
   const selectedIds: string[] = gameState.selectedQuestionIds ?? []
   const safeChoices: string[] = currentQuestion?.choices ?? []
+  const { shuffledChoices: displayChoices, newCorrectIndex } = currentQuestion
+    ? shuffleChoices(currentQuestion.choices, currentQuestion.id)
+    : { shuffledChoices: safeChoices, newCorrectIndex: (i: number) => i }
+  const displayCorrectIndex = currentQuestion ? newCorrectIndex(currentQuestion.correctIndex) : -1
   const playerList = Object.values(players)
   const sortedPlayers = [...playerList].sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
   const answerList = Object.values(answers)
-  const answerCounts = safeChoices.map((_, idx) =>
+  const answerCounts = displayChoices.map((_, idx) =>
     answerList.filter((a) => a.answerIndex === idx).length
   )
   const correctCount = answerList.filter((a) => a.isCorrect).length
@@ -466,9 +471,9 @@ export default function HostScreen() {
             <div className="text-gray-400 text-2xl animate-pulse">Loading question...</div>
           )}
 
-          {safeChoices.length > 0 && (
+          {displayChoices.length > 0 && (
             <div className="grid grid-cols-2 gap-4 w-full max-w-5xl mt-2">
-              {safeChoices.map((choice, idx) => (
+              {displayChoices.map((choice, idx) => (
                 <div
                   key={idx}
                   className="flex items-center gap-4 p-5 rounded-xl text-white text-xl font-semibold"
@@ -517,8 +522,8 @@ export default function HostScreen() {
               </div>
 
               <div className="grid grid-cols-2 gap-4 w-full max-w-5xl">
-                {safeChoices.map((choice, idx) => {
-                  const isCorrect = idx === (currentQuestion.correctIndex ?? -1)
+                {displayChoices.map((choice, idx) => {
+                  const isCorrect = idx === displayCorrectIndex
                   return (
                     <div
                       key={idx}
