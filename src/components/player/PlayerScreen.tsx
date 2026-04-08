@@ -30,7 +30,7 @@ function MobileHeader() {
   return (
     <div
       style={{
-        height: '62px',
+        height: '64px',
         flexShrink: 0,
         display: 'flex',
         alignItems: 'center',

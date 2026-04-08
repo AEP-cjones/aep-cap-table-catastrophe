@@ -1498,5 +1498,755 @@
     "explanation": "Most startup employees hope for life-changing equity, but the reality is sobering: investor liquidation preferences mean preferred shareholders get paid first (often all) in an acquisition. Add dilution from later funding rounds and complex acquisition structures, and common stockholders (employees) often see little. The famous WhatsApp/Google stories create survivorship bias that makes startup equity seem more reliably valuable than it actually is.",
     "id": "q100",
     "question": "In startup equity culture, why don't most employees 'hit the jackpot' from their options even when a company succeeds?"
+  },
+  {
+    "active": true,
+    "category": "Cap Table Management",
+    "choices": [
+      "A spreadsheet tracking all share ownership, options, warrants, and convertible instruments",
+      "A government-filed tax form for equity grants",
+      "A table showing employee vesting schedules only",
+      "A board resolution approving new share issuances"
+    ],
+    "correctIndex": 0,
+    "difficulty": "easy",
+    "explanation": "A capitalization (cap) table is a comprehensive record of all equity ownership in a company, including common shares, preferred shares, options, warrants, and convertible instruments. It shows who owns what percentage of the company.",
+    "id": "q101",
+    "question": "What is a capitalization table (cap table)?"
+  },
+  {
+    "active": true,
+    "category": "Cap Table Management",
+    "choices": [
+      "A round of financing where the company sells preferred stock",
+      "Dilution of existing shareholders",
+      "A secondary sale between existing shareholders",
+      "An increase in the authorized share pool"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium",
+    "explanation": "Dilution occurs when new shares are issued, reducing existing shareholders' percentage ownership. This commonly happens during funding rounds, option pool increases, or warrant exercises.",
+    "id": "q102",
+    "question": "What happens to existing shareholders' ownership percentage when a company issues new shares?"
+  },
+  {
+    "active": true,
+    "category": "Cap Table Management",
+    "choices": [
+      "Shares reserved exclusively for the CEO",
+      "Treasury shares held by the transfer agent",
+      "Shares set aside for future employee equity grants",
+      "Shares donated to charity for tax purposes"
+    ],
+    "correctIndex": 2,
+    "difficulty": "easy",
+    "explanation": "The equity incentive pool (or option pool) is a block of shares reserved for future grants to employees, advisors, and consultants. Its size is typically negotiated during fundraising rounds.",
+    "id": "q103",
+    "question": "What is an equity incentive pool?"
+  },
+  {
+    "active": true,
+    "category": "Cap Table Management",
+    "choices": [
+      "Shares that can never be sold",
+      "The total number of shares legally authorized in the charter",
+      "The number of shares currently held by investors",
+      "Shares that have been authorized and are held by shareholders or reserved for issuance"
+    ],
+    "correctIndex": 3,
+    "difficulty": "medium",
+    "explanation": "Outstanding shares are those that have been issued and are currently held by all shareholders (including restricted shares). This differs from authorized shares (the maximum allowed by the charter) and treasury shares (repurchased by the company).",
+    "id": "q104",
+    "question": "What does 'shares outstanding' mean on a cap table?"
+  },
+  {
+    "active": true,
+    "category": "Cap Table Management",
+    "choices": [
+      "Fully diluted shares include all potential shares from options, warrants, and convertibles",
+      "Fully diluted shares only count shares that have already been issued",
+      "Fully diluted shares exclude the option pool",
+      "Fully diluted shares only matter for preferred stockholders"
+    ],
+    "correctIndex": 0,
+    "difficulty": "medium",
+    "explanation": "A fully diluted share count includes all issued shares plus all shares that could be issued from outstanding options, warrants, convertible notes, and other instruments. This gives the most conservative view of ownership percentages.",
+    "id": "q105",
+    "question": "What is a 'fully diluted' share count?"
+  },
+  {
+    "active": true,
+    "category": "Valuation & Pricing",
+    "choices": [
+      "It determines the tax withholding rate",
+      "It establishes the fair market value of common stock for option pricing and tax compliance",
+      "It calculates the company's revenue multiple",
+      "It sets the conversion price for preferred stock"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium",
+    "explanation": "A 409A valuation is an independent appraisal of a private company's common stock fair market value (FMV). It's required under IRC Section 409A to set exercise prices for stock options and avoid adverse tax consequences from underpricing.",
+    "id": "q106",
+    "question": "What is the primary purpose of a 409A valuation?"
+  },
+  {
+    "active": true,
+    "category": "Valuation & Pricing",
+    "choices": [
+      "Every month",
+      "Every quarter",
+      "At least every 12 months, or after a material event",
+      "Only at IPO"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium",
+    "explanation": "IRC Section 409A requires companies to obtain a new valuation at least every 12 months. A new valuation is also needed after material events such as a new funding round, a significant change in financial performance, or a pending acquisition.",
+    "id": "q107",
+    "question": "How often must a private company update its 409A valuation?"
+  },
+  {
+    "active": true,
+    "category": "Valuation & Pricing",
+    "choices": [
+      "The enterprise value divided by revenue",
+      "The stock price at IPO",
+      "The total equity value divided by fully diluted shares outstanding",
+      "The price per share of the last preferred round divided by the option pool size"
+    ],
+    "correctIndex": 2,
+    "difficulty": "hard",
+    "explanation": "The price per share on a cap table typically equals the total equity value (or the round valuation) divided by the fully diluted shares outstanding. For preferred rounds, the PPS reflects the valuation investors negotiated.",
+    "id": "q108",
+    "question": "How is price per share typically calculated on a cap table?"
+  },
+  {
+    "active": true,
+    "category": "Valuation & Pricing",
+    "choices": [
+      "The company's valuation before the new investment money is added",
+      "The company's valuation after the new investment is added",
+      "The total of all prior funding rounds",
+      "The valuation used for tax purposes only"
+    ],
+    "correctIndex": 0,
+    "difficulty": "easy",
+    "explanation": "Pre-money valuation is what the company is worth before new investment capital is added. Post-money valuation equals pre-money plus the new investment amount. These figures directly determine ownership percentages after a round.",
+    "id": "q109",
+    "question": "What is a pre-money valuation?"
+  },
+  {
+    "active": true,
+    "category": "Valuation & Pricing",
+    "choices": [
+      "DLOM stands for Discount for Lack of Marketability",
+      "DLOM stands for Deferred Liability on Maturity",
+      "DLOM stands for Direct Listing Option Method",
+      "DLOM stands for Diluted Liability Offset Measure"
+    ],
+    "correctIndex": 0,
+    "difficulty": "hard",
+    "explanation": "DLOM (Discount for Lack of Marketability) is applied in 409A valuations to account for the fact that private company shares cannot be easily sold on an open market, making them less valuable than publicly traded shares.",
+    "id": "q110",
+    "question": "In a 409A valuation, what does DLOM stand for?"
+  },
+  {
+    "active": true,
+    "category": "Corporate Governance",
+    "choices": [
+      "Any employee can authorize new share issuances",
+      "The transfer agent decides unilaterally",
+      "The board of directors must authorize new issuances, often requiring shareholder approval to increase authorized shares",
+      "The CEO signs off without board involvement"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium",
+    "explanation": "New share issuances must be authorized by the board. If the number of authorized shares in the certificate of incorporation is insufficient, shareholder approval is needed to amend the charter before new shares can be issued.",
+    "id": "q111",
+    "question": "Who must authorize the issuance of new shares in a corporation?"
+  },
+  {
+    "active": true,
+    "category": "Corporate Governance",
+    "choices": [
+      "Anti-dilution protection allows investors to maintain their ownership percentage when shares are issued at a lower price",
+      "Anti-dilution protection guarantees dividends",
+      "Anti-dilution protection prevents any new shares from ever being issued",
+      "Anti-dilution protection only applies to common stockholders"
+    ],
+    "correctIndex": 0,
+    "difficulty": "hard",
+    "explanation": "Anti-dilution provisions protect preferred shareholders from value loss in a down round by adjusting their conversion ratio. The two main types are full ratchet (converts at the lower price) and weighted average (adjusts proportionally).",
+    "id": "q112",
+    "question": "What is anti-dilution protection in venture financing?"
+  },
+  {
+    "active": true,
+    "category": "Corporate Governance",
+    "choices": [
+      "A right that forces minority shareholders to sell in an acquisition",
+      "A right that lets employees sell shares before vesting",
+      "A right that blocks any M&A transaction",
+      "A right reserved for the company's legal counsel"
+    ],
+    "correctIndex": 0,
+    "difficulty": "hard",
+    "explanation": "Drag-along rights allow majority shareholders (typically lead investors) to force minority shareholders to participate in a sale of the company on the same terms, preventing holdouts from blocking a deal.",
+    "id": "q113",
+    "question": "What is a drag-along right?"
+  },
+  {
+    "active": true,
+    "category": "Corporate Governance",
+    "choices": [
+      "Any shareholder can sell whenever they want",
+      "Rule 10b5-1 allows insiders to set up pre-planned trading schedules to avoid insider trading allegations",
+      "Rule 10b5-1 prohibits all insider share sales",
+      "Rule 10b5-1 only applies to options, not shares"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard",
+    "explanation": "Rule 10b5-1 trading plans allow corporate insiders to establish predetermined schedules for buying or selling shares. When properly adopted during an open trading window and in good faith, these plans provide an affirmative defense against insider trading claims.",
+    "id": "q114",
+    "question": "What is the purpose of a Rule 10b5-1 trading plan?"
+  },
+  {
+    "active": true,
+    "category": "Corporate Governance",
+    "choices": [
+      "Common stock always gets paid first",
+      "All shareholders split proceeds equally regardless of share class",
+      "Preferred shareholders have priority through liquidation preferences, and common holders receive whatever remains",
+      "The board decides payment order after the event"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium",
+    "explanation": "In a liquidation or acquisition, preferred stockholders are paid first according to their liquidation preferences (often 1x their investment). Common stockholders, including most employees, receive what's left after all preferences are satisfied.",
+    "id": "q115",
+    "question": "What determines the order of payout in a liquidity event?"
+  },
+  {
+    "active": true,
+    "category": "Equity Plan Design",
+    "choices": [
+      "Time-based vesting releases shares according to a schedule tied to continued employment",
+      "Time-based vesting requires hitting revenue targets",
+      "Time-based vesting only applies to executives",
+      "Time-based vesting means shares vest immediately on grant"
+    ],
+    "correctIndex": 0,
+    "difficulty": "easy",
+    "explanation": "Time-based vesting ties equity release to continued service. The most common schedule is 4 years with a 1-year cliff, meaning 25% vests after year one, then the rest monthly or quarterly over the remaining 3 years.",
+    "id": "q116",
+    "question": "How does time-based vesting work?"
+  },
+  {
+    "active": true,
+    "category": "Equity Plan Design",
+    "choices": [
+      "Shares vest only when specific business targets are achieved",
+      "Shares vest immediately on the grant date",
+      "Shares vest only upon termination",
+      "Shares vest based on the stock price alone"
+    ],
+    "correctIndex": 0,
+    "difficulty": "medium",
+    "explanation": "Performance-based vesting conditions tie equity release to achieving specific goals — revenue milestones, EBITDA targets, stock price hurdles, or other KPIs. These grants only deliver shares when the conditions are met within a defined period.",
+    "id": "q117",
+    "question": "What defines performance-based vesting?"
+  },
+  {
+    "active": true,
+    "category": "Equity Plan Design",
+    "choices": [
+      "It guarantees all options will be exercised",
+      "It allows the company to satisfy equity obligations with shares or cash",
+      "It doubles the option grant size",
+      "It provides a tax exemption for the company"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium",
+    "explanation": "A net settlement feature lets the company settle equity awards by issuing only the net shares (after deducting exercise cost and/or tax withholding) rather than requiring the holder to pay cash. This is convenient for employees and reduces the need for sell-to-cover transactions.",
+    "id": "q118",
+    "question": "What is net settlement in equity compensation?"
+  },
+  {
+    "active": true,
+    "category": "Equity Plan Design",
+    "choices": [
+      "180 days only",
+      "30 days only",
+      "Typically 90 days, though plans may allow shorter or longer periods",
+      "There is no time limit after termination"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium",
+    "explanation": "Most stock option plans give departing employees 90 days post-termination to exercise vested options, though some companies have extended this to 1–10 years. After the exercise window closes, unexercised options are forfeited.",
+    "id": "q119",
+    "question": "What is the typical post-termination exercise period for stock options?"
+  },
+  {
+    "active": true,
+    "category": "Equity Plan Design",
+    "choices": [
+      "An ESPP lets employees purchase company stock at a discount through payroll deductions",
+      "An ESPP is a retirement savings plan",
+      "An ESPP only benefits C-suite executives",
+      "An ESPP requires employees to hold shares for 10 years"
+    ],
+    "correctIndex": 0,
+    "difficulty": "easy",
+    "explanation": "An Employee Stock Purchase Plan (ESPP) allows employees to buy company stock at a discount (typically 15% off the lower of the price at the start or end of the offering period) through payroll deductions. Section 423 ESPPs must be offered to all eligible employees.",
+    "id": "q120",
+    "question": "What is an Employee Stock Purchase Plan (ESPP)?"
+  },
+  {
+    "active": true,
+    "category": "Accounting & Financial Reporting",
+    "choices": [
+      "Cash accounting method",
+      "Mark-to-market accounting",
+      "ASC 718 (formerly SFAS 123R) requires companies to recognize share-based compensation expense",
+      "There is no specific accounting standard for equity compensation"
+    ],
+    "correctIndex": 2,
+    "difficulty": "hard",
+    "explanation": "ASC 718 (Compensation—Stock Compensation) requires companies to measure and recognize the cost of equity awards at fair value over the requisite service period. This applies to stock options, RSUs, PSUs, and ESPP shares.",
+    "id": "q121",
+    "question": "What accounting standard governs share-based compensation expense?"
+  },
+  {
+    "active": true,
+    "category": "Accounting & Financial Reporting",
+    "choices": [
+      "The intrinsic value method",
+      "The cost-plus method",
+      "The Black-Scholes or binomial lattice model",
+      "The discounted cash flow model"
+    ],
+    "correctIndex": 2,
+    "difficulty": "hard",
+    "explanation": "Under ASC 718, stock options must be valued using an option pricing model — typically Black-Scholes-Merton or a binomial lattice model. Key inputs include the stock price, exercise price, expected volatility, expected term, risk-free rate, and expected dividend yield.",
+    "id": "q122",
+    "question": "How are stock options typically valued for financial reporting purposes?"
+  },
+  {
+    "active": true,
+    "category": "Accounting & Financial Reporting",
+    "choices": [
+      "All at once on the grant date",
+      "Only upon exercise or settlement",
+      "Over the requisite service period (typically the vesting period)",
+      "Equally every quarter regardless of vesting"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium",
+    "explanation": "Under ASC 718, share-based compensation expense is recognized ratably over the requisite service period, which generally corresponds to the vesting schedule. For graded vesting, companies may use either the straight-line or accelerated method.",
+    "id": "q123",
+    "question": "When is equity compensation expense recognized on the income statement?"
+  },
+  {
+    "active": true,
+    "category": "Accounting & Financial Reporting",
+    "choices": [
+      "Expected volatility is always 0% for private companies",
+      "Private companies use peer company volatility as a proxy since they lack public trading history",
+      "Private companies are exempt from reporting volatility",
+      "They use the VIX index directly"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard",
+    "explanation": "Private companies without public trading history typically estimate expected volatility by analyzing the historical stock price volatility of comparable public companies in the same industry. This peer group approach is the most common method for 409A valuations and ASC 718 expense calculations.",
+    "id": "q124",
+    "question": "How do private companies estimate expected volatility for option pricing?"
+  },
+  {
+    "active": true,
+    "category": "Accounting & Financial Reporting",
+    "choices": [
+      "An increase in net income",
+      "No impact on financial statements",
+      "A forfeiture triggers a reversal of previously recognized compensation expense",
+      "A forfeiture doubles the compensation expense"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium",
+    "explanation": "When an equity award is forfeited (e.g., employee leaves before vesting), previously recognized compensation expense related to that award is reversed. Companies can either estimate forfeitures upfront or recognize them as they occur.",
+    "id": "q125",
+    "question": "What happens to the accounting for an equity award when it is forfeited?"
+  },
+  {
+    "active": true,
+    "category": "Securities Regulation",
+    "choices": [
+      "Rule 144 governs the resale of restricted and control securities",
+      "Rule 144 sets the minimum wage for executives",
+      "Rule 144 requires all shares to be held for 10 years",
+      "Rule 144 only applies to foreign investors"
+    ],
+    "correctIndex": 0,
+    "difficulty": "hard",
+    "explanation": "SEC Rule 144 provides a safe harbor for reselling restricted securities (acquired in private placements) and control securities (held by affiliates). It imposes holding periods, volume limits, filing requirements, and manner-of-sale conditions.",
+    "id": "q126",
+    "question": "What does SEC Rule 144 regulate?"
+  },
+  {
+    "active": true,
+    "category": "Securities Regulation",
+    "choices": [
+      "1 month for reporting companies",
+      "6 months for reporting companies, 1 year for non-reporting companies",
+      "2 years for all companies",
+      "There is no holding period"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard",
+    "explanation": "Under Rule 144, restricted securities of SEC-reporting companies must be held for 6 months before resale. For non-reporting (private) companies, the holding period is 1 year. Affiliates face additional volume and filing requirements even after the holding period.",
+    "id": "q127",
+    "question": "What is the Rule 144 holding period for restricted securities?"
+  },
+  {
+    "active": true,
+    "category": "Securities Regulation",
+    "choices": [
+      "Section 16 requires all employees to report trades within 24 hours",
+      "Section 16 applies only to directors, officers, and 10%+ beneficial owners of public companies",
+      "Section 16 exempts all equity compensation transactions",
+      "Section 16 only applies to companies with under 100 employees"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard",
+    "explanation": "Section 16 of the Securities Exchange Act of 1934 imposes reporting and short-swing profit disgorgement rules on directors, officers, and 10%+ shareholders of SEC-registered companies. These insiders must file Forms 3, 4, and 5 disclosing their transactions.",
+    "id": "q128",
+    "question": "Who is subject to Section 16 reporting requirements?"
+  },
+  {
+    "active": true,
+    "category": "Securities Regulation",
+    "choices": [
+      "There is no blackout period",
+      "Only during the first week of each quarter",
+      "Typically during the period before earnings releases when insiders possess material non-public information",
+      "Permanently — insiders can never trade"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium",
+    "explanation": "Trading blackout periods restrict when insiders can buy or sell company stock. They typically begin several weeks before quarterly earnings announcements and end 1-2 business days after the release, when MNPI has been publicly disseminated.",
+    "id": "q129",
+    "question": "When do trading blackout periods typically apply?"
+  },
+  {
+    "active": true,
+    "category": "Securities Regulation",
+    "choices": [
+      "A legend is a story about the company's founding",
+      "A legend is a certificate marking that shares are restricted and cannot be freely traded",
+      "A legend is the company's stock ticker symbol",
+      "A legend is the CEO's signature on share certificates"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium",
+    "explanation": "A restrictive legend is a notation placed on stock certificates (or recorded in book-entry form) indicating the shares are restricted securities that cannot be freely transferred without registration or an exemption from registration under applicable securities laws.",
+    "id": "q130",
+    "question": "What is a restrictive legend on a stock certificate?"
+  },
+  {
+    "active": true,
+    "category": "M&A and Liquidity Events",
+    "choices": [
+      "Single-trigger acceleration vests equity upon a change of control alone",
+      "Single-trigger requires both a change of control and a termination",
+      "Single-trigger means vesting stops immediately",
+      "Single-trigger only applies to stock options, not RSUs"
+    ],
+    "correctIndex": 0,
+    "difficulty": "medium",
+    "explanation": "Single-trigger acceleration means equity vests automatically upon a change of control (acquisition, merger). Double-trigger requires both a change of control AND a qualifying termination (usually within 12-24 months). Double-trigger is more common and acquirer-friendly.",
+    "id": "q131",
+    "question": "What is single-trigger acceleration?"
+  },
+  {
+    "active": true,
+    "category": "M&A and Liquidity Events",
+    "choices": [
+      "All equity is always canceled for nothing",
+      "The treatment depends on the acquisition agreement — awards may be assumed, substituted, cashed out, or canceled",
+      "All equity automatically converts to the acquirer's stock",
+      "Equity is frozen for 5 years post-acquisition"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium",
+    "explanation": "In an acquisition, unvested equity treatment is negotiated in the merger agreement. Common outcomes include assumption (converted to acquirer equity), substitution (replaced with equivalent acquirer awards), cash-out (paid in cash), or cancellation with or without compensation.",
+    "id": "q132",
+    "question": "What happens to unvested equity awards in an acquisition?"
+  },
+  {
+    "active": true,
+    "category": "M&A and Liquidity Events",
+    "choices": [
+      "A secondary sale is when the company issues new shares",
+      "A secondary sale is when existing shareholders sell their shares to other investors",
+      "A secondary sale occurs only at IPO",
+      "A secondary sale means the company buys back all outstanding shares"
+    ],
+    "correctIndex": 1,
+    "difficulty": "easy",
+    "explanation": "A secondary sale (or secondary transaction) occurs when existing shareholders sell their shares to new buyers, rather than the company issuing new shares. This provides liquidity to shareholders without diluting existing ownership or changing the company's capitalization.",
+    "id": "q133",
+    "question": "What is a secondary sale of shares?"
+  },
+  {
+    "active": true,
+    "category": "M&A and Liquidity Events",
+    "choices": [
+      "30 days",
+      "90 days",
+      "Usually 90 to 180 days, restricting insiders from selling after IPO",
+      "There is no lockup period for IPOs"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium",
+    "explanation": "An IPO lockup period (typically 90-180 days) prevents insiders, employees, and early investors from selling their shares immediately after a public offering. This prevents a flood of shares that could depress the stock price.",
+    "id": "q134",
+    "question": "What is a typical IPO lockup period?"
+  },
+  {
+    "active": true,
+    "category": "M&A and Liquidity Events",
+    "choices": [
+      "A tender offer in private companies is always illegal",
+      "A tender offer allows employees and shareholders to sell some or all vested shares back to the company or to an outside buyer",
+      "A tender offer forces all employees to sell 100% of their shares",
+      "A tender offer only applies to public companies"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium",
+    "explanation": "Private company tender offers provide a structured liquidity event where employees and other shareholders can sell vested shares. These are typically organized by the company or facilitated by secondary market platforms, often at a price set by a recent valuation.",
+    "id": "q135",
+    "question": "What is a tender offer in the context of private company equity?"
+  },
+  {
+    "active": true,
+    "category": "Transfer Agent & Share Administration",
+    "choices": [
+      "A transfer agent is the company's external auditor",
+      "A transfer agent maintains the official registry of shareholders and processes share transactions",
+      "A transfer agent decides how much equity each employee receives",
+      "A transfer agent sets the stock price"
+    ],
+    "correctIndex": 1,
+    "difficulty": "easy",
+    "explanation": "A transfer agent is a third party that maintains the official record of share ownership, processes transfers, issues and cancels certificates, handles lost certificates, and assists with corporate actions like stock splits and dividends.",
+    "id": "q136",
+    "question": "What role does a transfer agent play?"
+  },
+  {
+    "active": true,
+    "category": "Transfer Agent & Share Administration",
+    "choices": [
+      "An opinion of counsel confirms the attorney's favorite stock picks",
+      "It's a legal opinion confirming that shares can be transferred in compliance with securities laws",
+      "It's a document the SEC must approve before any trade",
+      "It's the transfer agent's valuation of the shares"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard",
+    "explanation": "An opinion of counsel (or legal opinion letter) is provided by an attorney to the transfer agent confirming that a proposed share transfer complies with applicable securities laws and that restrictive legends can be removed. Transfer agents typically require this before processing restricted share transfers.",
+    "id": "q137",
+    "question": "What is an opinion of counsel in the context of share transfers?"
+  },
+  {
+    "active": true,
+    "category": "Transfer Agent & Share Administration",
+    "choices": [
+      "Book-entry means shares are recorded electronically without physical certificates",
+      "Book-entry means shares are recorded in a physical ledger book",
+      "Book-entry means the shares are held at a bank",
+      "Book-entry means the shares can only be traded in person"
+    ],
+    "correctIndex": 0,
+    "difficulty": "easy",
+    "explanation": "Book-entry (or electronic) form means ownership is recorded in a computerized system rather than evidenced by physical stock certificates. Most modern share ownership is maintained in book-entry form for efficiency and security.",
+    "id": "q138",
+    "question": "What does 'book-entry' share ownership mean?"
+  },
+  {
+    "active": true,
+    "category": "Transfer Agent & Share Administration",
+    "choices": [
+      "The shareholder cannot recover the shares",
+      "The company issues replacement shares immediately with no process",
+      "The shareholder must obtain a surety bond and sign an affidavit of loss before replacement certificates are issued",
+      "Lost certificates are automatically replaced by the SEC"
+    ],
+    "correctIndex": 2,
+    "difficulty": "hard",
+    "explanation": "When a stock certificate is lost, the shareholder typically must submit an affidavit of loss and purchase a surety bond (usually 2-3% of the share value) to indemnify the company and transfer agent against claims from anyone who might find the original certificate.",
+    "id": "q139",
+    "question": "What happens when a physical stock certificate is lost?"
+  },
+  {
+    "active": true,
+    "category": "Transfer Agent & Share Administration",
+    "choices": [
+      "DWAC allows same-day electronic deposits and withdrawals of securities between a transfer agent and a brokerage",
+      "DWAC is a type of stock option",
+      "DWAC stands for Daily Weighted Average Cost",
+      "DWAC is a regulatory filing required by the SEC"
+    ],
+    "correctIndex": 0,
+    "difficulty": "hard",
+    "explanation": "DWAC (Deposit/Withdrawal at Custodian) is an electronic method for transferring securities between a transfer agent and DTC (Depository Trust Company) participant brokerages. It enables faster, paperless settlement compared to physical certificate transfers.",
+    "id": "q140",
+    "question": "What is a DWAC transfer?"
+  },
+  {
+    "active": true,
+    "category": "Clawbacks & Compliance",
+    "choices": [
+      "Clawback provisions are only found in employment contracts",
+      "The Dodd-Frank clawback rule requires public companies to recover erroneously awarded incentive compensation after an accounting restatement",
+      "Clawback provisions only apply to base salary",
+      "Clawback rules are voluntary and have no legal enforcement"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard",
+    "explanation": "SEC Rule 10D-1 (implementing Dodd-Frank Section 954) requires listed companies to adopt and enforce policies to recover erroneously awarded incentive-based compensation from current and former executive officers following an accounting restatement, regardless of fault.",
+    "id": "q141",
+    "question": "What does the Dodd-Frank clawback rule require?"
+  },
+  {
+    "active": true,
+    "category": "Clawbacks & Compliance",
+    "choices": [
+      "Current and former executive officers of listed companies",
+      "All employees at every level",
+      "Only the CEO",
+      "Only employees who committed fraud"
+    ],
+    "correctIndex": 0,
+    "difficulty": "hard",
+    "explanation": "The SEC's Dodd-Frank clawback rule applies to current and former executive officers (including the CEO, CFO, and other Section 16 officers) during the three-year lookback period preceding a restatement. It is a no-fault standard — recovery is required regardless of misconduct.",
+    "id": "q142",
+    "question": "Who is subject to compensation clawbacks under the SEC's final rule?"
+  },
+  {
+    "active": true,
+    "category": "Clawbacks & Compliance",
+    "choices": [
+      "Section 280G limits charitable deductions",
+      "Section 280G imposes an excise tax on excess parachute payments triggered by a change of control",
+      "Section 280G regulates stock option exercise prices",
+      "Section 280G sets minimum vesting schedules"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard",
+    "explanation": "IRC Section 280G defines 'parachute payments' as compensation contingent on a change of control that exceeds 3x the executive's base amount. Excess amounts face a 20% excise tax on the recipient (Section 4999) and are non-deductible for the company.",
+    "id": "q143",
+    "question": "What does IRC Section 280G address?"
+  },
+  {
+    "active": true,
+    "category": "Clawbacks & Compliance",
+    "choices": [
+      "ERISA governs all equity compensation plans",
+      "Equity incentive plans are generally exempt from ERISA because they don't involve employer contributions to a fund",
+      "ERISA requires all equity plans to have a 5-year vesting cliff",
+      "ERISA only applies to companies with more than 500 employees"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard",
+    "explanation": "ERISA (Employee Retirement Income Security Act) primarily covers retirement and welfare benefit plans. Stock option and equity incentive plans are generally not subject to ERISA because they don't involve employer contributions to a trust fund, though certain deferred compensation arrangements may trigger ERISA requirements.",
+    "id": "q144",
+    "question": "Does ERISA apply to equity compensation plans?"
+  },
+  {
+    "active": true,
+    "category": "Clawbacks & Compliance",
+    "choices": [
+      "Proxy advisory firms write the company's proxy statement",
+      "Proxy advisory firms like ISS and Glass Lewis advise institutional investors on how to vote on say-on-pay and equity plan proposals",
+      "Proxy advisory firms only deal with mergers and acquisitions",
+      "Proxy advisory firms set executive compensation levels"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium",
+    "explanation": "Proxy advisory firms (ISS, Glass Lewis) analyze corporate governance and compensation practices, then issue voting recommendations to institutional shareholders. Their say-on-pay and equity plan recommendations significantly influence shareholder voting outcomes.",
+    "id": "q145",
+    "question": "What role do proxy advisory firms play in equity compensation?"
+  },
+  {
+    "active": true,
+    "category": "Equity Technology & Data",
+    "choices": [
+      "A stock plan administration platform only generates tax forms",
+      "Platforms like Shareworks, E*TRADE, and Fidelity manage the end-to-end lifecycle of equity awards from grant to settlement",
+      "Stock plan platforms are only used by companies with over 10,000 employees",
+      "All equity administration must be done manually in spreadsheets"
+    ],
+    "correctIndex": 1,
+    "difficulty": "easy",
+    "explanation": "Stock plan administration platforms automate grant management, vesting tracking, exercise processing, tax withholding, regulatory compliance, participant communications, and reporting. They serve as the system of record for all equity compensation activity.",
+    "id": "q146",
+    "question": "What does a stock plan administration platform do?"
+  },
+  {
+    "active": true,
+    "category": "Equity Technology & Data",
+    "choices": [
+      "An equity management system (EMS) for private companies focuses only on 409A valuations",
+      "Platforms like Carta, Pulley, and AngelList maintain cap tables, manage equity grants, and facilitate compliance for private companies",
+      "Private companies don't need equity management systems",
+      "An EMS only tracks investor ownership, not employee equity"
+    ],
+    "correctIndex": 1,
+    "difficulty": "easy",
+    "explanation": "Private company equity management systems provide cap table management, equity grant tracking, 409A valuation support, scenario modeling, SEC compliance tools, and electronic securities issuance — replacing error-prone spreadsheets.",
+    "id": "q147",
+    "question": "What is the role of an equity management system for private companies?"
+  },
+  {
+    "active": true,
+    "category": "Equity Technology & Data",
+    "choices": [
+      "The grant date is irrelevant for record-keeping",
+      "The grant date determines the fair market value used for accounting and tax purposes",
+      "The grant date is always the same as the vesting date",
+      "The grant date is when the employee first joins the company"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium",
+    "explanation": "The grant date establishes the fair market value used for ASC 718 expense measurement, IRC 409A compliance, and exercise price setting. It's the date when the company and employee have a mutual understanding of the key terms and the board has approved the grant.",
+    "id": "q148",
+    "question": "Why is the grant date important in equity compensation record-keeping?"
+  },
+  {
+    "active": true,
+    "category": "Equity Technology & Data",
+    "choices": [
+      "Waterfall analysis only measures water usage in corporate offices",
+      "A waterfall analysis models how acquisition proceeds flow through the cap table based on liquidation preferences and share classes",
+      "Waterfall analysis calculates employee bonuses",
+      "A waterfall analysis is an agile project management framework"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard",
+    "explanation": "A waterfall (or proceeds distribution) analysis models the flow of money in a liquidity event, showing how proceeds cascade from senior preferred to junior preferred to common shares based on liquidation preferences, participation rights, and conversion scenarios.",
+    "id": "q149",
+    "question": "What is a waterfall analysis in cap table management?"
+  },
+  {
+    "active": true,
+    "category": "Equity Technology & Data",
+    "choices": [
+      "Scenario modeling predicts the weather",
+      "Scenario modeling only applies to public companies",
+      "It lets stakeholders project ownership percentages and payouts under different funding, exit, and dilution scenarios",
+      "Scenario modeling is illegal under securities law"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium",
+    "explanation": "Cap table scenario modeling allows companies and investors to project how future events — new funding rounds, option pool expansions, exits at various valuations — would affect ownership percentages, dilution, and payout amounts for each stakeholder.",
+    "id": "q150",
+    "question": "What is scenario modeling on a cap table?"
   }
 ]
