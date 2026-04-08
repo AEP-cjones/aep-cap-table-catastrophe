@@ -362,7 +362,7 @@ export default function HostScreen() {
             loading="eager"
             style={{
               position: 'absolute',
-              left: '0%',
+              left: '-8%',
               top: '8%',
               height: '65vh',
               width: 'auto',
@@ -375,7 +375,7 @@ export default function HostScreen() {
           {/* Centered content — sits above the owl, shifted slightly right */}
           <div
             className="flex flex-col items-center justify-center gap-5"
-            style={{ position: 'relative', zIndex: 2, height: '100%', padding: '1rem 2rem', paddingLeft: '8%' }}
+            style={{ position: 'relative', zIndex: 2, height: '100%', padding: '1rem 2rem', paddingLeft: '5%' }}
           >
             {/* Title */}
             <div className="text-center title-float" style={{ lineHeight: 1 }}>
@@ -420,32 +420,6 @@ export default function HostScreen() {
 
             {/* QR + Room code row */}
             <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
-              {/* QR */}
-              <div className="flex flex-col items-center gap-3">
-                <div
-                  className="scan-pulse"
-                  style={{
-                    fontFamily: "'Rajdhani','Roboto',sans-serif",
-                    fontSize: '1.1rem',
-                    fontWeight: 700,
-                    color: 'rgba(255,255,255,0.7)',
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  📱 Scan to Play!
-                </div>
-                <div className="bg-white p-4 rounded-2xl" style={{ boxShadow: '0 0 40px rgba(255,255,255,0.15)' }}>
-                  <QRCodeSVG value={`${playUrl}/play?room=${roomCode}`} size={220} />
-                </div>
-                <div className="text-center">
-                  <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.85rem', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                    or go to
-                  </div>
-                  <div className="text-white font-mono text-sm mt-1">{playUrl}/play?room={roomCode}</div>
-                </div>
-              </div>
-
               {/* Room code + players + buttons */}
               <div className="flex flex-col items-center gap-4">
                 <div className="text-center">
@@ -514,6 +488,32 @@ export default function HostScreen() {
                       Reset
                     </button>
                   )}
+                </div>
+              </div>
+
+              {/* QR */}
+              <div className="flex flex-col items-center gap-3">
+                <div
+                  className="scan-pulse"
+                  style={{
+                    fontFamily: "'Rajdhani','Roboto',sans-serif",
+                    fontSize: '1.1rem',
+                    fontWeight: 700,
+                    color: 'rgba(255,255,255,0.7)',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  📱 Scan to Play!
+                </div>
+                <div className="bg-white p-4 rounded-2xl" style={{ boxShadow: '0 0 40px rgba(255,255,255,0.15)' }}>
+                  <QRCodeSVG value={`${playUrl}/play?room=${roomCode}`} size={220} />
+                </div>
+                <div className="text-center">
+                  <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.85rem', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                    or go to
+                  </div>
+                  <div className="text-white font-mono text-sm mt-1">{playUrl}/play?room={roomCode}</div>
                 </div>
               </div>
             </div>
