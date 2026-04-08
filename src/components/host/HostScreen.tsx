@@ -353,18 +353,17 @@ export default function HostScreen() {
 
       {/* ── LOBBY ─────────────────────────────────────────────────────────────── */}
       {status === 'lobby' && (
-        <div className="flex-1 flex items-stretch p-8 gap-8" style={{ minHeight: 0 }}>
+        <div className="flex-1 flex items-stretch px-4 py-2 gap-4" style={{ minHeight: 0, height: 'calc(100vh - 64px)' }}>
           {/* LEFT column — Owl */}
-          <div className="hidden lg:flex items-center justify-center flex-shrink-0" style={{ width: '38%' }}>
+          <div className="hidden lg:flex items-center justify-center flex-shrink-0" style={{ width: '35%' }}>
             <img
               src="/Wise_Owl.webp"
               alt=""
               className="owl-float"
               loading="eager"
               style={{
-                width: '100%',
-                maxWidth: '560px',
-                height: 'auto',
+                height: '80vh',
+                width: 'auto',
                 objectFit: 'contain',
                 filter: 'drop-shadow(0 0 40px rgba(255,200,50,0.45)) drop-shadow(0 0 80px rgba(172,34,40,0.35))',
               }}
@@ -372,13 +371,13 @@ export default function HostScreen() {
           </div>
 
           {/* RIGHT column — all content */}
-          <div className="flex-1 flex flex-col items-center justify-center gap-8">
+          <div className="flex-1 flex flex-col items-center justify-center gap-5">
             {/* Title */}
             <div className="text-center title-float" style={{ lineHeight: 1 }}>
               <div
                 style={{
                   fontFamily: "'Bungee', cursive",
-                  fontSize: 'clamp(4rem, 9vw, 8rem)',
+                  fontSize: 'clamp(3.5rem, 7vw, 7rem)',
                   color: '#ffffff',
                   textShadow: '0 0 40px rgba(172,34,40,0.7), 0 4px 0 rgba(172,34,40,0.8), 0 8px 0 rgba(100,10,14,0.6)',
                   letterSpacing: '0.02em',
@@ -390,7 +389,7 @@ export default function HostScreen() {
               <div
                 style={{
                   fontFamily: "'Bungee', cursive",
-                  fontSize: 'clamp(3.5rem, 8vw, 7rem)',
+                  fontSize: 'clamp(3rem, 6vw, 6rem)',
                   color: '#AC2228',
                   textShadow: '0 0 30px rgba(172,34,40,0.5), 0 4px 0 rgba(100,10,14,0.8)',
                   letterSpacing: '0.02em',
@@ -402,12 +401,12 @@ export default function HostScreen() {
               <div
                 style={{
                   fontFamily: "'Rajdhani','Roboto',sans-serif",
-                  fontSize: '1.4rem',
+                  fontSize: '1.2rem',
                   fontWeight: 600,
                   color: 'rgba(255,255,255,0.55)',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  marginTop: '12px',
+                  marginTop: '8px',
                 }}
               >
                 Test Your Equity IQ
@@ -415,9 +414,9 @@ export default function HostScreen() {
             </div>
 
             {/* QR + Room code row */}
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-10">
+            <div className="flex flex-col lg:flex-row items-center justify-center gap-8">
               {/* QR */}
-              <div className="flex flex-col items-center gap-4">
+              <div className="flex flex-col items-center gap-3">
                 <div
                   className="scan-pulse"
                   style={{
@@ -432,7 +431,7 @@ export default function HostScreen() {
                   📱 Scan to Play!
                 </div>
                 <div className="bg-white p-4 rounded-2xl" style={{ boxShadow: '0 0 40px rgba(255,255,255,0.15)' }}>
-                  <QRCodeSVG value={`${playUrl}/play?room=${roomCode}`} size={180} />
+                  <QRCodeSVG value={`${playUrl}/play?room=${roomCode}`} size={220} />
                 </div>
                 <div className="text-center">
                   <div style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.85rem', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
@@ -443,7 +442,7 @@ export default function HostScreen() {
               </div>
 
               {/* Room code + players + buttons */}
-              <div className="flex flex-col items-center gap-5">
+              <div className="flex flex-col items-center gap-4">
                 <div className="text-center">
                   <div
                     style={{
@@ -461,7 +460,7 @@ export default function HostScreen() {
                   <div
                     style={{
                       fontFamily: "'Bungee', cursive",
-                      fontSize: 'clamp(5rem, 12vw, 9rem)',
+                      fontSize: 'clamp(4rem, 10vw, 8rem)',
                       color: '#AC2228',
                       lineHeight: 1,
                       textShadow: '0 0 30px rgba(172,34,40,0.4)',
@@ -489,7 +488,7 @@ export default function HostScreen() {
                   </div>
                 )}
 
-                <div className="flex gap-4 mt-2">
+                <div className="flex gap-4 mt-1">
                   <button
                     onClick={handleStartGame}
                     className="pulse-glow px-12 py-5 rounded-xl text-white text-2xl font-bold uppercase tracking-wide transition-all hover:opacity-95 active:scale-95"
