@@ -47,8 +47,14 @@ export interface Lead {
   playerId: string
   nickname: string
   firstName: string
+  /** Captured in the player lead form (required as of 2026-04-16). Existing
+   *  pre-2026-04-16 leads lack this field — mapping falls back to "(Unknown)". */
+  lastName?: string
   email: string
   company: string
   optIn: boolean
   timestamp: number
+  /** Set when the lead has been synced to Zoho CRM. */
+  zohoLeadId?: string
+  zohoSyncedAt?: number
 }

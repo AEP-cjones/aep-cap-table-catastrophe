@@ -76,6 +76,7 @@ export default function PlayerScreen() {
   const [leadSkipped, setLeadSkipped] = useState(false)
   const [leadForm, setLeadForm] = useState({
     firstName: '',
+    lastName: '',
     email: '',
     company: '',
     optIn: false,
@@ -111,7 +112,9 @@ export default function PlayerScreen() {
     if (!playerId || Object.keys(players).length === 0) return
     if (players[playerId]) {
       setNickname(players[playerId].nickname)
-      setLeadForm((prev) => ({ ...prev, firstName: players[playerId].nickname }))
+      // Note: do NOT prefill leadForm.firstName from nickname — nickname is
+      // the screen name, firstName is the person's real first name. Conflating
+      // them produced bad Zoho data. Players fill first/last name explicitly.
       setHasJoined(true)
     }
   }, [playerId, players])
@@ -196,7 +199,8 @@ export default function PlayerScreen() {
     setJoinError('')
     await joinGame(playerId, name)
     setNickname(name)
-    setLeadForm((prev) => ({ ...prev, firstName: name }))
+    // Note: do NOT prefill leadForm.firstName with the nickname — player
+    // fills First/Last name explicitly on the lead form.
     setHasJoined(true)
   }
 
@@ -226,7 +230,9 @@ export default function PlayerScreen() {
     setLeadSubmitting(true)
     const lead: Lead = {
       playerId, nickname,
-      firstName: leadForm.firstName, email: leadForm.email,
+      firstName: leadForm.firstName,
+      lastName: leadForm.lastName,
+      email: leadForm.email,
       company: leadForm.company, optIn: leadForm.optIn,
       timestamp: Date.now(),
     }
@@ -658,6 +664,13 @@ export default function PlayerScreen() {
               placeholder="First name"
               value={leadForm.firstName}
               onChange={(e) => setLeadForm((p) => ({ ...p, firstName: e.target.value }))}
+            />
+            <input
+              className="w-full px-4 py-3 rounded-xl text-white outline-none"
+              style={{ backgroundColor: '#2d3748' }}
+              placeholder="Last name"
+              value={leadForm.lastName}
+              onChange={(e) => setLeadForm((p) => ({ ...p, lastName: e.target.value }))}
             />
             <input
               className="w-full px-4 py-3 rounded-xl text-white outline-none"

@@ -9,8 +9,10 @@ import {
   updateConfig,
   getLeads,
   clearLeads,
+  markLeadSynced,
   initializeQuestionsFromJson,
 } from '../../firebase/gameService'
+import { pushLeadToZoho } from '../../services/zoho'
 import questionsData from '../../data/questions.json'
 import type { Question as QuestionType } from '../../types'
 
@@ -58,6 +60,8 @@ export default function AdminPanel() {
   const [configForm, setConfigForm] = useState<Partial<GameConfig>>({})
   const [saving, setSaving] = useState(false)
   const [saveMessage, setSaveMessage] = useState('')
+  const [zohoSyncing, setZohoSyncing] = useState(false)
+  const [zohoStatus, setZohoStatus] = useState<string | null>(null)
 
   // Subscriptions
   useEffect(() => {
@@ -222,9 +226,18 @@ export default function AdminPanel() {
   const handleExportLeadsCSV = () => {
     const arr = Object.values(leads)
     if (arr.length === 0) return alert('No leads to export.')
-    const headers = ['nickname', 'firstName', 'email', 'company', 'optIn', 'timestamp']
+    const headers = ['nickname', 'firstName', 'lastName', 'email', 'company', 'optIn', 'zohoLeadId', 'timestamp']
     const rows = arr.map((l) =>
-      [l.nickname, l.firstName, l.email, l.company, l.optIn, new Date(l.timestamp).toISOString()].join(',')
+      [
+        l.nickname,
+        l.firstName,
+        l.lastName ?? '',
+        l.email,
+        l.company,
+        l.optIn,
+        l.zohoLeadId ?? '',
+        new Date(l.timestamp).toISOString(),
+      ].join(',')
     )
     const csv = [headers.join(','), ...rows].join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
@@ -240,6 +253,44 @@ export default function AdminPanel() {
     if (!window.confirm('Clear all leads? This cannot be undone.')) return
     await clearLeads()
     setLeads({})
+  }
+
+  const handleSyncToZoho = async () => {
+    if (zohoSyncing) return
+    // Eligible = opted in AND not already synced
+    const eligible = Object.values(leads).filter((l) => l.optIn === true && !l.zohoLeadId)
+    if (eligible.length === 0) return
+    setZohoSyncing(true)
+    let success = 0
+    let failed = 0
+    const updated = { ...leads }
+    for (let i = 0; i < eligible.length; i++) {
+      const lead = eligible[i]
+      setZohoStatus(`Syncing ${i + 1} of ${eligible.length}…`)
+      try {
+        const { zohoLeadId } = await pushLeadToZoho(lead)
+        await markLeadSynced(lead.playerId, zohoLeadId)
+        updated[lead.playerId] = {
+          ...lead,
+          zohoLeadId,
+          zohoSyncedAt: Date.now(),
+        }
+        success++
+      } catch (err) {
+        console.error(`[sync] Failed for ${lead.email}:`, err)
+        failed++
+      }
+    }
+    setLeads(updated)
+    setZohoStatus(
+      failed === 0
+        ? `✓ Synced ${success} of ${eligible.length}`
+        : `✗ Synced ${success} of ${eligible.length} — ${failed} failed (see console)`,
+    )
+    setZohoSyncing(false)
+    if (failed === 0) {
+      setTimeout(() => setZohoStatus(null), 6000)
+    }
   }
 
   const filteredQuestions = Object.values(questions).filter((q) => {
@@ -706,10 +757,37 @@ export default function AdminPanel() {
         {/* ── LEADS TAB ── */}
         {tab === 'leads' && (
           <div className="flex flex-col gap-4">
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-3 items-center flex-wrap">
               <div className="text-white font-bold text-xl flex-1">
                 Leads ({Object.keys(leads).length})
               </div>
+              {zohoStatus && (
+                <span
+                  className={`px-3 py-1.5 rounded text-xs font-bold uppercase tracking-wide ${
+                    zohoStatus.startsWith('✗')
+                      ? 'bg-red-900 text-red-200'
+                      : zohoStatus.startsWith('✓')
+                        ? 'bg-green-900 text-green-200'
+                        : 'bg-yellow-900 text-yellow-200'
+                  }`}
+                >
+                  {zohoStatus}
+                </span>
+              )}
+              <button
+                onClick={handleSyncToZoho}
+                disabled={
+                  zohoSyncing ||
+                  Object.values(leads).filter((l) => l.optIn === true && !l.zohoLeadId).length === 0
+                }
+                className="px-5 py-2 rounded-lg text-white font-bold text-sm uppercase tracking-wide transition-all hover:opacity-80 disabled:opacity-30"
+                style={{ backgroundColor: '#2563eb' }}
+                title="Push opted-in, un-synced leads to Zoho CRM"
+              >
+                Sync to Zoho (
+                {Object.values(leads).filter((l) => l.optIn === true && !l.zohoLeadId).length}
+                )
+              </button>
               <button
                 onClick={handleExportLeadsCSV}
                 className="px-5 py-2 rounded-lg text-white font-bold text-sm uppercase tracking-wide transition-all hover:opacity-80"
@@ -731,9 +809,11 @@ export default function AdminPanel() {
                   <tr className="text-gray-400 uppercase text-xs tracking-wide border-b border-gray-700">
                     <th className="px-4 py-3 text-left">Nickname</th>
                     <th className="px-4 py-3 text-left">First Name</th>
+                    <th className="px-4 py-3 text-left">Last Name</th>
                     <th className="px-4 py-3 text-left">Email</th>
                     <th className="px-4 py-3 text-left">Company</th>
                     <th className="px-4 py-3 text-center">Opt-In</th>
+                    <th className="px-4 py-3 text-center">Synced</th>
                     <th className="px-4 py-3 text-left">Timestamp</th>
                   </tr>
                 </thead>
@@ -745,6 +825,7 @@ export default function AdminPanel() {
                     >
                       <td className="px-4 py-3 text-white">{lead.nickname}</td>
                       <td className="px-4 py-3 text-gray-300">{lead.firstName}</td>
+                      <td className="px-4 py-3 text-gray-300">{lead.lastName ?? ''}</td>
                       <td className="px-4 py-3 text-gray-300">{lead.email}</td>
                       <td className="px-4 py-3 text-gray-300">{lead.company}</td>
                       <td className="px-4 py-3 text-center">
@@ -756,6 +837,22 @@ export default function AdminPanel() {
                           {lead.optIn ? 'Yes' : 'No'}
                         </span>
                       </td>
+                      <td className="px-4 py-3 text-center">
+                        {lead.zohoLeadId ? (
+                          <span
+                            className="px-2 py-0.5 rounded text-xs font-bold bg-green-900 text-green-300"
+                            title={
+                              lead.zohoSyncedAt
+                                ? `Synced ${new Date(lead.zohoSyncedAt).toLocaleString()} (Zoho ID ${lead.zohoLeadId})`
+                                : `Zoho ID ${lead.zohoLeadId}`
+                            }
+                          >
+                            ✓
+                          </span>
+                        ) : (
+                          <span className="text-gray-600">—</span>
+                        )}
+                      </td>
                       <td className="px-4 py-3 text-gray-400 text-xs">
                         {new Date(lead.timestamp).toLocaleString()}
                       </td>
@@ -763,7 +860,7 @@ export default function AdminPanel() {
                   ))}
                   {Object.keys(leads).length === 0 && (
                     <tr>
-                      <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                      <td colSpan={8} className="px-4 py-8 text-center text-gray-500">
                         No leads yet.
                       </td>
                     </tr>

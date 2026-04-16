@@ -219,6 +219,14 @@ export async function getLeads(): Promise<Record<string, Lead>> {
   return (snap.val() as Record<string, Lead>) ?? {}
 }
 
+/** Write Zoho sync markers back to the lead record after a successful sync. */
+export async function markLeadSynced(playerId: string, zohoLeadId: string): Promise<void> {
+  await update(ref(db, `/leads/${playerId}`), {
+    zohoLeadId,
+    zohoSyncedAt: Date.now(),
+  })
+}
+
 export async function clearLeads(): Promise<void> {
   await remove(ref(db, '/leads'))
 }
