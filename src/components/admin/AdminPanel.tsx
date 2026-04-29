@@ -12,6 +12,7 @@ import {
   markLeadSynced,
   initializeQuestionsFromJson,
 } from '../../firebase/gameService'
+import { signInAsGameAdmin } from '../../firebase/config'
 import { pushLeadToZoho } from '../../services/zoho'
 import questionsData from '../../data/questions.json'
 import type { Question as QuestionType } from '../../types'
@@ -41,12 +42,11 @@ function generateId(): string {
   return 'q' + Date.now().toString().slice(-8)
 }
 
-const DEFAULT_PASSWORD = 'aep2026'
-
 export default function AdminPanel() {
   const [authed, setAuthed] = useState(false)
   const [passwordInput, setPasswordInput] = useState('')
   const [passwordError, setPasswordError] = useState('')
+  const [loggingIn, setLoggingIn] = useState(false)
   const [config, setConfig] = useState<GameConfig | null>(null)
   const [configLoaded, setConfigLoaded] = useState(false)
   const [tab, setTab] = useState<Tab>('questions')
@@ -92,18 +92,22 @@ export default function AdminPanel() {
     }
   }, [config])
 
-  const handleLogin = () => {
-    if (!configLoaded) {
-      setPasswordError('Connecting to Firebase... try again in a moment.')
-      return
-    }
-    // config is null when database is empty (first run) — fall back to default password
-    const expectedPassword = config?.adminPassword ?? DEFAULT_PASSWORD
-    if (passwordInput === expectedPassword) {
+  const handleLogin = async () => {
+    if (loggingIn) return
+    setPasswordError('')
+    setLoggingIn(true)
+    try {
+      // Server-validated password — exchanges for a Firebase custom token
+      // with `gameAdmin: true` claim. After this resolves, the rules let
+      // us read leads + write config/questions. Source of truth for the
+      // password is the GAME_ADMIN_PASSWORD env var on the Claudia backend
+      // (no longer config.adminPassword in Firebase).
+      await signInAsGameAdmin(passwordInput)
       setAuthed(true)
-      setPasswordError('')
-    } else {
-      setPasswordError('Incorrect password.')
+    } catch (err) {
+      setPasswordError(err instanceof Error ? err.message : String(err))
+    } finally {
+      setLoggingIn(false)
     }
   }
 
@@ -321,23 +325,24 @@ export default function AdminPanel() {
           </div>
           <input
             type="password"
-            className="w-full px-4 py-3 rounded-xl text-white outline-none"
+            className="w-full px-4 py-3 rounded-xl text-white outline-none disabled:opacity-60"
             style={{ backgroundColor: '#2d3748' }}
             placeholder="Admin password"
             value={passwordInput}
+            disabled={loggingIn}
             onChange={(e) => setPasswordInput(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
+            onKeyDown={(e) => e.key === 'Enter' && !loggingIn && handleLogin()}
           />
           {passwordError && (
             <div className="text-red-400 text-sm text-center">{passwordError}</div>
           )}
           <button
             onClick={handleLogin}
-            disabled={!configLoaded}
+            disabled={loggingIn}
             className="w-full py-3 rounded-xl text-white font-bold uppercase tracking-wide transition-all hover:opacity-90 disabled:opacity-50"
             style={{ backgroundColor: '#AC2228' }}
           >
-            {configLoaded ? 'Login' : 'Connecting...'}
+            {loggingIn ? 'Verifying…' : 'Login'}
           </button>
         </div>
       </div>
