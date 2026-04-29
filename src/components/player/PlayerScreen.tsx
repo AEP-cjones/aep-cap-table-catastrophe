@@ -94,7 +94,7 @@ export default function PlayerScreen() {
 
   const timeRemaining = useTimer(
     status === 'question' ? (gameState?.questionStartTime ?? null) : null,
-    config?.timeLimit ?? 20
+    config?.timeLimit ?? 30
   )
 
   // Init: load or generate playerId
@@ -216,7 +216,7 @@ export default function PlayerScreen() {
     const startTime = gameState.questionStartTime ?? Date.now()
     const timestamp = Date.now()
     const elapsed = timestamp - startTime
-    const tl = (config?.timeLimit ?? 20) * 1000
+    const tl = (config?.timeLimit ?? 30) * 1000
     const isCorrect = idx === displayCorrectIndex
     const points = isCorrect ? 100 + Math.round(50 * Math.max(0, (tl - elapsed) / tl)) : 0
     const answer: Answer = { answerIndex: idx, timestamp, isCorrect, points }
@@ -404,7 +404,19 @@ export default function PlayerScreen() {
                 textAlign: 'right',
               }}
             >
-              {timeRemaining}s
+              {timeRemaining}
+              <span
+                style={{
+                  fontFamily: "'Rajdhani','Roboto',sans-serif",
+                  fontSize: '0.42em',
+                  fontWeight: 600,
+                  marginLeft: 4,
+                  opacity: 0.8,
+                  textTransform: 'lowercase',
+                }}
+              >
+                s
+              </span>
             </div>
           </div>
           <div className="text-white text-xl font-bold leading-snug flex-shrink-0">

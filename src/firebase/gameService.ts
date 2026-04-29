@@ -59,7 +59,7 @@ export async function initializeGame(): Promise<void> {
     const defaultConfig: GameConfig = {
       roomCode: generateRoomCode(),
       questionsPerGame: 10,
-      timeLimit: 20,
+      timeLimit: 30,
       randomizeOrder: true,
       adminPassword: 'aep2026',
       playUrl: 'https://localhost:5173/play',

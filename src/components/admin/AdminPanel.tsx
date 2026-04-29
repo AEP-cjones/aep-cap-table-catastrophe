@@ -715,9 +715,9 @@ export default function AdminPanel() {
                   max={60}
                   className="w-24 px-3 py-2 rounded-lg text-white text-sm outline-none"
                   style={{ backgroundColor: '#2d3748' }}
-                  value={configForm.timeLimit ?? 20}
+                  value={configForm.timeLimit ?? 30}
                   onChange={(e) =>
-                    setConfigForm((p) => ({ ...p, timeLimit: parseInt(e.target.value) || 20 }))
+                    setConfigForm((p) => ({ ...p, timeLimit: parseInt(e.target.value) || 30 }))
                   }
                 />
               </ConfigField>

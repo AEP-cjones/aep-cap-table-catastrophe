@@ -90,7 +90,7 @@ export default function HostScreen() {
   const status = gameState?.status ?? 'lobby'
   const currentIndex = gameState?.currentQuestionIndex ?? 0
   const questionStartTime = gameState?.questionStartTime ?? null
-  const timeLimit = config?.timeLimit ?? 20
+  const timeLimit = config?.timeLimit ?? 30
 
   const timeRemaining = useTimer(
     status === 'question' ? questionStartTime : null,
@@ -601,7 +601,19 @@ export default function HostScreen() {
                 }`}
                 style={{ fontFamily: "'Bungee', cursive", minWidth: '80px', textAlign: 'right' }}
               >
-                {timeRemaining}s
+                {timeRemaining}
+                <span
+                  style={{
+                    fontFamily: "'Rajdhani','Roboto',sans-serif",
+                    fontSize: '0.42em',
+                    fontWeight: 600,
+                    marginLeft: 4,
+                    opacity: 0.8,
+                    textTransform: 'lowercase',
+                  }}
+                >
+                  s
+                </span>
               </div>
             </div>
           </div>
