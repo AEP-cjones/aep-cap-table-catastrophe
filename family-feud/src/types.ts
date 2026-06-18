@@ -36,7 +36,6 @@ export interface PublicRounds {
 }
 
 export interface GameConfig {
-  adminPassword: string
   team1Name: string
   team2Name: string
 }
@@ -55,7 +54,6 @@ export interface GameState {
 }
 
 export const DEFAULT_CONFIG: GameConfig = {
-  adminPassword: 'aep2026',
   team1Name: 'Team 1',
   team2Name: 'Team 2',
 }
