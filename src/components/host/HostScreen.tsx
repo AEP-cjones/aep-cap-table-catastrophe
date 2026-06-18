@@ -268,7 +268,17 @@ export default function HostScreen() {
   const isLastQuestion = currentIndex >= selectedIds.length - 1
   const allAnswered = playerList.length > 0 && answerList.length >= playerList.length
   const roomCode = config.roomCode ?? ''
-  const playUrl = config.playUrl ?? ''
+  // Admin can override the QR base via Firebase config.playUrl (e.g. a custom
+  // domain). When unset, derive it from where this Host screen is actually
+  // served — origin + Vite base (/cap-table/) — so the QR resolves correctly
+  // under the combined Static Web App. Trailing slash trimmed; "/play" appended below.
+  const playUrl = (
+    config.playUrl?.trim()
+      ? config.playUrl.trim()
+      : typeof window !== 'undefined'
+        ? `${window.location.origin}${import.meta.env.BASE_URL}`
+        : ''
+  ).replace(/\/+$/, '')
   const timerPercent = Math.max(0, (timeRemaining / timeLimit) * 100)
   const timerColor = timeRemaining <= 5 ? '#ef4444' : timeRemaining <= 10 ? '#f59e0b' : '#22c55e'
 
@@ -356,7 +366,7 @@ export default function HostScreen() {
         <div className="flex-1" style={{ position: 'relative', overflow: 'hidden', height: 'calc(100vh - 64px)' }}>
           {/* Owl — absolutely positioned, overlaps into the title zone */}
           <img
-            src="/Wise_Owl.webp"
+            src={`${import.meta.env.BASE_URL}Wise_Owl.webp`}
             alt=""
             className="owl-float hidden lg:block"
             loading="eager"
@@ -635,7 +645,7 @@ export default function HostScreen() {
           {currentQuestion ? (
             <div className="flex items-center justify-center gap-5 w-full max-w-5xl">
               <img
-                src="/Confused_Owl.webp"
+                src={`${import.meta.env.BASE_URL}Confused_Owl.webp`}
                 alt=""
                 className="owl-slide-left hidden lg:block"
                 style={{ width: '120px', height: '120px', objectFit: 'contain', flexShrink: 0 }}
@@ -699,7 +709,7 @@ export default function HostScreen() {
                   {currentQuestion.question}
                 </div>
                 <img
-                  src="/Wise_Owl.webp"
+                  src={`${import.meta.env.BASE_URL}Wise_Owl.webp`}
                   alt=""
                   className="owl-nod hidden lg:block"
                   style={{ width: '150px', height: '150px', objectFit: 'contain', flexShrink: 0 }}
@@ -771,7 +781,7 @@ export default function HostScreen() {
           {/* Owls flanking the leaderboard */}
           <div className="w-full max-w-4xl flex items-start justify-center gap-6">
             <img
-              src="/Wise_Owl.webp"
+              src={`${import.meta.env.BASE_URL}Wise_Owl.webp`}
               alt=""
               className="owl-bob-sm hidden lg:block flex-shrink-0"
               style={{ width: '230px', height: 'auto', objectFit: 'contain', marginTop: '20px', filter: 'drop-shadow(0 0 20px rgba(255,200,50,0.3))' }}
@@ -803,7 +813,7 @@ export default function HostScreen() {
             </div>
 
             <img
-              src="/Confused_Owl.webp"
+              src={`${import.meta.env.BASE_URL}Confused_Owl.webp`}
               alt=""
               className="owl-wobble-sm hidden lg:block flex-shrink-0"
               style={{ width: '230px', height: 'auto', objectFit: 'contain', marginTop: '20px', filter: 'drop-shadow(0 0 20px rgba(172,34,40,0.3))' }}
@@ -856,7 +866,7 @@ export default function HostScreen() {
           <Confetti />
           <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
             <img
-              src="/Wise_Owl.webp"
+              src={`${import.meta.env.BASE_URL}Wise_Owl.webp`}
               alt=""
               className="owl-celebrate"
               style={{ width: '200px', height: '200px', objectFit: 'contain' }}

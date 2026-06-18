@@ -1,14 +1,32 @@
 {
+  "$schema": "https://json.schemastore.org/staticwebapp.config.json",
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/assets/*"]
+    "exclude": [
+      "/cap-table/assets/*",
+      "/family-feud/assets/*",
+      "/*.{js,css,svg,png,webp,ico,json,woff,woff2,map,txt}"
+    ]
   },
   "routes": [
     {
-      "route": "/assets/*",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
-    }
+      "route": "/cap-table/assets/*",
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
+    },
+    {
+      "route": "/family-feud/assets/*",
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
+    },
+    { "route": "/cap-table", "rewrite": "/cap-table/index.html" },
+    { "route": "/cap-table/", "rewrite": "/cap-table/index.html" },
+    { "route": "/cap-table/host", "rewrite": "/cap-table/index.html" },
+    { "route": "/cap-table/play", "rewrite": "/cap-table/index.html" },
+    { "route": "/cap-table/admin", "rewrite": "/cap-table/index.html" },
+    { "route": "/family-feud", "rewrite": "/family-feud/index.html" },
+    { "route": "/family-feud/", "rewrite": "/family-feud/index.html" },
+    { "route": "/family-feud/board", "rewrite": "/family-feud/index.html" },
+    { "route": "/family-feud/host", "rewrite": "/family-feud/index.html" },
+    { "route": "/family-feud/admin", "rewrite": "/family-feud/index.html" },
+    { "route": "/family-feud/play", "rewrite": "/family-feud/index.html" }
   ]
 }
