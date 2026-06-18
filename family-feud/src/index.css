@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import "tailwindcss";
+
+:root {
+  --navy: #0a1628;
+  --navy-light: #132240;
+  --navy-mid: #1a2d4a;
+  --gold: #ffd700;
+  --gold-dark: #c5a600;
+  --aep-red: #c8102e;
+  --strike-red: #ff1744;
+  --reveal-blue: #1e3a5f;
+  --board-blue: #0d2137;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--navy);
+  color: white;
+  min-height: 100vh;
+}
+
+.font-bungee {
+  font-family: 'Bungee', cursive;
+}
+
+/* Answer flip animation */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card-inner.revealed {
+  transform: rotateX(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.flip-card-front {
+  background: linear-gradient(135deg, var(--reveal-blue), var(--board-blue));
+  border: 2px solid #2a4a6b;
+}
+
+.flip-card-back {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  transform: rotateX(180deg);
+  color: #1a1a2e;
+}
+
+/* Strike animation */
+@keyframes strikeSlam {
+  0% { transform: scale(3) rotate(-15deg); opacity: 0; }
+  50% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+  70% { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes screenShake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-10px) translateY(-5px); }
+  20% { transform: translateX(10px) translateY(5px); }
+  30% { transform: translateX(-8px) translateY(-3px); }
+  40% { transform: translateX(8px) translateY(3px); }
+  50% { transform: translateX(-5px); }
+  60% { transform: translateX(5px); }
+}
+
+.strike-x {
+  animation: strikeSlam 0.5s ease-out forwards;
+}
+
+.screen-shake {
+  animation: screenShake 0.5s ease-out;
+}
+
+/* Score tick animation */
+@keyframes scorePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); color: var(--gold); }
+  100% { transform: scale(1); }
+}
+
+.score-pop {
+  animation: scorePop 0.4s ease-out;
+}
+
+/* Reveal glow */
+@keyframes revealGlow {
+  0% { box-shadow: 0 0 0 rgba(255, 215, 0, 0); }
+  50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+  100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+}
+
+.reveal-glow {
+  animation: revealGlow 0.8s ease-out;
+}
+
+/* Owl idle animation */
+@keyframes owlBob {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-5px) rotate(-2deg); }
+  75% { transform: translateY(-3px) rotate(2deg); }
+}
+
+.owl-idle {
+  animation: owlBob 3s ease-in-out infinite;
+}
+
+/* Strike fade out */
+@keyframes strikeFade {
+  0%, 80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.strike-fade {
+  animation: strikeFade 2s ease-out forwards;
+}
+
+/* Title screen glow */
+@keyframes titleGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.2); }
+  50% { text-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 215, 0, 0.4); }
+}
+
+.title-glow {
+  animation: titleGlow 2s ease-in-out infinite;
+}
+
+/* Title screen animated background */
+.title-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.title-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 30%, rgba(255,215,0,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 70%, rgba(200,16,46,0.05) 0%, transparent 60%);
+  animation: bgPulse 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.title-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes bgPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Team name glows */
+.team-glow-blue {
+  text-shadow: 0 0 20px rgba(96,165,250,0.5), 0 0 40px rgba(96,165,250,0.2);
+}
+
+.team-glow-red {
+  text-shadow: 0 0 20px rgba(200,16,46,0.6), 0 0 40px rgba(200,16,46,0.3);
+}
+
+/* Tagline pulse */
+@keyframes taglinePulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.55; }
+}
+
+.tagline-pulse {
+  animation: taglinePulse 3s ease-in-out infinite;
+}
+
+/* Marquee bulbs (Vegas-style chase lights around the answer board).
+   Position + size are set inline by MarqueeRing; this only styles the look. */
+.marquee-bulb {
+  background: var(--gold);
+  z-index: 1;
+}
+
+@keyframes bulbChase {
+  0%, 100% {
+    opacity: 0.35;
+    box-shadow:
+      0 0 4px rgba(255, 215, 0, 0.4),
+      inset 0 0 2px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    opacity: 1;
+    box-shadow:
+      0 0 12px rgba(255, 215, 0, 0.95),
+      0 0 24px rgba(255, 215, 0, 0.55),
+      inset 0 0 2px rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* "THEIR TURN" pointer pulse — brighter than tagline-pulse */
+@keyframes turnPointerPulse {
+  0%, 100% { opacity: 0.7; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(3px); }
+}
+.turn-pointer {
+  animation: turnPointerPulse 1.4s ease-in-out infinite;
+}
+
+/* Round intro splash */
+@keyframes splashFadeIn {
+  0% { opacity: 0; }
+  15%, 80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.splash-fade {
+  animation: splashFadeIn 1.8s ease-in-out forwards;
+}
+
+@keyframes splashScaleIn {
+  0% { transform: scale(0.5); }
+  45%, 80% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+.splash-scale {
+  animation: splashScaleIn 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Host page two-column layout — single col below 1024px, split above */
+.host-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .host-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+.host-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+
+/* Steal banner: red pulsing border + soft entrance */
+@keyframes stealPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 2px var(--strike-red),
+      0 0 24px rgba(255, 23, 68, 0.45),
+      0 0 60px rgba(255, 23, 68, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 2px var(--strike-red),
+      0 0 40px rgba(255, 23, 68, 0.85),
+      0 0 100px rgba(255, 23, 68, 0.5);
+  }
+}
+.steal-pulse {
+  animation: stealPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes stealEntrance {
+  0% { transform: translateY(-12px) scale(0.96); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+.steal-entrance {
+  animation: stealEntrance 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Strike dot warning pulse (used when strikes === 2 — the "next one ends it" cue) */
+@keyframes strikeDotWarn {
+  0%, 100% {
+    border-color: rgba(255, 23, 68, 0.5);
+    background: rgba(255, 23, 68, 0.05);
+  }
+  50% {
+    border-color: rgba(255, 23, 68, 0.95);
+    background: rgba(255, 23, 68, 0.18);
+    box-shadow: 0 0 12px rgba(255, 23, 68, 0.6);
+  }
+}
+.strike-dot-warn {
+  animation: strikeDotWarn 1.1s ease-in-out infinite;
+}
+
+@keyframes splashSubSlide {
+  0% { transform: translateY(18px); opacity: 0; }
+  30%, 80% { transform: translateY(0); opacity: 1; }
+  100% { opacity: 0; }
+}
+.splash-sub {
+  animation: splashSubSlide 1.8s ease-out forwards;
+}

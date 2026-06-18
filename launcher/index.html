@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./aep-logo-white.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AEP Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&family=Rajdhani:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --aep-red: #ac2228;
+        --gold: #ffc832;
+        --ink: #0f1011;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body { height: 100%; }
+      body {
+        min-height: 100%;
+        font-family: 'Rajdhani', system-ui, sans-serif;
+        color: #fff;
+        background:
+          radial-gradient(1200px 600px at 50% -10%, rgba(172, 34, 40, 0.28), transparent 60%),
+          linear-gradient(180deg, #15171a 0%, #0b0c0d 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 22px 32px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      header img { height: 38px; width: auto; display: block; }
+      header span {
+        font-family: 'Bungee', sans-serif;
+        letter-spacing: 0.18em;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.55);
+      }
+      main {
+        flex: 1;
+        width: 100%;
+        max-width: 1000px;
+        padding: 56px 28px 72px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        font-family: 'Bungee', sans-serif;
+        font-size: clamp(2.2rem, 6vw, 3.6rem);
+        text-align: center;
+        line-height: 1.05;
+        text-shadow: 0 0 36px rgba(255, 200, 50, 0.35);
+      }
+      h1 .accent { color: var(--gold); }
+      .subtitle {
+        margin-top: 14px;
+        font-size: 1.1rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        text-align: center;
+      }
+      .cards {
+        margin-top: 52px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 28px;
+      }
+      .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        padding: 34px 26px 30px;
+        border-radius: 22px;
+        background: linear-gradient(180deg, #23262b 0%, #16181b 100%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255, 200, 50, 0.5);
+        box-shadow: 0 26px 64px rgba(0, 0, 0, 0.6), 0 0 40px rgba(172, 34, 40, 0.25);
+      }
+      .card img {
+        width: 168px;
+        height: 168px;
+        object-fit: contain;
+        filter: drop-shadow(0 0 30px rgba(255, 200, 50, 0.35));
+      }
+      .card h2 {
+        font-family: 'Bungee', sans-serif;
+        font-size: 1.4rem;
+        margin-top: 18px;
+        line-height: 1.15;
+      }
+      .card p {
+        margin-top: 10px;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.55);
+        max-width: 30ch;
+      }
+      .card .play {
+        margin-top: 20px;
+        font-family: 'Bungee', sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        padding: 11px 26px;
+        border-radius: 999px;
+        background: var(--aep-red);
+        color: #fff;
+        box-shadow: 0 8px 22px rgba(172, 34, 40, 0.45);
+      }
+      .card:hover .play { background: #c62a31; }
+      footer {
+        padding: 22px;
+        font-size: 0.85rem;
+        letter-spacing: 0.06em;
+        color: rgba(255, 255, 255, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="./aep-logo-white.svg" alt="Accelerated Equity Plans" />
+      <span>GAMES</span>
+    </header>
+    <main>
+      <h1>AEP <span class="accent">GAME</span> NIGHT</h1>
+      <p class="subtitle">Pick your game</p>
+      <div class="cards">
+        <a class="card" href="/cap-table/">
+          <img src="./Wise_Owl.webp" alt="" />
+          <h2>Cap&nbsp;Table<br />Catastrophe</h2>
+          <p>Fast-paced equity trivia — host a room, players buzz in from their phones.</p>
+          <span class="play">Play&nbsp;▸</span>
+        </a>
+        <a class="card" href="/family-feud/">
+          <img src="./Game_Show_Owl.webp" alt="" />
+          <h2>Equity<br />Family&nbsp;Feud</h2>
+          <p>Survey-says showdown — two teams, big board, scan to join the audience.</p>
+          <span class="play">Play&nbsp;▸</span>
+        </a>
+      </div>
+    </main>
+    <footer>Accelerated Equity Plans</footer>
+  </body>
+</html>

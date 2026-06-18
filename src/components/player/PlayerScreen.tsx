@@ -43,7 +43,7 @@ function MobileHeader() {
         borderBottom: '1px solid rgba(255,255,255,0.14)',
       }}
     >
-      <img src="/aep-logo-white.svg" alt="Accelerated Equity Plans" style={{ height: '28px', width: 'auto', display: 'block' }} />
+      <img src={`${import.meta.env.BASE_URL}aep-logo-white.svg`} alt="Accelerated Equity Plans" style={{ height: '28px', width: 'auto', display: 'block' }} />
     </div>
   )
 }
@@ -487,9 +487,9 @@ export default function PlayerScreen() {
         `}</style>
         <div className="flex-1 flex flex-col items-center justify-center p-6 gap-5">
           {gotIt ? (
-            <img src="/Right_Owl.webp" alt="Way To Go!" className="owl-bounce" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
+            <img src={`${import.meta.env.BASE_URL}Right_Owl.webp`} alt="Way To Go!" className="owl-bounce" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
           ) : (
-            <img src="/Wrong_Owl.webp" alt="Better Luck Next Time!" className="owl-pop" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
+            <img src={`${import.meta.env.BASE_URL}Wrong_Owl.webp`} alt="Better Luck Next Time!" className="owl-pop" style={{ width: '224px', height: '224px', objectFit: 'contain' }} />
           )}
 
           {currentQuestion && (
@@ -598,7 +598,7 @@ export default function PlayerScreen() {
               <div className="text-2xl font-black text-center" style={{ color: '#AC2228' }}>Leaderboard</div>
               <div className="flex items-start justify-center gap-3 w-full">
                 <img
-                  src="/Wise_Owl.webp"
+                  src={`${import.meta.env.BASE_URL}Wise_Owl.webp`}
                   alt=""
                   style={{ width: '130px', height: 'auto', objectFit: 'contain', marginTop: '8px', flexShrink: 0, filter: 'drop-shadow(0 0 12px rgba(255,200,50,0.3))' }}
                 />
@@ -622,7 +622,7 @@ export default function PlayerScreen() {
                   })}
                 </div>
                 <img
-                  src="/Confused_Owl.webp"
+                  src={`${import.meta.env.BASE_URL}Confused_Owl.webp`}
                   alt=""
                   style={{ width: '130px', height: 'auto', objectFit: 'contain', marginTop: '8px', flexShrink: 0, filter: 'drop-shadow(0 0 12px rgba(172,34,40,0.3))' }}
                 />
