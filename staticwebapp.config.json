@@ -17,12 +17,10 @@
       "route": "/family-feud/assets/*",
       "headers": { "Cache-Control": "public, max-age=31536000, immutable" }
     },
-    { "route": "/cap-table", "rewrite": "/cap-table/index.html" },
     { "route": "/cap-table/", "rewrite": "/cap-table/index.html" },
     { "route": "/cap-table/host", "rewrite": "/cap-table/index.html" },
     { "route": "/cap-table/play", "rewrite": "/cap-table/index.html" },
     { "route": "/cap-table/admin", "rewrite": "/cap-table/index.html" },
-    { "route": "/family-feud", "rewrite": "/family-feud/index.html" },
     { "route": "/family-feud/", "rewrite": "/family-feud/index.html" },
     { "route": "/family-feud/board", "rewrite": "/family-feud/index.html" },
     { "route": "/family-feud/host", "rewrite": "/family-feud/index.html" },
