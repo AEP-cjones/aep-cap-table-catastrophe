@@ -733,14 +733,6 @@ export default function AdminPanel() {
                 </button>
               </ConfigField>
 
-              <ConfigField label="Admin Password">
-                <input
-                  className="flex-1 px-3 py-2 rounded-lg text-white text-sm outline-none"
-                  style={{ backgroundColor: '#2d3748' }}
-                  value={configForm.adminPassword ?? ''}
-                  onChange={(e) => setConfigForm((p) => ({ ...p, adminPassword: e.target.value }))}
-                />
-              </ConfigField>
             </div>
 
             <div className="flex items-center gap-4">

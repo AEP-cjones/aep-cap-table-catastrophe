@@ -39,7 +39,6 @@ export interface GameConfig {
   questionsPerGame: number
   timeLimit: number
   randomizeOrder: boolean
-  adminPassword: string
   playUrl: string
 }
 
